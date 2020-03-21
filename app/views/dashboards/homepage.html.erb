@@ -7,7 +7,7 @@
     <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
 <% end %>
 
-<%= form_with url: "http://localhost:3000/posts", authenticity_token: false do |f|%>
+<%= form_with url: "/posts", authenticity_token: false do |f|%>
 	<div class="field">
 	    <%= f.label :post %><br />
 	    <%= f.text_field :content, autocomplete: "post" %>
@@ -27,7 +27,7 @@
         <td><%= post.content %></td><br> 
       </tr>
           Rections: 
-       	<%= form_with url: "http://localhost:3000/reactions", authenticity_token: false do |f|%>
+       	<%= form_with url: "/reactions", authenticity_token: false do |f|%>
        	<input id="user_id" name="user_id" type="hidden", value="<%= current_user.id %>" />
        	<input id="owner_id" name="owner_id" type="hidden", value="<%= post.id %>" />
        	<input id="owner_type" name="owner_type" type="hidden", value="Post" />
