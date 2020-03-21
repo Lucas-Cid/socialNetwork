@@ -7,5 +7,6 @@ class User < ApplicationRecord
   validates :name, presence: true, format: { with: /\A[a-zA-Z\s]+\z/, message: "only allows letters" }
 
   has_many :posts
+  has_many :commentaries
   has_many :reactions
 end

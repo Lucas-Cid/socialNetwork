@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PostCommentaryTest < ActiveSupport::TestCase
+class CommentaryTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

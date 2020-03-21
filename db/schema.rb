@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_20_102446) do
+ActiveRecord::Schema.define(version: 2020_03_20_145207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "commentaries", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
+    t.string "content"
+    t.integer "reactionType1", default: 0
+    t.integer "reactionType2", default: 0
+    t.integer "reactionType3", default: 0
+    t.integer "reactionType4", default: 0
+    t.integer "dislikes", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "post_commentaries", force: :cascade do |t|
     t.integer "post_id"
@@ -35,11 +48,13 @@ ActiveRecord::Schema.define(version: 2020_03_20_102446) do
   end
 
   create_table "reactions", force: :cascade do |t|
-    t.integer "post_id"
+    t.string "owner_type"
+    t.bigint "owner_id"
     t.integer "user_id"
     t.integer "reactionType"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["owner_type", "owner_id"], name: "index_reactions_on_owner_type_and_owner_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,31 +1,36 @@
 class Reaction < ApplicationRecord
-	validates :post_id, presence: true
-	validates :user_id, presence: true
 	validates :reactionType, presence: true
 
 	enum reactionType: [:type1, :type2, :type3, :type4, :dislike]
 
 	belongs_to :user
-	belongs_to :post
+	belongs_to :owner, polymorphic: true
+
 
 	before_save do |s|
-		alreadyReactedVerification = Post.find(self.post_id).reactions.where(user_id:self.user_id)
+		if owner_type == "Post"
+			type = Post
+		else
+			type = Commentary
+		end
+
+		alreadyReactedVerification = type.find(owner_id).reactions.where(user_id:user_id)
 		if alreadyReactedVerification.present?
 			Reaction.destroy(alreadyReactedVerification.first.id)
 		end
 
-		post = Post.where(id:self.post_id).first
-		case self.reactionType	
+		toBeReacted = type.where(id:owner_id).first
+		case reactionType	
 			when "type1"
-				post.update(reactionType1:post[:reactionType1]+1)
+				toBeReacted.update(reactionType1:toBeReacted[:reactionType1]+1)
 			when "type2"
-				post.update(reactionType2:post[:reactionType2]+1)
+				toBeReacted.update(reactionType2:toBeReacted[:reactionType2]+1)
 			when "type3"
-				post.update(reactionType3:post[:reactionType3]+1)
+				toBeReacted.update(reactionType3:toBeReacted[:reactionType3]+1)
 			when "type4"
-				post.update(reactionType4:post[:reactionType4]+1)
+				toBeReacted.update(reactionType4:toBeReacted[:reactionType4]+1)
 			when "dislike"
-				post.update(dislikes:post[:dislikes]+1)
+				toBeReacted.update(dislikes:toBeReacted[:dislikes]+1)
 
 		end
 	end
@@ -33,18 +38,24 @@ class Reaction < ApplicationRecord
 	before_destroy :undoReaction
 
 	def undoReaction
-		post = Post.where(id:self.post_id).first
-		case self.reactionType	
+		if owner_type == "Post"
+			type = Post
+		else
+			type = Commentary
+		end
+
+		toLostReaction = type.find(owner_id)
+		case reactionType	
 			when "type1"
-				post.update(reactionType1:post[:reactionType1]-1)
+				toLostReaction.update(reactionType1:toLostReaction[:reactionType1]-1)
 			when "type2"
-				post.update(reactionType2:post[:reactionType2]-1)
+				toLostReaction.update(reactionType2:toLostReaction[:reactionType2]-1)
 			when "type3"
-				post.update(reactionType3:post[:reactionType3]-1)
+				toLostReaction.update(reactionType3:toLostReaction[:reactionType3]-1)
 			when "type4"
-				post.update(reactionType4:post[:reactionType4]-1)
+				toLostReaction.update(reactionType4:toLostReaction[:reactionType4]-1)
 			when "dislike"
-				post.update(dislikes:post[:dislikes]-1)
+				toLostReaction.update(dislikes:toLostReaction[:dislikes]-1)
 
 		end
 	end
