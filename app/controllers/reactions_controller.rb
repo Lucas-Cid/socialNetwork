@@ -5,7 +5,11 @@ class ReactionsController < ApplicationController
 	end
 
 	def create
-		Reaction.create(giveReactionsParamsPermission(params))
+		permitedParams = giveReactionsParamsPermission(params)
+		verification = Reaction.alreadyReacted(permitedParams)
+		if !verification
+			Reaction.create(permitedParams)
+		end
 		redirect_to :controller => 'dashboards', :action => 'homepage'
 	end
 end

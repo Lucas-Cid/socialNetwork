@@ -21,7 +21,7 @@
 <% end %>
 
 <tbody>
-    <% Post.all.first(10).reverse.each do |post| %>
+    <% Post.all.order(:id).reverse.first(10).each do |post| %>
       <tr>
         <td><%= User.find(post.user_id).name %></td><br>
         <td><%= post.content %></td><br> 
@@ -49,6 +49,11 @@
  	    <div class="actions">
    		 <%= f.submit "type4" , :name => 'reactionType' %>
    		 <%= post.reactionType4 %>
+ 		</div>
+
+ 		<div class="actions">
+   		 <%= f.submit "dislike" , :name => 'reactionType' %>
+   		 <%= post.dislikes %>
  		</div>
  	  <% end %>
  	    <br>

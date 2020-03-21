@@ -6,20 +6,20 @@ class Reaction < ApplicationRecord
 	belongs_to :user
 	belongs_to :owner, polymorphic: true
 
+	before_destroy :undoReaction
 
-	before_save do |s|
+	after_create do |s|
+		addReaction
+	end
+
+	def addReaction
 		if owner_type == "Post"
 			type = Post
 		else
 			type = Commentary
 		end
 
-		alreadyReactedVerification = type.find(owner_id).reactions.where(user_id:user_id)
-		if alreadyReactedVerification.present?
-			Reaction.destroy(alreadyReactedVerification.first.id)
-		end
-
-		toBeReacted = type.where(id:owner_id).first
+		toBeReacted = type.find(owner_id)
 		case reactionType	
 			when "type1"
 				toBeReacted.update(reactionType1:toBeReacted[:reactionType1]+1)
@@ -31,11 +31,25 @@ class Reaction < ApplicationRecord
 				toBeReacted.update(reactionType4:toBeReacted[:reactionType4]+1)
 			when "dislike"
 				toBeReacted.update(dislikes:toBeReacted[:dislikes]+1)
-
 		end
 	end
 
-	before_destroy :undoReaction
+	def self.alreadyReacted(params)
+		@user = User.find(params.require(:user_id))
+		@userReaction = @user.reactions.where(owner_id:params.require(:owner_id)).first
+		if @userReaction.present?
+			if @userReaction.reactionType == params.require(:reactionType)
+				@userReaction.destroy
+			else
+				@userReaction.undoReaction
+				@userReaction.update(reactionType:params.require(:reactionType))
+				@userReaction.addReaction
+
+			end
+			return true
+		end
+		return false
+	end
 
 	def undoReaction
 		if owner_type == "Post"
