@@ -12,12 +12,17 @@ class Reaction < ApplicationRecord
 		addReaction
 	end
 
-	def addReaction
+	def postOrComment(owner_type)
+
 		if owner_type == "Post"
-			type = Post
+			Post
 		else
-			type = Commentary
+			Commentary
 		end
+	end
+
+	def addReaction
+		type = postOrComment(owner_type)
 
 		toBeReacted = type.find(owner_id)
 		case reactionType	
@@ -52,11 +57,7 @@ class Reaction < ApplicationRecord
 	end
 
 	def undoReaction
-		if owner_type == "Post"
-			type = Post
-		else
-			type = Commentary
-		end
+		type = postOrComment(owner_type)
 
 		toLostReaction = type.find(owner_id)
 		case reactionType	
@@ -73,4 +74,5 @@ class Reaction < ApplicationRecord
 
 		end
 	end
+
 end

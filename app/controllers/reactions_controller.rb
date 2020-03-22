@@ -6,10 +6,16 @@ class ReactionsController < ApplicationController
 
 	def create
 		permitedParams = giveReactionsParamsPermission(params)
-		verification = Reaction.alreadyReacted(permitedParams)
-		if !verification
-			Reaction.create(permitedParams)
+		@user = User.find(params.require(:user_id))
+		if @user.userIsPostOwner(permitedParams)
+		
+		else
+			verification = Reaction.alreadyReacted(permitedParams)
+			if !verification
+				Reaction.create(permitedParams)
+			end
 		end
 		redirect_to :controller => 'dashboards', :action => 'homepage'
 	end
+
 end

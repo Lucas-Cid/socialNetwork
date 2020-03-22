@@ -61,4 +61,19 @@ class User < ApplicationRecord
     @friendship = inverse_friendships.where(user_id:friend.id).first
     @friendship.update(acceptedRequest:true)
   end
+
+  def userIsPostOwner(postInformations)
+    if postInformations.require(:owner_type) == "Post"
+      type = Post
+    else
+      type = Commentary
+    end
+
+    @subject = type.find(postInformations.require(:owner_id))  
+    if self.id == @subject.user_id
+      return true
+    else
+      return false
+    end
+  end
 end
