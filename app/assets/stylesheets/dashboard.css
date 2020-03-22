@@ -1,0 +1,12 @@
+table, th, td {
+  border: 1px solid black;
+  max-width: 350px;
+}
+
+.allUsers {
+  position: absolute;
+  right: 150px;
+  top: 100px;
+  display: flex;
+  text-align: center;
+}
