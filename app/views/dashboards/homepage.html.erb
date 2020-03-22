@@ -1,62 +1,128 @@
-<% if user_signed_in? %>
-    Logged in as <strong><%= current_user.email %></strong>.
-    <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-<% else %>
-	<%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-    <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-<% end %>
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Embedded Style Sheet</title>
+<style>
 
-<%= form_with url: "/posts", authenticity_token: false do |f|%>
-	<div class="field">
-	    <%= f.label :post %><br />
-	    <%= f.text_field :content, autocomplete: "post" %>
-	</div>
+table, th, td {
+  border: 1px solid black;
+}
 
-	<input id="user_information" name="user_id" type="hidden", value="<%= current_user.id %>" />
+#user {
+  position: absolute;
+  right: 150px;
+  top: 100px;
+  display: flex;
+}
 
-	<div class="actions">
-	    <%= f.submit "Send" %>
-	</div>
-<% end %>
+</style>
+</head>
+<body>
+	<% if user_signed_in? %>
+	    Logged in as <strong><%= current_user.email %></strong>.
+	    <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+	    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+	<% else %>
+		<%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+	    <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+	<% end %>
 
-<tbody>
-    <% Post.all.order(:id).reverse.first(10).each do |post| %>
-      <tr>
-        <td><%= User.find(post.user_id).name %></td><br>
-        <td><%= post.content %></td><br> 
-      </tr>
-          Rections: 
-       	<%= form_with url: "/reactions", authenticity_token: false do |f|%>
-       	<input id="user_id" name="user_id" type="hidden", value="<%= current_user.id %>" />
-       	<input id="owner_id" name="owner_id" type="hidden", value="<%= post.id %>" />
-       	<input id="owner_type" name="owner_type" type="hidden", value="Post" />
-        <div class="actions">
-   		 <%= f.submit "type1" , :name => 'reactionType' %>
-   		 <%= post.reactionType1 %>
- 	    </div>
+	<%= form_with url: "/posts", id:"teste", authenticity_token: false do |f|%>
 
- 	    <div class="actions">
-   		 <%= f.submit "type2" , :name => 'reactionType' %>
-   		 <%= post.reactionType2 %>
- 	    </div>
+		<textarea name="content" form="teste" autofocus placeholder="Tell me a secret"></textarea>
 
- 	    <div class="actions">
-   		 <%= f.submit "type3" , :name => 'reactionType' %>
-   		 <%= post.reactionType3 %>
- 	    </div>
+		<input id="user_information" name="user_id" type="hidden", value="<%= current_user.id %>" />
 
- 	    <div class="actions">
-   		 <%= f.submit "type4" , :name => 'reactionType' %>
-   		 <%= post.reactionType4 %>
- 		</div>
+		<div class="actions">
+		    <%= f.submit "Send" %>
+		</div>
+	<% end %>
 
- 		<div class="actions">
-   		 <%= f.submit "dislike" , :name => 'reactionType' %>
-   		 <%= post.dislikes %>
- 		</div>
- 	  <% end %>
- 	    <br>
- 	    <br>
-    <% end %>
-</tbody>
+	<tbody>
+	    <% Post.all.order(:id).reverse.first(10).each do |post| %>
+	    <table>
+	    <colgroup>
+	      <tr>
+	        <th><%= User.find(post.user_id).name %></td><br></th>
+	      </tr>
+	      <tr>
+	        <td><%= post.content %></td><br> </td>
+	      </tr>
+	  	</colgroup>
+
+	  </table>
+	          Rections: 
+	       	<%= form_with url: "/reactions", authenticity_token: false do |f|%>
+	       	<input id="user_id" name="user_id" type="hidden", value="<%= current_user.id %>" />
+	       	<input id="owner_id" name="owner_id" type="hidden", value="<%= post.id %>" />
+	       	<input id="owner_type" name="owner_type" type="hidden", value="Post" />
+	       	<table>
+	        <div class="actions">
+	   		 <%= f.submit "type1" , :name => 'reactionType' %>
+	   		 <%= post.reactionType1 %>
+	 	    </div>
+
+	 	    <div class="actions">
+	   		 <%= f.submit "type2" , :name => 'reactionType' %>
+	   		 <%= post.reactionType2 %>
+	 	    </div>
+
+	 	    <div class="actions">
+	   		 <%= f.submit "type3" , :name => 'reactionType' %>
+	   		 <%= post.reactionType3 %>
+	 	    </div>
+
+	 	    <div class="actions">
+	   		 <%= f.submit "type4" , :name => 'reactionType' %>
+	   		 <%= post.reactionType4 %>
+	 		</div>
+
+	 		<div class="actions">
+	   		 <%= f.submit "dislike" , :name => 'reactionType' %>
+	   		 <%= post.dislikes %>
+	 		</div>
+	 	  <% end %>
+	 	    <br>
+	 	    <br>
+	    <% end %>
+	   </table>
+	</tbody>
+	<div id="user">
+		<colgroup>
+	<table>
+		 <% User.all.order(:id).first(10).each do |user| %>
+		 <tr>
+		 	<% if current_user == user %>
+			<% else %>
+		 	<td><%= user.name %></td>
+		 	<td> 
+		 		<%= form_with url: "users/addFriend", method: :get, authenticity_token: false do |f|%>
+		 		<input id="user1_id" name="user1_id" type="hidden", value="<%= current_user.id %>" />
+		 		<input id="user2_id" name="user2_id" type="hidden", value="<%= user.id %>" />
+		 		<% if current_user.areWeFriends(user) %>
+		 				<div class="actions">
+			 			<%= f.submit "friends (remove?)" %>
+			 			</div>
+			 	<% elsif current_user.userRequestedFriendship(user) %>
+			 			<div class="actions">
+			 			<%= f.submit "accept request" %>
+			 			</div>
+			 	<% elsif current_user.alreadySentRequest(user) %>
+			 			request sent
+			 	<% else %>
+			 			<div class="actions">
+			   		 	<%= f.submit "send request" %>
+			 	    	</div>
+			 	<% end %>
+			 	<% end %>
+			<% end %>
+		 	</td>
+		 </tr>
+		 <% end %>
+	</table>
+	</colgroup>
+</div>
+
+</body>
+</html>

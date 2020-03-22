@@ -37,4 +37,15 @@ class User < ApplicationRecord
     inverse_friendships.map{|friendship| friendship.user if !friendship.acceptedRequest}
   end
 
+  def areWeFriends(user)
+    friendships.where(friend_id:user.id, acceptedRequest:true).present? || inverse_friendships.where(user_id:user.id, acceptedRequest:true).present?
+  end
+
+  def userRequestedFriendship(user)
+    inverse_friendships.where(user_id:user.id, acceptedRequest:false).present?
+  end
+
+  def alreadySentRequest(user)
+    friendships.where(friend_id:user.id, acceptedRequest:false).present?
+  end
 end
