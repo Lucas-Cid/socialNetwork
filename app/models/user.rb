@@ -48,4 +48,17 @@ class User < ApplicationRecord
   def alreadySentRequest(user)
     friendships.where(friend_id:user.id, acceptedRequest:false).present?
   end
+
+  def deleteFriendship(friend)
+    if friendships.where(friend_id:friend.id).first.present?
+      Friendship.delete(friendships.where(friend_id:friend.id).first.id)
+    else 
+      Friendship.delete(inverse_friendships.where(user_id:friend.id).first.id)
+    end
+  end
+
+  def acceptFriendship(friend)
+    @friendship = inverse_friendships.where(user_id:friend.id).first
+    @friendship.update(acceptedRequest:true)
+  end
 end
