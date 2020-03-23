@@ -1,12 +1,107 @@
-table, th, td {
-  border: 1px solid black;
+td{
   max-width: 350px;
+  border-collapse: collapse;
+  padding: 3px;
+  padding-left: 20px;
 }
 
-.allUsers {
-  position: absolute;
-  right: 150px;
-  top: 100px;
-  display: flex;
-  text-align: center;
+
+th {
+	font-size:14px;
+	font-style:italic;
+}
+
+.dashboard {
+}
+
+.postContentText {
+	font-size: 20px;
+	text-align: justify;
+}
+
+#allUsers {
+	position: fixed;
+  	max-width: 350px;
+	-webkit-box-shadow: 9px 10px 39px -16px rgba(0,0,0,0.75);
+	-moz-box-shadow: 9px 10px 39px -16px rgba(0,0,0,0.75);
+	box-shadow: 9px 10px 39px -16px rgba(0,0,0,0.75);
+}
+
+.topBar {
+	background-color: white;
+    position: sticky;
+    min-width: 100%;
+    border-bottom: 1px solid black;
+    top: 0;
+    padding: 10px;
+	z-index: 9999;
+
+}
+
+.timeline {
+	display: flex;
+	margin: 20px;
+}
+
+.left {
+	margin-left: 20px;
+}
+
+.middle {
+	margin-left: 20px;
+}
+
+.right {
+	margin-left: 20px;
+}
+
+.postContent {
+  	max-width: 350px;
+  	padding: 3px;
+	width: 40%;
+}
+
+.reactionButton {
+	
+	height: 25px;
+	width: 25px;
+	font-size: 10px;
+	text-align: left;
+	border-radius: 5px;
+	background-color: white;
+}
+
+.title {
+	text-align: center;
+	font-size: 50px;
+	background-color: rgba(0,0,0,.03);
+}
+
+#postCreation{
+	-webkit-box-shadow: 9px 10px 39px -16px rgba(0,0,0,0.75);
+	-moz-box-shadow: 9px 10px 39px -16px rgba(0,0,0,0.75);
+	box-shadow: 9px 10px 39px -16px rgba(0,0,0,0.75);
+}
+
+.allPosts {
+	width: 400px;
+	margin-left: 20px;
+}
+
+.text {
+	width: 350px;
+	height: 150px;
+	max-height: 300px;
+}
+
+.post {
+	margin-bottom: 20px;
+	-webkit-box-shadow: 9px 10px 39px -16px rgba(0,0,0,0.75);
+	-moz-box-shadow: 9px 10px 39px -16px rgba(0,0,0,0.75);
+	box-shadow: 9px 10px 39px -16px rgba(0,0,0,0.75);
+}
+
+.actions {
+	display: inline-block;
+	padding: 2px;
 }
