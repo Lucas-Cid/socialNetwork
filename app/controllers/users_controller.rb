@@ -14,6 +14,5 @@ class UsersController < ApplicationController
 		else
 			@user.friends << @friend
 		end
-		redirect_to :controller => 'dashboards', :action => 'homepage'
 	end
 end
