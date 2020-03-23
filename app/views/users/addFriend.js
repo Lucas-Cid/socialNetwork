@@ -1,1 +1,1 @@
-window.location.reload(false);
+window.location.reload(true);
