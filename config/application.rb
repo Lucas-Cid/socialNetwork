@@ -12,7 +12,6 @@ module SocialNetwork
     config.load_defaults 5.2
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
 	config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/.
-	RAILS_ENV=production
 
 
 
