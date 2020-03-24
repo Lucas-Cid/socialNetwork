@@ -1,7 +1,9 @@
 {
   "name": "socialNetwork",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "bootstrap-icons": "^1.0.0-alpha3"
+  },
   "devDependencies": {
     "webpack": "^4.42.0",
     "webpack-dev-server": "^3.10.3"
