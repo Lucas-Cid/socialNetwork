@@ -69,31 +69,31 @@
 										       	<input id="owner_type" name="owner_type" type="hidden", value="Post" />
 
 										        <div class="actions">
-										   		 	<%= button_tag( :class => "icon-thumb-up", :value => "type1" , :name => 'reactionType') do %>
+										   		 	<%= button_tag( :class => "fas fa-thumbs-up", :value => "type1" , :name => 'reactionType') do %>
 													<% end %>
 										   		 		<%= post.reactionType1 %>
 										 	    </div>
 
 										 	    <div class="actions">
-											   		 <%= button_tag( :class => "icon-shocked2", :value => "type2" , :name => 'reactionType') do %>
+											   		 <%= button_tag( :class => "fas fa-surprise", :value => "type2" , :name => 'reactionType') do %>
 											   		 <% end %>
 										   		 <%= post.reactionType2 %>
 										 	    </div>
 
 										 	    <div class="actions">
-											   		 <%= button_tag( :class => "icon-angry2", :value => "type3" , :name => 'reactionType') do %>
+											   		 <%= button_tag( :class => "fas fa-angry", :value => "type3" , :name => 'reactionType') do %>
 											   		 <% end %>
 											   		 <%= post.reactionType3 %>
 										 	    </div>
 
 										 	    <div class="actions">
-											   		 <%= button_tag( :class => "icon-crying2", :value => "type4" , :name => 'reactionType') do %>
+											   		 <%= button_tag( :class => "fas fa-sad-cry", :value => "type4" , :name => 'reactionType') do %>
 											   		 <% end %>
 											   		 <%= post.reactionType4 %>
 										 			</div>
 
 										 		<div class="actions">
-											   		 <%= button_tag( :class => "icon-thumbs-down1", :value => "dislike" , :name => 'reactionType') do %>
+											   		 <%= button_tag( :class => "fas fa-thumbs-down", :value => "dislike" , :name => 'reactionType') do %>
 											   		 <% end %>
 											   		 <%= post.dislikes %>
 										 		</div>
@@ -145,16 +145,16 @@
 
 											 	<% elsif current_user.userRequestedFriendship(user) %>
 											 		<div class="actions">
-											 			<%= button_tag( :class => "icon-user-check") do %>
+											 			<%= button_tag( :class => "fas fa-user-check") do %>
 											 			<% end %>
 											 		</div>
 
 											 	<% elsif current_user.alreadySentRequest(user) %>
-											 			<span class="icon-dots-three-horizontal" />
+											 			<span class="fas fa-ellipsis-h" />
 											 	<% else %>
 
 											 		<div class="actions">
-											   		<%= button_tag( :class => "icon-user-plus") do %>
+											   		<%= button_tag( :class => "fas fa-user-plus") do %>
 											   		<% end %>
 											 	  	</div>
 										 		<% end %>
