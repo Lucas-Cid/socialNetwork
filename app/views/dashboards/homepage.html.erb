@@ -4,6 +4,7 @@
 		<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://kit.fontawesome.com/ff670d92a2.js" crossorigin="anonymous"></script>
 		<%= stylesheet_link_tag "dashboard" %>
 		<meta charset="UTF-8">
 
@@ -138,7 +139,7 @@
 
 										 		<% if current_user.areWeFriends(user) %>
 										 			<div class="actions">
-											 			<%= button_tag( :class => "icon-users") do %>
+											 			<%= button_tag( :class => "fas fa-user-friends") do %>
 											 			<% end %>
 											 		</div>
 
