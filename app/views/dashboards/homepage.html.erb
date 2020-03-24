@@ -46,7 +46,7 @@
 				<div class="left">
 					<div id="postCreation" class="card gedf-card">
 						<%= form_with url: "/posts", authenticity_token: false do |f|%>
-							<div class="card-header">
+							<div class="card-header" id="card-header">
 							</div>
 							<div class="card-body">
 								<textarea class="textArea" name="content" autofocus placeholder="Tell me a secret"></textarea>
@@ -55,7 +55,7 @@
 							</div>
 
 							<div class="actions">
-							    <%= f.submit "Send", :class => 'btn btn-primay' %>
+							    <%= f.submit "Send", :class => 'btn btn-primay', :id => "sendPostButton"%>
 							</div>
 
 						<% end %>
@@ -70,7 +70,7 @@
 
 							    	<div class="card">
 
-							    		<div class="card-header">
+							    		<div class="card-header" id="card-header">
 									        <%= User.find(post.user_id).name %>
 									    </div>
 
@@ -78,7 +78,7 @@
 									        <%= post.content %>
 									    </div>
 
-									 	<div class="card-footer">
+									 	<div class="card-footer" id="card-footer">
 
 									        <%= form_with url: "/reactions", authenticity_token: false do |f|%>
 										       	<input id="user_id" name="user_id" type="hidden", value="<%= current_user.id %>" />
@@ -133,7 +133,7 @@
 					<table id="allUsers" class="table table-hover">
 
 						<thead>
-    						<tr>
+    						<tr style="background-color:#66b3ff;color:white">
      						 <th scope="col">User</th>
      						 <th scope="col">Status</th>
      						</tr>
@@ -156,13 +156,13 @@
 
 										 		<% if current_user.areWeFriends(user) %>
 										 			<div class="actions">
-											 			<%= button_tag( :class => "fas fa-user-friends") do %>
+											 			<%= button_tag( :class => "fas fa-user-friends", data: {confirm: "Do you want to remove "+user.name+" from your friend-list?"}) do %>
 											 			<% end %>
 											 		</div>
 
 											 	<% elsif current_user.userRequestedFriendship(user) %>
 											 		<div class="actions">
-											 			<%= button_tag( :class => "fas fa-user-check") do %>
+											 			<%= button_tag( :class => "fas fa-user-check", data: {confirm: "Do you want to accept the friend request from "+user.name+"?"}) do %>
 											 			<% end %>
 											 		</div>
 
@@ -171,7 +171,7 @@
 											 	<% else %>
 
 											 		<div class="actions">
-											   		<%= button_tag( :class => "fas fa-user-plus") do %>
+											   		<%= button_tag( :class => "fas fa-user-plus", data: {confirm: "Do you want send a friend request to "+user.name+"?"}) do %>
 											   		<% end %>
 											 	  	</div>
 										 		<% end %>

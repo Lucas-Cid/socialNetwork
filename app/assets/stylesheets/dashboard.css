@@ -11,6 +11,10 @@ th {
 }
 
 .dashboard {
+	width: 100%
+	height: 100%;
+	max-width: 2700px;
+	max-height: 5000px;
 }
 
 .title {
@@ -18,7 +22,7 @@ th {
 	font-size: 50px;
 	background-color: rgba(0,0,0,.03);
 	border-bottom: 1px solid grey;
-	max-width: 2300px;
+	color: #66b3ff;
 }
 
 .topBar{
@@ -30,6 +34,7 @@ th {
 	height: 62px;
 	font-size: 20px;
 	float: right;
+	background-color: #66b3ff;
 }
 
 .nav-link {
@@ -69,6 +74,10 @@ th {
 	height: 150px;
 }
 
+#sendPostButton {
+	background-color:#66b3ff;
+}
+
 .middle {
 	width: 40%;
 	max-width: 600px;
@@ -82,8 +91,24 @@ th {
 	-webkit-box-shadow: 9px 10px 39px -16px rgba(0,0,0,0.75);
 	-moz-box-shadow: 9px 10px 39px -16px rgba(0,0,0,0.75);
 	box-shadow: 9px 10px 39px -16px rgba(0,0,0,0.75);
+	border-radius: 20px;
 }
 
+.card {
+	border-radius: 20px;
+}
+
+#card-header {
+	background-color:#66b3ff;
+	color:white;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+}
+
+#card-footer {
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+}
 .postContent {
   	max-width: 350px;
   	padding: 3px;
@@ -113,11 +138,16 @@ th {
 }
 
 #allUsers {
-	position: fixed;
-	width: 20%;
   	max-width: 450px;
 	-webkit-box-shadow: 9px 10px 39px -16px rgba(0,0,0,0.75);
 	-moz-box-shadow: 9px 10px 39px -16px rgba(0,0,0,0.75);
 	box-shadow: 9px 10px 39px -16px rgba(0,0,0,0.75);
-	overflow-y: auto;
+}
+
+
+
+.userName {
+	max-width: 300px;
+	width: 300px;
+	word-wrap: break-word;
 }
