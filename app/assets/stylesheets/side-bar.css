@@ -1,0 +1,59 @@
+
+
+.leftBar{
+    margin: auto;
+    margin-top: 100px;
+	width: 90px;
+	height: 370px;
+	background: black;
+    white-space: nowrap; 
+    transition: width 0.5s ;
+    position: fixed;
+    z-index: 9999; 
+    border-radius: 15px;
+}
+
+.leftBar ul{
+	padding: 0;
+	list-style-type: none;
+	text-align: left;
+}
+.leftBar li {
+	width: auto;
+	height: 60px;
+	line-height: 50px;  
+}
+.leftBar li:hover {
+	background: #373333; 
+}
+
+.leftBar:hover {
+    width: 400px; 
+}  
+
+.leftBar .item-menu {
+    margin-top: 30px;
+	margin-left: 20px;
+    height:50px;
+    overflow:hidden;
+    color:#fff;
+}  
+.leftBar a{
+	color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 40px;
+} 
+span.menu{
+	padding-left: 30px;
+}
+
+.menu {
+    padding-left: 30px;
+}
+.t_search {
+    color: black;
+    height: 35px;
+    margin-left: 30px;
+    width: 190px
+}

@@ -1,0 +1,60 @@
+
+<table id="allUsers" class="table table-hover">
+
+	<thead>
+		<tr style="background-color:black;color:white">
+			 <th scope="col">User</th>
+			 <th scope="col">Status</th>
+			</tr>
+		</thead>
+	  <% User.all.order(:id).first(10).each do |user| %>
+	  	<tr>
+
+		 	<% if current_user == user %>
+			<% else %>
+
+			 		<th class="userName" >
+			 			<%= link_to user.name, dashboards_userProfile_path(:id => user.id), :style => "color:black;" %>
+			 		</th>
+				
+		 			<td class="friendAction"> 
+
+				 		<%= form_with url: "users/addFriend", method: :get, 
+				 			authenticity_token: false do |f|%>
+					 		<input id="user1_id" name="user1_id" type="hidden", value="<%= current_user.id %>" />
+					 		<input id="user2_id" name="user2_id" type="hidden", value="<%= user.id %>" />
+
+					 		<% if current_user.areWeFriends(user) %>
+					 			<div class="actions">
+						 			<%= button_tag( :class => "fas fa-user-friends") do %>
+						 			<% end %>
+						 		</div>
+
+						 	<% elsif current_user.userRequestedFriendship(user) %>
+						 		<div class="actions">
+						 			<%= button_tag( :class => "fas fa-user-check") do %>
+						 			<% end %>
+						 		</div>
+
+						 	<% elsif current_user.alreadySentRequest(user) %>
+						 			<span class="fas fa-ellipsis-h" />
+						 	<% else %>
+
+						 		<div class="actions">
+						   		<%= button_tag( :class => "fas fa-user-plus") do %>
+						   		<% end %>
+						 	  	</div>
+					 		<% end %>
+		 				<% end %>
+
+	 				</td>
+
+	 			</div>
+
+			<% end %>
+
+	 	</tr>
+
+	  <% end %>
+
+</table>

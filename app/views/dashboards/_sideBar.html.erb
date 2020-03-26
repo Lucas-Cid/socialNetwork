@@ -1,0 +1,31 @@
+<ul>
+    <a href="/">
+        <li class="item-menu">
+            <span class="glyphicon glyphicon-home"></span> 
+            <span class="menu">Inicio</span>
+        </li>
+    </a> 
+    <a>
+    <%= link_to dashboards_myProfile_path do %>
+        <li class="item-menu">
+            <span class="glyphicon glyphicon-book"></span> 
+            <span class="menu">Perfil</span>
+        </li>
+    <% end %>
+    </a>
+    <a href="dashboards/messages">
+        <li class="item-menu">
+            <span class="glyphicon glyphicon-pencil"></span> 
+            <span class="menu">Mensagens</span>
+        </li>
+    </a>    
+    <a>
+    <a>
+        <li class="item-menu"> 
+            <a href="#">
+             <span class="glyphicon glyphicon-search"></span> 
+            </a>
+             <input class="t_search" type="text" placeholder="Pesquisar" style="font-size: 14px">
+        </li>
+    </a>
+</ul>

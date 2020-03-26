@@ -1,0 +1,29 @@
+<div class="topBar">
+
+	<div class="alignBar">
+
+		<a href="/">
+			<div id="title">
+					<strong>Vipy</strong>
+			</div>
+		</a>
+
+		<div class="userProfile" >
+			<%= link_to dashboards_myProfile_path, :style => "color:black;" do %>
+				<div class="userIcon">
+					<i class="fas fa-user" style="color: white"></i>
+				</div>
+			<% end %>
+		</div>
+
+		<div class="notification">
+			<i class="fas fa-bell"></i>
+		</div>
+
+		<div class="logout">
+    		<%= link_to "", destroy_user_session_path, method: :delete, :class => "fas fa-power-off", :style => "margin-top: 3px;margin-left: 2.8px;font-size: 20px;	color: white;" %>
+		</div>
+
+	</div>
+
+</div>

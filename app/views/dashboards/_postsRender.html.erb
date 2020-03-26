@@ -1,0 +1,140 @@
+<div class="postsRender">
+
+	<tbody>
+
+		<% @postsType.order(:id).reverse.first(10).each do |post| %>
+
+			<div class="post">
+
+		    	<div class="card">
+
+		    		<div class="card-header" id="card-header">
+		    			<%= link_to dashboards_userProfile_path(:id => post.user_id), :style => "color:white;" do%>
+				        	<%= post.user.name %>
+				        <% end %>
+				    </div>
+
+				    <div class="card-body">
+				        <%= post.content %>
+				    </div>
+
+				 	<div class="card-footer" id="card-footer">
+
+				        <%= form_with url: "/reactions", authenticity_token: false do |f|%>
+					       	<input id="user_id" name="user_id" type="hidden", value="<%= current_user.id %>" />
+					       	<input id="owner_id" name="owner_id" type="hidden", value="<%= post.id %>" />
+					       	<input id="owner_type" name="owner_type" type="hidden", value="Post" />
+
+							<div class="reaction" style="left:0;">
+						       	<ul>
+    								<a>
+	       								<li class="reaction-menu">
+								        	<div class="actions">
+								   		 		<%= button_tag( :class => "fas fa-thumbs-up", :value => "type1" , :name => 'reactionType') do %>
+												<% end %>
+											</div>
+										</li>
+									</a>
+								</ul>
+								<ul>
+	    							<a>
+       									<li class="reaction-menu">
+								   			<span><%= post.reactionType1 %></span>
+								   		</li>
+								 	</a>
+								 </ul>
+							</div>
+
+							<div class="reaction" style="margin-left: 20px;">
+						       	<ul>
+    								<a>
+	       								<li class="reaction-menu">
+								        	<div class="actions">
+								   		 		<%= button_tag( :class => "fas fa-surprise", :value => "type2" , :name => 'reactionType') do %>
+												<% end %>
+											</div>
+										</li>
+									</a>
+								</ul>
+								<ul>
+	    							<a>
+       									<li class="reaction-menu">
+								   			<span><%= post.reactionType2 %></span>
+								   		</li>
+								 	</a>
+								 </ul>
+							</div>
+
+							<div class="reaction" style="margin-left: 50px;">
+						       	<ul>
+    								<a>
+	       								<li class="reaction-menu">
+								        	<div class="actions">
+								   		 		<%= button_tag( :class => "fas fa-angry", :value => "type3" , :name => 'reactionType') do %>
+												<% end %>
+											</div>
+										</li>
+									</a>
+								</ul>
+								<ul>
+	    							<a>
+       									<li class="reaction-menu">
+								   			<span><%= post.reactionType3 %></span>
+								   		</li>
+								 	</a>
+								 </ul>
+							</div>
+
+							<div class="reaction" style="margin-left: 80px;">
+						       	<ul>
+    								<a>
+	       								<li class="reaction-menu">
+								        	<div class="actions">
+								   		 		<%= button_tag( :class => "fas fa-sad-cry", :value => "type4" , :name => 'reactionType') do %>
+												<% end %>
+											</div>
+										</li>
+									</a>
+								</ul>
+								<ul>
+	    							<a>
+       									<li class="reaction-menu">
+								   			<span><%= post.reactionType4 %></span>
+								   		</li>
+								 	</a>
+								 </ul>
+							</div>
+
+							 <div class="reaction" style="margin-left: 110px;">
+						       	<ul>
+    								<a>
+	       								<li class="reaction-menu">
+								        	<div class="actions">
+								   		 		<%= button_tag( :class => "fas fa-thumbs-down", :value => "dislike" , :name => 'reactionType') do %>
+												<% end %>
+											</div>
+										</li>
+									</a>
+								</ul>
+								<ul>
+	    							<a>
+       									<li class="reaction-menu">
+								   			<span><%= post.dislikes %></span>
+								   		</li>
+								 	</a>
+								 </ul>
+							</div>
+
+					 	<% end %>
+
+					 </div>
+
+				</div>
+
+			</div>
+
+		<% end %>
+
+	</tbody>
+
+</div>

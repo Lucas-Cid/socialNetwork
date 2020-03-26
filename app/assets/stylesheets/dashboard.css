@@ -10,63 +10,144 @@ th {
 	font-style:italic;
 }
 
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
 .dashboard {
-	width: 100%;
+	margin-right: 8%;
+	margin-left: 8%;
+	max-width: 2150px;
+	max-height: 2800px;
 	height: 100%;
-	max-width: 2700px;
-	max-height: 5000px;
+	display: flex;
+	border: 0.5px solid #0000004d;
+	-webkit-box-shadow: 1px 4px 38px 0px rgba(122,122,122,1);
+	-moz-box-shadow: 1px 4px 38px 0px rgba(122,122,122,1);
+	box-shadow: 1px 4px 38px 0px rgba(122,122,122,1);
 }
 
-.title {
-	text-align: center;
-	font-size: 50px;
-	background-color: rgba(0,0,0,.03);
-	border-bottom: 1px solid grey;
-	color: #66b3ff;
+.spaceDashboard {
+	position: relative;
+	width: 17%;
+	max-width: 770px;
+
 }
 
-.topBar{
-	position: sticky;
-    min-width: 100%;
-    border-bottom: 1px solid black;
-    top: 0;
-	z-index: 9999;
-	height: 62px;
+.alignBar {
+	width: 100%;
+	margin-right: 8%;
+	margin-left: 8%;
+	max-width: 2150px;
+	display: inline-flex;
+}
+
+.topBar {
+	color: white;
+	display: inline-flex;
+	position: fixed;
+	height: 80px;
+	width: 100%;
+	text-align: left;
+	background-color: black;
+	border-bottom: 1px solid black;
+	z-index: 9999; 
+}
+
+
+#title {
+	position: absolute;
+	margin-top: 10px;
+	width: 126px;
+	height: 100%;
+	font-size: 40px;
+	color: white;
+
+	font-family: Lobster;
+	font-style: normal;
+	font-weight: normal;
+}
+
+.userProfile {
+	margin-left: auto;
+	margin-right: auto;
+	border: 2px solid white;
+	height: 75px;
+	width: 75px;
+	border-radius: 100%;
+	z-index: 9999; 
+	color: white;
+
+}
+
+.userProfile i{
+	margin-top: 3px;
+	margin-left: 8.2px;
+	font-size: 60px;
+}
+
+.notification {
+	right: 0;
+	margin-top: 20px;
+	border: 2px solid white;
+	height: 30px;
+	width: 30px;
+	border-radius: 100%;
+	z-index: 9999; 
+	color: white;
+}
+
+.notification i{
+	margin-top: 2px;
+	margin-left: 4.3px;
 	font-size: 20px;
-	float: right;
-	background-color: #66b3ff;
 }
 
-.nav-link {
-	margin-right: 130px;
+.logout {
+	margin-left: 5px;
+	margin-top: 20px;
+	border: 2px solid white;
+	height: 30px;
+	width: 30px;
+	border-radius: 100%;
+	z-index: 9999; 
+	color: white;
 }
 
-#turnOffButton {
-	border-radius: 10px;
-	background-color: lightgrey;
-	margin-top: 15px;
+.spaceLogoTimeline {
+	position: relative;
+	width: 100%;
+	height: 100px;
 }
 
 .timeline {
-	display: flex;
-	margin-left: 3%;
-	margin-right: 3%;
-	margin-top: 100px;
+	position: relative;
+	margin-right: auto;
+	margin-left: auto;
+	min-width: 180px;
+	width: 40%;
 	font-size: 20px;
 
-
 }
 
-.left {
-	width: 25%;
-	max-width: 500px;
-	margin-right: 4%;
-}
 
 #postCreation{
 	-webkit-box-shadow: 9px 10px 39px -16px rgba(0,0,0,0.75);
 	-moz-box-shadow: 9px 10px 39px -16px rgba(0,0,0,0.75);
 	box-shadow: 9px 10px 39px -16px rgba(0,0,0,0.75);
+	margin-bottom: 20px;
 }
 
 .textArea {
@@ -75,14 +156,8 @@ th {
 }
 
 #sendPostButton {
-	background-color:#66b3ff;
-}
-
-.middle {
-	width: 40%;
-	max-width: 600px;
-	margin-left: 1%;
-	margin-right: 2%;
+	background-color:black;
+	color: white;
 }
 
 
@@ -99,7 +174,7 @@ th {
 }
 
 #card-header {
-	background-color:#66b3ff;
+	background-color:black;
 	color:white;
 	border-top-left-radius: 20px;
 	border-top-right-radius: 20px;
@@ -108,6 +183,9 @@ th {
 #card-footer {
 	border-bottom-left-radius: 20px;
 	border-bottom-right-radius: 20px;
+	height: 40px;
+	width: 100%;
+	display: inline-flex;
 }
 .postContent {
   	max-width: 350px;
@@ -126,22 +204,24 @@ th {
 	background-color: white;
 }
 
-.actions {
-	display: inline-block;
-	padding: 2px;
+.spaceButton {
+	position: relative;
+	width: 20px;
 }
 
-.right {
-	width: 30%;
-	margin-left: 4%;
-
+.tableRight {
+	position: relative;
+	right: 80px;
+	margin-top: 100px;
+	width: 20%;
+	max-width: 600px;
+	max-height: 700px;
+	overflow-x: hidden;
 }
 
 #allUsers {
-  	max-width: 450px;
-	-webkit-box-shadow: 9px 10px 39px -16px rgba(0,0,0,0.75);
-	-moz-box-shadow: 9px 10px 39px -16px rgba(0,0,0,0.75);
-	box-shadow: 9px 10px 39px -16px rgba(0,0,0,0.75);
+	border: 1px solid black;
+
 }
 
 

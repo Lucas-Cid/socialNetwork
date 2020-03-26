@@ -1,0 +1,39 @@
+.reaction{
+    position: absolute;
+	width: 37px;
+	height: 26px;
+	background: transparent;
+    transition: height 0.2s ;
+    overflow:hidden;
+    z-index: 9998; 
+    margin-bottom: 20px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+.reaction ul{
+	padding: 0;
+	list-style-type: none;
+	text-align: left;
+}
+
+.reaction li:hover { 
+}
+
+.reaction:hover {
+    height: 50px; 
+    background: lightgrey;
+}  
+
+.reaction .reaction-menu {
+    text-align: center;
+    height:10px;
+    color:black;
+}  
+.reaction a{
+	color: white;
+    text-decoration: none;
+    font-weight: bold;
+} 

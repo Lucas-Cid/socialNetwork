@@ -1,0 +1,67 @@
+.rightContentDashboard{
+	height: 100%;
+	width: 100%;
+}
+
+.rightTop {
+	display: flex;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	padding-bottom: 20px;
+}
+
+.userInformationTab {
+	position: relative;
+	border: 0.1px solid  #736d6d;
+	height: 200px;
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+	-webkit-box-shadow: 1px 4px 38px 0px rgba(122,122,122,1);
+	-moz-box-shadow: 1px 4px 38px 0px rgba(122,122,122,1);
+	box-shadow: 1px 4px 38px 0px rgba(122,122,122,1);
+	border-radius: 20px;
+}
+
+.topInformation {
+	display: flex;
+}
+
+#iconProfile {
+	border: 2px solid black;
+	height: 130px;
+	width: 130px;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+#iconProfile i {
+	margin-top: 5px;
+	margin-left: 17px;
+	font-size: 100px;
+	color: black;
+}
+
+.profileUserName {
+	margin-top: 80px;
+	height: 50px;
+	width: 100%;
+	font-size: 40px;
+	overflow: hidden;
+}
+
+.rightBotton {
+	display: flex;
+}
+
+.spaceTab {
+	width: 20%;
+	height: 100%;
+}
+
+.bottonInformation {
+	height: 70px;
+	width: 100%;
+	border-top: 0.1px solid  #736d6d;
+}

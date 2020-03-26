@@ -8,6 +8,7 @@
 		<%= stylesheet_link_tag "dashboard" %>
 		<%= stylesheet_link_tag "side-bar" %>
 		<%= stylesheet_link_tag "reaction" %>
+		<%= stylesheet_link_tag "profile" %>
 
 		<meta charset="UTF-8">
 
@@ -15,29 +16,39 @@
 
 	<body>
 		<%= render partial: "topBar" %> 
-
 		<div class="dashboard">
 
 		  	<div class="leftBar ">
 		    	<%= render partial:"sideBar" %>
 		    </div>
 
-		    <div class="spaceDashboard">
-	    	</div>
+		    <div class="rightContentDashboard">
+		    	<div class="spaceLogoTimeline">
+		   		</div>
 
-	    	<div class="timeline"> 
+		    	<div class="rightTop">
+		    		<div class="spaceTab">
+					</div>
 
-	    	    <div class="spaceLogoTimeline">
+		    		<%= render partial: "userInformationTab" %>
+
+		    		<div class="spaceTab">
+					</div>
 		    	</div>
 
-	    		<%= render partial: "postCreation" %>
-				<%= render partial:"postsRender" %>
-			</div>
+		    	<div class="rightBotton">
 
-			<div class="tableRight">
-				<%= render partial: "allUsers" %>
-			</div>
+				    <div class="spaceDashboard">
+			    	</div>
 
+			    	<div class="timeline"> 
+						<%= render partial:"postsRender" %>
+					</div>
+
+					<div class="tableRight">
+					</div>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>
