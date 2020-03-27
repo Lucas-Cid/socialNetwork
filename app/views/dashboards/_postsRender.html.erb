@@ -2,7 +2,7 @@
 
 	<tbody>
 
-		<% @postsType.order(:id).reverse.first(10).each do |post| %>
+		<% @postsType.each do |post| %>
 
 			<div class="post">
 
@@ -14,7 +14,7 @@
 				        <% end %>
 				    </div>
 
-				    <div class="card-body">
+				    <div class="card-body" id="card-body">
 				        <%= post.content %>
 				    </div>
 

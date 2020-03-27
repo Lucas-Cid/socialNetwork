@@ -17,6 +17,27 @@
 	</div>
 
 	<div class="bottonInformation">
+
+		<div class="informationMenu">
+			<ul>
+
+			  <li>
+			  	<%= link_to dashboards_userProfile_path(:id => @user.id) do %>
+			  		Postagens
+			  	<% end %>
+			  </li>
+
+			  <li>
+			  	<%= link_to dashboards_userReactions_path(:id => @user.id) do %>
+			  		Curtidas
+			  	<% end %>
+			  </li>
+
+			  <li><a>Fotos</a></li>
+			  <li><a>Amigos</a></li>
+			</ul>
+		</div>
+
 	</div>
 
 </div>

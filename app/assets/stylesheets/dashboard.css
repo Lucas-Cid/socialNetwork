@@ -30,8 +30,6 @@ a:active {
 	margin-right: 8%;
 	margin-left: 8%;
 	max-width: 2150px;
-	max-height: 2800px;
-	height: 100%;
 	display: flex;
 	border: 0.5px solid #0000004d;
 	-webkit-box-shadow: 1px 4px 38px 0px rgba(122,122,122,1);
@@ -153,6 +151,8 @@ a:active {
 .textArea {
 	width: 100%;
 	height: 150px;
+	max-height: 150px;
+	min-height: 150px;
 }
 
 #sendPostButton {
@@ -171,6 +171,7 @@ a:active {
 
 .card {
 	border-radius: 20px;
+	min-height: 142.75px;
 }
 
 #card-header {
@@ -178,6 +179,13 @@ a:active {
 	color:white;
 	border-top-left-radius: 20px;
 	border-top-right-radius: 20px;
+}
+
+#card-body {
+	white-space: pre-line;
+	margin-top: -22px;
+	margin-left: 5px;
+	padding: 0px;
 }
 
 #card-footer {

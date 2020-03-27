@@ -13,8 +13,8 @@
 
 .userInformationTab {
 	position: relative;
-	border: 0.1px solid  #736d6d;
-	height: 200px;
+	border: 0.3px solid  #736d6d;
+	height: 180px;
 	width: 100%;
 	margin-right: auto;
 	margin-left: auto;
@@ -44,7 +44,7 @@
 }
 
 .profileUserName {
-	margin-top: 80px;
+	margin-top: 65px;
 	height: 50px;
 	width: 100%;
 	font-size: 40px;
@@ -61,7 +61,42 @@
 }
 
 .bottonInformation {
-	height: 70px;
-	width: 100%;
-	border-top: 0.1px solid  #736d6d;
+	position: relative;
+	height: 50px;
+	width: calc(100% - 20px);
+	margin-left: 10px;
+	border: 0.3px solid  #736d6d;
+	margin-top: -10px;
+	z-index: 9995;
 }
+
+.informationMenu {
+	height: 100%;
+}
+
+.informationMenu ul {
+  	height: 100%;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: black;
+}
+
+.informationMenu li {
+  	float: left;
+  	color: white;
+}
+
+.informationMenu li a {
+  	display: block;
+  	color: white;
+  	text-align: center;
+  	padding: 14px 16px;
+  	text-decoration: none;
+  	font-size: 20px;
+}
+
+.informationMenu li a:hover {
+  	background: #373333;
+  }
