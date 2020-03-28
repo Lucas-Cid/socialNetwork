@@ -26,6 +26,20 @@ class DashboardsController < ApplicationController
 		render :profile
 	end
 
+	def showPost
+		@post = Post.find(params.require(:post_id))
+		@commentaries = @post.commentaries.order(:id)
+
+		  respond_to do |format|
+
+		    format.html
+
+		    format.js
+
+		  end
+
+	end
+
 	def messages
 	end
 end

@@ -27,8 +27,8 @@ a:active {
 }
 
 .dashboard {
-	margin-right: 8%;
-	margin-left: 8%;
+	margin: auto;
+	width: 84%;
 	max-width: 2150px;
 	display: flex;
 	border: 0.5px solid #0000004d;
@@ -45,14 +45,15 @@ a:active {
 }
 
 .alignBar {
-	width: 100%;
-	margin-right: 8%;
-	margin-left: 8%;
+	width: 84%;
+	margin-right: auto;
+	margin-left: auto;
 	max-width: 2150px;
 	display: inline-flex;
 }
 
 .topBar {
+	left: 0;
 	color: white;
 	display: inline-flex;
 	position: fixed;
@@ -150,9 +151,13 @@ a:active {
 
 .textArea {
 	width: 100%;
-	height: 150px;
+	height: 100%;
 	max-height: 150px;
 	min-height: 150px;
+}
+
+.modal-body {
+	padding: 0;
 }
 
 #sendPostButton {
@@ -177,6 +182,7 @@ a:active {
 #card-header {
 	background-color:black;
 	color:white;
+	min-height: 53px;
 	border-top-left-radius: 20px;
 	border-top-right-radius: 20px;
 }
@@ -193,8 +199,9 @@ a:active {
 	border-bottom-right-radius: 20px;
 	height: 40px;
 	width: 100%;
-	display: inline-flex;
+	display: inline-block;
 }
+
 .postContent {
   	max-width: 350px;
   	padding: 3px;
@@ -219,12 +226,12 @@ a:active {
 
 .tableRight {
 	position: relative;
-	right: 80px;
 	margin-top: 100px;
+	height: 100%;
 	width: 20%;
-	max-width: 600px;
 	max-height: 700px;
-	overflow-x: hidden;
+	overflow: scroll;
+	z-index: 0;
 }
 
 #allUsers {
@@ -235,7 +242,16 @@ a:active {
 
 
 .userName {
-	max-width: 300px;
-	width: 300px;
+	max-width: 200px;
+	width: 200px;
+	height: 100%;
 	word-wrap: break-word;
+
+}
+
+.modal-content {
+	overflow-y: scroll;
+	overflow-x: hidden;
+	width: 720px;
+
 }
