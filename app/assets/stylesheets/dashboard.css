@@ -40,7 +40,7 @@ a:active {
 
 .spaceDashboard {
 	position: relative;
-	width: 17%;
+	width: 24%;
 	max-width: 770px;
 	min-width: 50px;
 	margin-right: -70px;
@@ -102,7 +102,6 @@ a:active {
 
 .notification {
 	right: 0;
-	margin-left: : 70px;
 	margin-top: 20px;
 	border: 2px solid white;
 	height: 30px;
