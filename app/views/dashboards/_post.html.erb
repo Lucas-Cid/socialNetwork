@@ -20,6 +20,14 @@
 		    </div>
 
 		 	<div class="card-footer" id="card-footer" style="border-radius: 0;">
+		 		<% @reaction = current_user.reactions.where(owner_id:@post.id).first %>
+				<% @colorBlue = "color: #3333cc;" %>
+				<% @colorBlack = "color: black;" %>
+				<% if  @reaction %>
+					<% @type = @reaction.reactionType %>
+        		<% else %>
+        			<% @type = "" %>
+        		<% end %>
 
 		        <%= form_with url: "/reactions", authenticity_token: false do |f|%>
 			       	<input id="user_id" name="user_id" type="hidden", value="<%= current_user.id %>" />
@@ -31,7 +39,7 @@
 							<a>
 									<li class="reaction-menu">
 						        	<div class="actions">
-						   		 		<%= button_tag( :class => "fas fa-thumbs-up", :value => "type1" , :name => 'reactionType') do %>
+						   		 		<%= button_tag( :class => "fas fa-thumbs-up", :value => "type1" , :name => 'reactionType', :style => (@type == "type1" ? @colorBlue : @colorBlack)) do %>
 										<% end %>
 									</div>
 								</li>
@@ -51,7 +59,7 @@
 							<a>
 									<li class="reaction-menu">
 						        	<div class="actions">
-						   		 		<%= button_tag( :class => "fas fa-surprise", :value => "type2" , :name => 'reactionType') do %>
+						   		 		<%= button_tag( :class => "fas fa-surprise", :value => "type2" , :name => 'reactionType', :style => (@type == "type2" ? @colorBlue : @colorBlack)) do %>
 										<% end %>
 									</div>
 								</li>
@@ -71,7 +79,7 @@
 							<a>
 									<li class="reaction-menu">
 						        	<div class="actions">
-						   		 		<%= button_tag( :class => "fas fa-angry", :value => "type3" , :name => 'reactionType') do %>
+						   		 		<%= button_tag( :class => "fas fa-angry", :value => "type3" , :name => 'reactionType', :style => (@type == "type3" ? @colorBlue : @colorBlack)) do %>
 										<% end %>
 									</div>
 								</li>
@@ -91,7 +99,7 @@
 							<a>
 									<li class="reaction-menu">
 						        	<div class="actions">
-						   		 		<%= button_tag( :class => "fas fa-sad-cry", :value => "type4" , :name => 'reactionType') do %>
+						   		 		<%= button_tag( :class => "fas fa-sad-cry", :value => "type4" , :name => 'reactionType', :style => (@type == "type4" ? @colorBlue : @colorBlack)) do %>
 										<% end %>
 									</div>
 								</li>
@@ -111,7 +119,7 @@
 							<a>
 									<li class="reaction-menu">
 						        	<div class="actions">
-						   		 		<%= button_tag( :class => "fas fa-thumbs-down", :value => "dislike" , :name => 'reactionType') do %>
+						   		 		<%= button_tag( :class => "fas fa-thumbs-down", :value => "dislike" , :name => 'reactionType', :style => (@type == "dislike" ? @colorBlue : @colorBlack)) do %>
 										<% end %>
 									</div>
 								</li>
@@ -157,7 +165,7 @@
 
 			<div class="post" style="margin-bottom: 3px;">
 
-		    	<div class="card" style="border-radius: 0;"">
+		    	<div class="card" style="border-radius: 0;">
 
 		    		<div class="card-header" id="card-header" style="border-radius: 0;">
 		    			<%= link_to  commentary.user.name, dashboards_userProfile_path(:id => commentary.user_id), :style => "color:white;position: relative;" %>
@@ -168,6 +176,15 @@
 				    </div>
 
 				 	<div class="card-footer" id="card-footer" style="border-radius: 0;">
+				 		<% @reaction = @reactionsTimeline.where(owner_id:commentary.id).first %>
+						<% @colorBlue = "color: #3333cc;" %>
+						<% @colorBlack = "color: black;" %>
+						<% if  @reaction %>
+							<% @type = @reaction.reactionType %>
+		        		<% else %>
+		        			<% @type = "" %>
+		        		<% end %>
+
 
 				        <%= form_with url: "/reactions", authenticity_token: false do |f|%>
 					       	<input id="user_id" name="user_id" type="hidden", value="<%= current_user.id %>" />
@@ -179,7 +196,7 @@
     								<a>
 	       								<li class="reaction-menu">
 								        	<div class="actions">
-								   		 		<%= button_tag( :class => "fas fa-thumbs-up", :value => "type1" , :name => 'reactionType') do %>
+								   		 		<%= button_tag( :class => "fas fa-thumbs-up", :value => "type1" , :name => 'reactionType', :style => (@type == "type1" ? @colorBlue : @colorBlack)) do %>
 												<% end %>
 											</div>
 										</li>
@@ -199,7 +216,7 @@
     								<a>
 	       								<li class="reaction-menu">
 								        	<div class="actions">
-								   		 		<%= button_tag( :class => "fas fa-surprise", :value => "type2" , :name => 'reactionType') do %>
+								   		 		<%= button_tag( :class => "fas fa-surprise", :value => "type2" , :name => 'reactionType', :style => (@type == "type2" ? @colorBlue : @colorBlack)) do %>
 												<% end %>
 											</div>
 										</li>
@@ -219,7 +236,7 @@
     								<a>
 	       								<li class="reaction-menu">
 								        	<div class="actions">
-								   		 		<%= button_tag( :class => "fas fa-angry", :value => "type3" , :name => 'reactionType') do %>
+								   		 		<%= button_tag( :class => "fas fa-angry", :value => "type3" , :name => 'reactionType', :style => (@type == "type3" ? @colorBlue : @colorBlack)) do %>
 												<% end %>
 											</div>
 										</li>
@@ -239,7 +256,7 @@
     								<a>
 	       								<li class="reaction-menu">
 								        	<div class="actions">
-								   		 		<%= button_tag( :class => "fas fa-sad-cry", :value => "type4" , :name => 'reactionType') do %>
+								   		 		<%= button_tag( :class => "fas fa-sad-cry", :value => "type4" , :name => 'reactionType', :style => (@type == "type4" ? @colorBlue : @colorBlack)) do %>
 												<% end %>
 											</div>
 										</li>
@@ -259,7 +276,7 @@
     								<a>
 	       								<li class="reaction-menu">
 								        	<div class="actions">
-								   		 		<%= button_tag( :class => "fas fa-thumbs-down", :value => "dislike" , :name => 'reactionType') do %>
+								   		 		<%= button_tag( :class => "fas fa-thumbs-down", :value => "dislike" , :name => 'reactionType', :style => (@type == "dislike" ? @colorBlue : @colorBlack)) do %>
 												<% end %>
 											</div>
 										</li>
