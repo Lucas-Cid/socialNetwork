@@ -1,12 +1,10 @@
 
 
 .leftBar{
-    margin: auto;
     margin-top: 100px;
 	width: 90px;
 	height: 370px;
 	background: black;
-    white-space: nowrap; 
     transition: width 0.5s ;
     position: fixed;
     z-index: 9999; 

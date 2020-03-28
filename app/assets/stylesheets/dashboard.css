@@ -27,6 +27,7 @@ a:active {
 }
 
 .dashboard {
+	min-width: 900px;
 	margin: auto;
 	width: 84%;
 	max-width: 2150px;
@@ -41,6 +42,7 @@ a:active {
 	position: relative;
 	width: 17%;
 	max-width: 770px;
+	min-width: 240px;
 
 }
 
@@ -230,8 +232,9 @@ a:active {
 	height: 100%;
 	width: 20%;
 	max-height: 700px;
-	overflow: scroll;
+	overflow: auto;
 	z-index: 0;
+	min-width: 240px;
 }
 
 #allUsers {
