@@ -27,7 +27,7 @@ a:active {
 }
 
 .dashboard {
-	min-width: 900px;
+	min-width: 700px;
 	margin: auto;
 	width: 84%;
 	max-width: 2150px;
@@ -136,7 +136,7 @@ a:active {
 	position: relative;
 	margin-right: auto;
 	margin-left: auto;
-	min-width: 180px;
+	min-width: 350px;
 	width: 40%;
 	font-size: 20px;
 
