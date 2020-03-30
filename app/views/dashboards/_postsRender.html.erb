@@ -25,7 +25,7 @@
 
 				 	<div class="card-footer" id="card-footer">
 				 		
-				 		<% @reaction = @reactionsTimeline.where(owner_id:post.id).first %>
+				 		<% @reaction = @reactionsTimeline.where(owner_id:post.id, owner_type:"Post").first %>
 						<% @colorBlue = "color: #3333cc;" %>
 						<% @colorBlack = "color: black;" %>
 						<% if  @reaction %>

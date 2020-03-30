@@ -20,7 +20,7 @@
 		    </div>
 
 		 	<div class="card-footer" id="card-footer" style="border-radius: 0;">
-		 		<% @reaction = current_user.reactions.where(owner_id:@post.id).first %>
+		 		<% @reaction = current_user.reactions.where(owner_id:@post.id, owner_type:"Post").first %>
 				<% @colorBlue = "color: #3333cc;" %>
 				<% @colorBlack = "color: black;" %>
 				<% if  @reaction %>
@@ -176,7 +176,7 @@
 				    </div>
 
 				 	<div class="card-footer" id="card-footer" style="border-radius: 0;">
-				 		<% @reaction = @reactionsTimeline.where(owner_id:commentary.id).first %>
+				 		<% @reaction = @reactionsTimeline.where(owner_id:commentary.id, owner_type:"Commentary").first %>
 						<% @colorBlue = "color: #3333cc;" %>
 						<% @colorBlack = "color: black;" %>
 						<% if  @reaction %>

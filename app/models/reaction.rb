@@ -41,7 +41,7 @@ class Reaction < ApplicationRecord
 
 	def self.alreadyReacted(params)
 		@user = User.find(params.require(:user_id))
-		@userReaction = @user.reactions.where(owner_id:params.require(:owner_id)).first
+		@userReaction = @user.reactions.where(owner_id:params.require(:owner_id), owner_type:params.require(:owner_type)).first
 		if @userReaction.present?
 			if @userReaction.reactionType == params.require(:reactionType)
 				@userReaction.destroy
