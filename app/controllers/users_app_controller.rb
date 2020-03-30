@@ -24,5 +24,23 @@ class UsersAppController < ApplicationController
 		end
 
 	end
-	
+
+	def login
+		user = User.find_by_email(params[:user][:email])
+
+		userReturn = {
+					:user => { :logged_in => false }
+			   }
+		if user && user.valid_password?(params[:user][:password])
+			userReturn = {
+						:user => { 
+									:logged_in => true,
+									:id        => user.id
+								 }
+				   }
+		end
+		respond_to do |format|
+			format.json  { render :json => userReturn }
+		end
+	end
 end
