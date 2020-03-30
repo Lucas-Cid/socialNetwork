@@ -41,4 +41,27 @@ class DashboardsAppController < ApplicationController
 
 	end
 
+	def friendList
+		user = User.find(params[:user][:id])
+		friends = user.confirmated_friends
+		friendsHash = {}
+		allFriends = []
+
+		friends.each do |friend|
+			friendsHash = {
+							:id     => friend.id,
+							:name   => friend.name
+						  }
+			allFriends.push(friendsHash)
+		end
+
+		friendsReturn = {
+							:friends => allFriends
+						}
+
+		respond_to do |format|
+			format.json  { render :json => friendsReturn }
+		end
+	end
+
 end

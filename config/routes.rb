@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "dashboards/userReactions", to: "dashboards#userReactions"
   get "dashboards/showPost", to: "dashboards#showPost"
   post "app/showPosts", to: "dashboards_app#showPosts"
+  post "app/friendList", to: "dashboards_app#friendList"
   post "users_app/login", to: "users_app#login"
   devise_for :users
   resources :posts, :reactions, :commentaries, :users_app
