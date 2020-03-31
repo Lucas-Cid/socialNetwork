@@ -7,6 +7,11 @@
 <div class="modal-body" style="width: 720px;height: 700px;font-size: 20px;">
 
   	<div class="post" style="margin-bottom: 3px;">
+  		<% buttonReactionId = 'reactionPostOpen'+@post.id.to_s+"_" %>
+		<% counterReactionId = 'counterPostOpen'+@post.id.to_s+"_" %>
+		<% user_id = current_user.id %>
+		<% ownerPost_id = @post.user_id %>
+
   		<strong>Postagem</strong>
 
 		<div class="card" style="border-radius: 0;">
@@ -21,8 +26,8 @@
 
 		 	<div class="card-footer" id="card-footer" style="border-radius: 0;">
 		 		<% @reaction = current_user.reactions.where(owner_id:@post.id, owner_type:"Post").first %>
-				<% @colorBlue = "color: #3333cc;" %>
-				<% @colorBlack = "color: black;" %>
+				<% @colorBlue = "#3333cc;" %>
+				<% @colorBlack = "black;" %>
 				<% if  @reaction %>
 					<% @type = @reaction.reactionType %>
         		<% else %>
@@ -39,16 +44,15 @@
 							<a>
 									<li class="reaction-menu">
 						        	<div class="actions">
-						   		 		<%= button_tag( :class => "fas fa-thumbs-up", :value => "type1" , :name => 'reactionType', :style => (@type == "type1" ? @colorBlue : @colorBlack)) do %>
-										<% end %>
+						        		<button  onclick="changeReaction(this, <%= @post.id %>, 'PostOpen',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-thumbs-up" value="type1" name="reactionType" style=<%= 'color:'+(@type == "type1" ? @colorBlue : @colorBlack) %> id=<%=buttonReactionId+"type1"%> ></button>
 									</div>
 								</li>
 							</a>
 						</ul>
 						<ul>
 							<a>
-									<li class="reaction-menu">
-						   			<span><%= @post.reactionType1 %></span>
+								<li class="reaction-menu" id=<%= counterReactionId+"type1" %>>
+						   			<%= @post.reactionType1 %>
 						   		</li>
 						 	</a>
 						 </ul>
@@ -59,16 +63,15 @@
 							<a>
 									<li class="reaction-menu">
 						        	<div class="actions">
-						   		 		<%= button_tag( :class => "fas fa-surprise", :value => "type2" , :name => 'reactionType', :style => (@type == "type2" ? @colorBlue : @colorBlack)) do %>
-										<% end %>
+						        		<button  onclick="changeReaction(this, <%= @post.id %>, 'PostOpen',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-surprise" value="type2" name="reactionType" style=<%= 'color:'+(@type == "type2" ? @colorBlue : @colorBlack) %>  id=<%=(buttonReactionId+"type2")%> ></button>
 									</div>
 								</li>
 							</a>
 						</ul>
 						<ul>
 							<a>
-									<li class="reaction-menu">
-						   			<span><%= @post.reactionType2 %></span>
+								<li class="reaction-menu" id=<%= counterReactionId+"type2" %>>
+						   			<%= @post.reactionType2 %>
 						   		</li>
 						 	</a>
 						 </ul>
@@ -79,16 +82,15 @@
 							<a>
 									<li class="reaction-menu">
 						        	<div class="actions">
-						   		 		<%= button_tag( :class => "fas fa-angry", :value => "type3" , :name => 'reactionType', :style => (@type == "type3" ? @colorBlue : @colorBlack)) do %>
-										<% end %>
+						        		<button  onclick="changeReaction(this, <%= @post.id %>, 'PostOpen',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-angry" value="type3" name="reactionType" style=<%= 'color:'+(@type == "type3" ? @colorBlue : @colorBlack) %> id=<%=buttonReactionId+"type3"%> ></button>
 									</div>
 								</li>
 							</a>
 						</ul>
 						<ul>
 							<a>
-									<li class="reaction-menu">
-						   			<span><%= @post.reactionType3 %></span>
+								<li class="reaction-menu" id=<%= counterReactionId+"type3" %>>
+						   			<%= @post.reactionType3 %>
 						   		</li>
 						 	</a>
 						 </ul>
@@ -99,16 +101,15 @@
 							<a>
 									<li class="reaction-menu">
 						        	<div class="actions">
-						   		 		<%= button_tag( :class => "fas fa-sad-cry", :value => "type4" , :name => 'reactionType', :style => (@type == "type4" ? @colorBlue : @colorBlack)) do %>
-										<% end %>
+						        		<button  onclick="changeReaction(this, <%= @post.id %>, 'PostOpen',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-sad-cry" value="type4" name="reactionType" style=<%= 'color:'+(@type == "type4" ? @colorBlue : @colorBlack) %> id=<%=buttonReactionId+"type4"%> ></button>
 									</div>
 								</li>
 							</a>
 						</ul>
 						<ul>
 							<a>
-									<li class="reaction-menu">
-						   			<span><%= @post.reactionType4 %></span>
+								<li class="reaction-menu" id=<%= counterReactionId+"type4" %>>
+						   			<%= @post.reactionType4 %>
 						   		</li>
 						 	</a>
 						 </ul>
@@ -117,19 +118,18 @@
 					 <div class="reaction" style="margin-left: 110px;">
 				       	<ul>
 							<a>
-									<li class="reaction-menu">
+								<li class="reaction-menu">
 						        	<div class="actions">
-						   		 		<%= button_tag( :class => "fas fa-thumbs-down", :value => "dislike" , :name => 'reactionType', :style => (@type == "dislike" ? @colorBlue : @colorBlack)) do %>
-										<% end %>
+						        		<button  onclick="changeReaction(this, <%= @post.id %>, 'PostOpen',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-thumbs-down" value="dislike" name="reactionType" style=<%= 'color:'+(@type == "dislike" ? @colorBlue : @colorBlack) %> id=<%=buttonReactionId+"dislike"%> ></button>
 									</div>
 								</li>
 							</a>
 						</ul>
 						<ul>
 							<a>
-									<li class="reaction-menu">
-						   			<span><%= @post.dislikes %></span>
-						   		</li>
+								<li class="reaction-menu" id=<%= counterReactionId+"dislike" %>>
+						   			<%= @post.dislikes %>
+						   		</li>	
 						 	</a>
 						 </ul>
 					</div>
@@ -161,7 +161,14 @@
 	<strong>Comentarios</strong>
 
 	<div class="commentaries" style="margin-left: 20px;">
+		<% user_id = current_user.id %>
+
 		<% @commentaries.each do |commentary| %>
+
+			<% ownerPost_id = commentary.user_id %>
+
+			<% buttonReactionId = 'reactionCommentary'+commentary.id.to_s+"_" %>
+			<% counterReactionId = 'counterCommentary'+commentary.id.to_s+"_" %>
 
 			<div class="post" style="margin-bottom: 3px;">
 
@@ -177,8 +184,8 @@
 
 				 	<div class="card-footer" id="card-footer" style="border-radius: 0;">
 				 		<% @reaction = @reactionsTimeline.where(owner_id:commentary.id, owner_type:"Commentary").first %>
-						<% @colorBlue = "color: #3333cc;" %>
-						<% @colorBlack = "color: black;" %>
+						<% @colorBlue = "#3333cc;" %>
+						<% @colorBlack = "black;" %>
 						<% if  @reaction %>
 							<% @type = @reaction.reactionType %>
 		        		<% else %>
@@ -196,16 +203,16 @@
     								<a>
 	       								<li class="reaction-menu">
 								        	<div class="actions">
-								   		 		<%= button_tag( :class => "fas fa-thumbs-up", :value => "type1" , :name => 'reactionType', :style => (@type == "type1" ? @colorBlue : @colorBlack)) do %>
-												<% end %>
+								        		<button  onclick="changeReaction(this, <%= commentary.id %>, 'Commentary',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-thumbs-up" value="type1" name="reactionType" style=<%= 'color:'+(@type == "type1" ? @colorBlue : @colorBlack) %> id=<%=buttonReactionId+"type1"%> >
+								        		</button>
 											</div>
 										</li>
 									</a>
 								</ul>
 								<ul>
 	    							<a>
-       									<li class="reaction-menu">
-								   			<span><%= commentary.reactionType1 %></span>
+       									<li class="reaction-menu" id=<%= counterReactionId+"type1" %>>
+								   			<%= commentary.reactionType1 %>
 								   		</li>
 								 	</a>
 								 </ul>
@@ -216,16 +223,15 @@
     								<a>
 	       								<li class="reaction-menu">
 								        	<div class="actions">
-								   		 		<%= button_tag( :class => "fas fa-surprise", :value => "type2" , :name => 'reactionType', :style => (@type == "type2" ? @colorBlue : @colorBlack)) do %>
-												<% end %>
+								        		<button  onclick="changeReaction(this, <%= commentary.id %>, 'Commentary',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-surprise" value="type2" name="reactionType" style=<%= 'color:'+(@type == "type2" ? @colorBlue : @colorBlack) %>  id=<%=(buttonReactionId+"type2")%> ></button>
 											</div>
 										</li>
 									</a>
 								</ul>
 								<ul>
 	    							<a>
-       									<li class="reaction-menu">
-								   			<span><%= commentary.reactionType2 %></span>
+       									<li class="reaction-menu" id=<%= counterReactionId+"type2" %>>
+								   			<%= commentary.reactionType2 %>
 								   		</li>
 								 	</a>
 								 </ul>
@@ -236,16 +242,15 @@
     								<a>
 	       								<li class="reaction-menu">
 								        	<div class="actions">
-								   		 		<%= button_tag( :class => "fas fa-angry", :value => "type3" , :name => 'reactionType', :style => (@type == "type3" ? @colorBlue : @colorBlack)) do %>
-												<% end %>
+								        		<button  onclick="changeReaction(this, <%= commentary.id %>, 'Commentary',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-angry" value="type3" name="reactionType" style=<%= 'color:'+(@type == "type3" ? @colorBlue : @colorBlack) %> id=<%=buttonReactionId+"type3"%> ></button>
 											</div>
 										</li>
 									</a>
 								</ul>
 								<ul>
 	    							<a>
-       									<li class="reaction-menu">
-								   			<span><%= commentary.reactionType3 %></span>
+       									<li class="reaction-menu" id=<%= counterReactionId+"type3" %>>
+								   			<%= commentary.reactionType3 %>
 								   		</li>
 								 	</a>
 								 </ul>
@@ -256,16 +261,15 @@
     								<a>
 	       								<li class="reaction-menu">
 								        	<div class="actions">
-								   		 		<%= button_tag( :class => "fas fa-sad-cry", :value => "type4" , :name => 'reactionType', :style => (@type == "type4" ? @colorBlue : @colorBlack)) do %>
-												<% end %>
+								        		<button  onclick="changeReaction(this, <%= commentary.id %>, 'Commentary',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-sad-cry" value="type4" name="reactionType" style=<%= 'color:'+(@type == "type4" ? @colorBlue : @colorBlack) %> id=<%=buttonReactionId+"type4"%> ></button>
 											</div>
 										</li>
 									</a>
 								</ul>
 								<ul>
 	    							<a>
-       									<li class="reaction-menu">
-								   			<span><%= commentary.reactionType4 %></span>
+       									<li class="reaction-menu" id=<%= counterReactionId+"type4" %>>
+								   			<%= commentary.reactionType4 %>
 								   		</li>
 								 	</a>
 								 </ul>
@@ -276,16 +280,15 @@
     								<a>
 	       								<li class="reaction-menu">
 								        	<div class="actions">
-								   		 		<%= button_tag( :class => "fas fa-thumbs-down", :value => "dislike" , :name => 'reactionType', :style => (@type == "dislike" ? @colorBlue : @colorBlack)) do %>
-												<% end %>
+								        		<button  onclick="changeReaction(this, <%= commentary.id %>, 'Commentary',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-thumbs-down" value="dislike" name="reactionType" style=<%= 'color:'+(@type == "dislike" ? @colorBlue : @colorBlack) %> id=<%=buttonReactionId+"dislike"%> ></button>
 											</div>
 										</li>
 									</a>
 								</ul>
 								<ul>
 	    							<a>
-       									<li class="reaction-menu">
-								   			<span><%= commentary.dislikes %></span>
+       									<li class="reaction-menu" id=<%= counterReactionId+"dislike" %>>
+								   			<%= commentary.dislikes %>
 								   		</li>
 								 	</a>
 								 </ul>

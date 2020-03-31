@@ -26,7 +26,7 @@ class DashboardsController < ApplicationController
 
 	def userReactions
 		@user = User.find(params.require(:id))
-		@reactions = @user.reactions.order(:id).last(20).reverse
+		@reactions = @user.reactions.where(owner_type:"Post").order(:id).last(20).reverse
 		@postsType = []
 		@reactions.each do |reaction|
 		@postsType << Post.find(reaction.owner_id)

@@ -1,0 +1,12 @@
+function addReaction(type, owner_id, owner_type) {
+	console.log("aaaaaaa");
+	document.getElementById('reaction'+owner_type+owner_id+'_'+type).style.color = 'blue';
+	counter = document.getElementById('counter'+owner_type+owner_id+'_'+type).innerHTML;
+	counter = counter+1;
+}
+
+function removeReaction(type, owner_id, owner_type) {
+	document.getElementById('reaction'+owner_type+owner_id+'_'+type).style.color = 'black';
+	counter = document.getElementById('counter'+owner_type+owner_id+'_'+type).innerHTML;
+	counter = counter-1;
+}
