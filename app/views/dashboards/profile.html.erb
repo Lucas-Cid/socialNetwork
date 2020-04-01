@@ -9,12 +9,12 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-		<%= stylesheet_link_tag "dashboard" %>
+		<script src="../javascripts/reactions.js"></script>
+		<script src="../javascripts/postLoad.js"></script>
 		<%= stylesheet_link_tag "dashboard" %>
 		<%= stylesheet_link_tag "side-bar" %>
 		<%= stylesheet_link_tag "reaction" %>
 		<%= stylesheet_link_tag "profile" %>
-		<script src="../javascripts/reactions.js"></script>
 
 		<meta charset="UTF-8">
 
@@ -54,12 +54,10 @@
 			    	</div>
 
 			    	<div class="timeline"> 
-			    		<div class="postsRender">
+						<div class="postsRender" id="postsRender">
 
-							<tbody>
-								<%= render partial:"postsRender" %>
-							</tbody>
-							
+							<%= render partial:"postsRender" %>
+
 						</div>
 					</div>
 

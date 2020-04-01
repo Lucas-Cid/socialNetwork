@@ -16,7 +16,7 @@
 		    </div>
 
 		    <div class="card-body" id="card-body">
-		        <%= post.content %>
+		        <%= post.id.to_s + ' ' + post.content %>
 		    </div>
 
 		 	<div class="card-footer" id="card-footer">
@@ -142,6 +142,6 @@
 
 <% end %>
 
-<button onclick="loadDoc(<%= @lastPost_id %>, this)">
+<button onclick="loadDoc(<%= @lastPost_id %>, this, '<%= @pageType %>', <%= @optionalId %>, '<%= dashboards_renderMore_path %>')">
 	Carregar Mais
 </button>

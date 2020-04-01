@@ -9,7 +9,8 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-		<script src="javascripts/reactions.js"></script>
+		<script src="../javascripts/reactions.js"></script>
+		<script src="../javascripts/postLoad.js"></script>
 		<%= stylesheet_link_tag "dashboard" %>
 		<%= stylesheet_link_tag "side-bar" %>
 		<%= stylesheet_link_tag "reaction" %>
@@ -19,23 +20,7 @@
 	</head>
 
 	<body>
-		<script>
-			function loadDoc(lastPost_id, button) {
-			  var xhttp = new XMLHttpRequest();
-			  xhttp.onreadystatechange = function() {
-			    if (this.readyState == 4 && this.status == 200) {
-			      var lastContent = document.getElementById("postsRender").innerHTML
-			      document.getElementById("postsRender").innerHTML= lastContent + this.responseText;
-			    }
-			  };
-			  var urlRequest = "dashboards/renderMore?lastPost_id=" + lastPost_id
-			  xhttp.open("GET", urlRequest, true);
-			  xhttp.send();
-
-			  button.style.display = 'none';
-			}
-		</script>
-
+		
 		<div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 		    <div class="modal-content"></div>
