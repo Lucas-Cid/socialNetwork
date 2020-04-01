@@ -139,7 +139,7 @@ a:active {
 	margin-right: auto;
 	margin-left: auto;
 	float: right;
-	min-width: 512px;
+	min-width: 570px;
 	width: 40%;
 	font-size: 20px;
 
@@ -193,9 +193,10 @@ a:active {
 
 #card-body {
 	white-space: pre-line;
-	margin-top: -22px;
+	margin-top: -40px;
 	margin-left: 5px;
 	padding: 0px;
+	font-size: 30px;
 }
 
 #card-footer {
@@ -236,11 +237,12 @@ a:active {
 	max-height: 700px;
 	overflow-y: auto;
 	overflow-x: hidden; 
+	margin-left: 20px;
+
 }
 
 #allUsers {
-	border: 1px solid black;
-	overflow-x: hidden; 
+	border: 1px solid black; 
 
 }
 
