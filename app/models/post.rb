@@ -3,6 +3,6 @@ class Post < ApplicationRecord
 	validates :content, presence: true
 
 	belongs_to :user
-	has_many   :commentaries
-	has_many   :reactions, as: :owner
+	has_many   :commentaries, dependent: :destroy
+	has_many   :reactions, as: :owner, dependent: :destroy
 end

@@ -1,157 +1,145 @@
-<div class="postsRender">
-	<div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-	    <div class="modal-content"></div>
-	  </div>
+<% user_id = current_user.id %>
+<% @postsType.each do |post| %>
+
+	<div class="post">
+
+		<% buttonReactionId = 'reactionPost'+post.id.to_s+"_" %>
+		<% counterReactionId = 'counterPost'+post.id.to_s+"_" %>
+		<% ownerPost_id = post.user_id %>
+
+    	<div class="card">
+    		<span class="openPost"><%= link_to dashboards_showPost_path(:post_id => post.id), {:remote => true, 'data-toggle' =>  "modal", 'data-target'=>'#postModal', :style => "width:100%;height:100%;position:absolute;"} do %>
+    		<% end %></span>
+
+    		<div class="card-header" id="card-header">
+    			<%= link_to  post.user.name, dashboards_userProfile_path(:id => post.user_id), :style => "color:white;position: relative;" %>
+		    </div>
+
+		    <div class="card-body" id="card-body">
+		        <%= post.content %>
+		    </div>
+
+		 	<div class="card-footer" id="card-footer">
+		 		
+		 		<% @reaction = @reactionsTimeline.where(owner_id:post.id, owner_type:"Post").first %>
+				<% @colorBlue = "#3333cc;" %>
+				<% @colorBlack = "black;" %>
+				<% if  @reaction %>
+					<% @type = @reaction.reactionType %>
+        		<% else %>
+        			<% @type = "" %>
+        		<% end %>
+
+
+		        <%= form_with url: "/reactions", authenticity_token: false do |f|%>
+			       	<input id="user_id" name="user_id" type="hidden", value="<%= current_user.id %>" />
+			       	<input id="owner_id" name="owner_id" type="hidden", value="<%= post.id %>" />
+			       	<input id="owner_type" name="owner_type" type="hidden", value="Post" />
+
+					<div class="reaction" style="left:0;">
+				       	<ul>
+							<a>
+   								<li class="reaction-menu">
+   									
+						        	<div class="actions">
+						        		<button  onclick="changeReaction(this, <%= post.id %>, 'Post',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-thumbs-up" value="type1" name="reactionType" style=<%= 'color:'+(@type == "type1" ? @colorBlue : @colorBlack) %> id=<%=buttonReactionId+"type1"%> ></button>
+									</div>
+								</li>
+							</a>
+						</ul>
+						<ul>
+							<a>
+									<li class="reaction-menu" id=<%= counterReactionId+"type1" %>>
+						   			<%= post.reactionType1 %>
+						   		</li>
+						 	</a>
+						 </ul>
+					</div>
+
+					<div class="reaction" style="margin-left: 20px;">
+				       	<ul>
+							<a>
+   								<li class="reaction-menu">
+						        	<div class="actions">
+						        		<button  onclick="changeReaction(this, <%= post.id %>, 'Post',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-surprise" value="type2" name="reactionType" style=<%= 'color:'+(@type == "type2" ? @colorBlue : @colorBlack) %>  id=<%=(buttonReactionId+"type2")%> ></button>
+									</div>
+								</li>
+							</a>
+						</ul>
+						<ul>
+							<a>
+									<li class="reaction-menu" id=<%= counterReactionId+"type2" %>>
+						   			<%= post.reactionType2 %>
+						   		</li>
+						 	</a>
+						 </ul>
+					</div>
+
+					<div class="reaction" style="margin-left: 50px;">
+				       	<ul>
+							<a>
+   								<li class="reaction-menu">
+						        	<div class="actions">
+						        		<button  onclick="changeReaction(this, <%= post.id %>, 'Post',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-angry" value="type3" name="reactionType" style=<%= 'color:'+(@type == "type3" ? @colorBlue : @colorBlack) %> id=<%=buttonReactionId+"type3"%> ></button>
+									</div>
+								</li>
+							</a>
+						</ul>
+						<ul>
+							<a>
+									<li class="reaction-menu" id=<%= counterReactionId+"type3" %>>
+						   			<%= post.reactionType3 %>
+						   		</li>
+						 	</a>
+						 </ul>
+					</div>
+
+					<div class="reaction" style="margin-left: 80px;">
+				       	<ul>
+							<a>
+   								<li class="reaction-menu">
+						        	<div class="actions">
+						        		<button  onclick="changeReaction(this, <%= post.id %>, 'Post',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-sad-cry" value="type4" name="reactionType" style=<%= 'color:'+(@type == "type4" ? @colorBlue : @colorBlack) %> id=<%=buttonReactionId+"type4"%> ></button>
+									</div>
+								</li>
+							</a>
+						</ul>
+						<ul>
+							<a>
+									<li class="reaction-menu" id=<%= counterReactionId+"type4" %>>
+						   			<%= post.reactionType4 %>
+						   		</li>
+						 	</a>
+						 </ul>
+					</div>
+
+					 <div class="reaction" style="margin-left: 110px;">
+				       	<ul>
+							<a>
+   								<li class="reaction-menu">
+						        	<div class="actions">
+						        		<button  onclick="changeReaction(this, <%= post.id %>, 'Post',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-thumbs-down" value="dislike" name="reactionType" style=<%= 'color:'+(@type == "dislike" ? @colorBlue : @colorBlack) %> id=<%=buttonReactionId+"dislike"%> ></button>
+									</div>
+								</li>
+							</a>
+						</ul>
+						<ul>
+							<a>
+									<li class="reaction-menu" id=<%= counterReactionId+"dislike" %>>
+						   			<%= post.dislikes %>
+						   		</li>
+						 	</a>
+						 </ul>
+					</div>
+
+			 	<% end %>
+			 	
+			 </div>
+
+		</div>
+
 	</div>
 
-	<tbody>
+<% end %>
 
-		<% user_id = current_user.id %>
-
-		<% @postsType.each do |post| %>
-
-			<div class="post">
-
-				<% buttonReactionId = 'reactionPost'+post.id.to_s+"_" %>
-				<% counterReactionId = 'counterPost'+post.id.to_s+"_" %>
-				<% ownerPost_id = post.user_id %>
-
-		    	<div class="card">
-		    		<span class="openPost"><%= link_to dashboards_showPost_path(:post_id => post.id), {:remote => true, 'data-toggle' =>  "modal", 'data-target'=>'#postModal', :style => "width:100%;height:100%;position:absolute;"} do %>
-		    		<% end %></span>
-
-		    		<div class="card-header" id="card-header">
-		    			<%= link_to  post.user.name, dashboards_userProfile_path(:id => post.user_id), :style => "color:white;position: relative;" %>
-				    </div>
-
-				    <div class="card-body" id="card-body">
-				        <%= post.content %>
-				    </div>
-
-				 	<div class="card-footer" id="card-footer">
-				 		
-				 		<% @reaction = @reactionsTimeline.where(owner_id:post.id, owner_type:"Post").first %>
-						<% @colorBlue = "#3333cc;" %>
-						<% @colorBlack = "black;" %>
-						<% if  @reaction %>
-							<% @type = @reaction.reactionType %>
-		        		<% else %>
-		        			<% @type = "" %>
-		        		<% end %>
-
-
-				        <%= form_with url: "/reactions", authenticity_token: false do |f|%>
-					       	<input id="user_id" name="user_id" type="hidden", value="<%= current_user.id %>" />
-					       	<input id="owner_id" name="owner_id" type="hidden", value="<%= post.id %>" />
-					       	<input id="owner_type" name="owner_type" type="hidden", value="Post" />
-
-							<div class="reaction" style="left:0;">
-						       	<ul>
-    								<a>
-	       								<li class="reaction-menu">
-	       									
-								        	<div class="actions">
-								        		<button  onclick="changeReaction(this, <%= post.id %>, 'Post',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-thumbs-up" value="type1" name="reactionType" style=<%= 'color:'+(@type == "type1" ? @colorBlue : @colorBlack) %> id=<%=buttonReactionId+"type1"%> ></button>
-											</div>
-										</li>
-									</a>
-								</ul>
-								<ul>
-	    							<a>
-       									<li class="reaction-menu" id=<%= counterReactionId+"type1" %>>
-								   			<%= post.reactionType1 %>
-								   		</li>
-								 	</a>
-								 </ul>
-							</div>
-
-							<div class="reaction" style="margin-left: 20px;">
-						       	<ul>
-    								<a>
-	       								<li class="reaction-menu">
-								        	<div class="actions">
-								        		<button  onclick="changeReaction(this, <%= post.id %>, 'Post',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-surprise" value="type2" name="reactionType" style=<%= 'color:'+(@type == "type2" ? @colorBlue : @colorBlack) %>  id=<%=(buttonReactionId+"type2")%> ></button>
-											</div>
-										</li>
-									</a>
-								</ul>
-								<ul>
-	    							<a>
-       									<li class="reaction-menu" id=<%= counterReactionId+"type2" %>>
-								   			<%= post.reactionType2 %>
-								   		</li>
-								 	</a>
-								 </ul>
-							</div>
-
-							<div class="reaction" style="margin-left: 50px;">
-						       	<ul>
-    								<a>
-	       								<li class="reaction-menu">
-								        	<div class="actions">
-								        		<button  onclick="changeReaction(this, <%= post.id %>, 'Post',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-angry" value="type3" name="reactionType" style=<%= 'color:'+(@type == "type3" ? @colorBlue : @colorBlack) %> id=<%=buttonReactionId+"type3"%> ></button>
-											</div>
-										</li>
-									</a>
-								</ul>
-								<ul>
-	    							<a>
-       									<li class="reaction-menu" id=<%= counterReactionId+"type3" %>>
-								   			<%= post.reactionType3 %>
-								   		</li>
-								 	</a>
-								 </ul>
-							</div>
-
-							<div class="reaction" style="margin-left: 80px;">
-						       	<ul>
-    								<a>
-	       								<li class="reaction-menu">
-								        	<div class="actions">
-								        		<button  onclick="changeReaction(this, <%= post.id %>, 'Post',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-sad-cry" value="type4" name="reactionType" style=<%= 'color:'+(@type == "type4" ? @colorBlue : @colorBlack) %> id=<%=buttonReactionId+"type4"%> ></button>
-											</div>
-										</li>
-									</a>
-								</ul>
-								<ul>
-	    							<a>
-       									<li class="reaction-menu" id=<%= counterReactionId+"type4" %>>
-								   			<%= post.reactionType4 %>
-								   		</li>
-								 	</a>
-								 </ul>
-							</div>
-
-							 <div class="reaction" style="margin-left: 110px;">
-						       	<ul>
-    								<a>
-	       								<li class="reaction-menu">
-								        	<div class="actions">
-								        		<button  onclick="changeReaction(this, <%= post.id %>, 'Post',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-thumbs-down" value="dislike" name="reactionType" style=<%= 'color:'+(@type == "dislike" ? @colorBlue : @colorBlack) %> id=<%=buttonReactionId+"dislike"%> ></button>
-											</div>
-										</li>
-									</a>
-								</ul>
-								<ul>
-	    							<a>
-       									<li class="reaction-menu" id=<%= counterReactionId+"dislike" %>>
-								   			<%= post.dislikes %>
-								   		</li>
-								 	</a>
-								 </ul>
-							</div>
-
-					 	<% end %>
-					 	
-					 </div>
-
-				</div>
-
-			</div>
-
-		<% end %>
-
-	</tbody>
-
-</div>
+<button value="loadMore" onclick="loadDoc(<%= @lastPost_id %>, this)">

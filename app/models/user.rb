@@ -6,15 +6,15 @@ class User < ApplicationRecord
 
   validates :name, presence: true, format: { with: /\A[a-zA-Z\s]+\z/, message: "only allows letters" }
 
-  has_many :posts
-  has_many :commentaries
-  has_many :reactions
+  has_many :posts, dependent: :destroy
+  has_many :commentaries, dependent: :destroy
+  has_many :reactions, dependent: :destroy
 
-  has_many :friendships
-  has_many :friends, :through => :friendships
+  has_many :friendships, dependent: :destroy
+  has_many :friends, :through => :friendships, dependent: :destroy
 
-  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
-  has_many :inverse_friends, :through => :inverse_friendships, :source => :user
+  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id", dependent: :destroy
+  has_many :inverse_friends, :through => :inverse_friendships, :source => :user, dependent: :destroy
 
   def all_friends
   	self.friends + self.inverse_friends

@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<script src="javascripts/reactions.js"></script>
 		<%= stylesheet_link_tag "dashboard" %>
 		<%= stylesheet_link_tag "side-bar" %>
 		<%= stylesheet_link_tag "reaction" %>
@@ -19,52 +20,27 @@
 
 	<body>
 		<script>
-			function changeReaction(button, owner_id, owner_type, user_id, ownerPost_id) {
-				if (user_id == ownerPost_id)
-				{
+			function loadDoc(lastPost_id, button) {
+			  var xhttp = new XMLHttpRequest();
+			  xhttp.onreadystatechange = function() {
+			    if (this.readyState == 4 && this.status == 200) {
+			      var lastContent = document.getElementById("postsRender").innerHTML
+			      document.getElementById("postsRender").innerHTML= lastContent + this.responseText;
+			    }
+			  };
+			  var urlRequest = "dashboards/renderMore?lastPost_id=" + lastPost_id
+			  xhttp.open("GET", urlRequest, true);
+			  xhttp.send();
 
-				}
-				else
-				{
-
-					if (button.style.color == 'rgb(51, 51, 204)') {
-						var counter_id = 'counter'+owner_type+owner_id+'_'+button.value;
-						button.style.color = 'black';
-						var counter = document.getElementById(counter_id).innerHTML;
-						document.getElementById(counter_id).innerHTML = counter-1;
-					}
-					else {
-						let types = ['type1', 'type2', 'type3', 'type4', 'dislike']
-
-						for (let type of types) {
-							otherReactionsId = 'reaction'+owner_type+owner_id+'_'+type;
-							var element = document.getElementById(otherReactionsId)
-							if (element.style.color == 'rgb(51, 51, 204)')
-							{
-								element.style.color = 'black';
-
-								var counter_id = 'counter'+owner_type+owner_id+'_'+element.value;
-								var counter = document.getElementById(counter_id).innerHTML;
-								document.getElementById(counter_id).innerHTML = counter-1;
-							}
-						}
-
-						var counter_id = 'counter'+owner_type+owner_id+'_'+button.value;
-						button.style.color = 'rgb(51, 51, 204)';
-						var counter = document.getElementById(counter_id).innerHTML;
-						document.getElementById(counter_id).innerHTML = parseInt(counter)+1;
-					}
-
-					if (owner_type == 'PostOpen')
-					{
-						var buttonId = 'reactionPost'+owner_id+'_'+button.value; 
-						button = document.getElementById(buttonId);
-						changeReaction(button, owner_id, 'Post', user_id, ownerPost_id);
-					}
-				}
-
+			  button.style.display = 'none';
 			}
 		</script>
+
+		<div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+		    <div class="modal-content"></div>
+		  </div>
+		</div>
 
 		<div class="dashboard">
 
@@ -90,7 +66,12 @@
 		    	</div>
 
 	    		<%= render partial: "postCreation" %>
-				<%= render partial:"postsRender" %>
+	    		<div class="postsRender" id="postsRender">
+
+					<%= render partial:"postsRender" %>
+
+				</div>
+
 			</div>
 			
 			<div class="tableRight">

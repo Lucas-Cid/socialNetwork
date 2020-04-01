@@ -14,12 +14,19 @@
 		<%= stylesheet_link_tag "side-bar" %>
 		<%= stylesheet_link_tag "reaction" %>
 		<%= stylesheet_link_tag "profile" %>
+		<script src="../javascripts/reactions.js"></script>
 
 		<meta charset="UTF-8">
 
 	</head>
 
 	<body>
+		<div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+		    <div class="modal-content"></div>
+		  </div>
+		</div>
+
 		<%= render partial: "topBar" %> 
 		<div class="dashboard">
 
@@ -47,7 +54,13 @@
 			    	</div>
 
 			    	<div class="timeline"> 
-						<%= render partial:"postsRender" %>
+			    		<div class="postsRender">
+
+							<tbody>
+								<%= render partial:"postsRender" %>
+							</tbody>
+							
+						</div>
 					</div>
 
 					<div class="tableRight">

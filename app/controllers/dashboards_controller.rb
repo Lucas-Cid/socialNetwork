@@ -3,7 +3,8 @@ class DashboardsController < ApplicationController
 	before_action :authenticate_user!
 
 	def homepage
-		@postsType = Post.all.order(:id).last(20).reverse
+		@postsType = Post.all.order(:id).last(5).reverse
+		@lastPost_id = @postsType.last.id
 		@reactionsTimeline = Reaction.where(owner_id:@postsType, user_id:current_user, owner_type:"Post")
 
 	end
@@ -50,6 +51,13 @@ class DashboardsController < ApplicationController
 
 		  end
 
+	end
+
+	def renderMore 
+		@postsType = Post.where('id < ?', params[:lastPost_id]).order(:id).last(5).reverse
+		@lastPost_id = @postsType.last.id
+		@reactionsTimeline = Reaction.where(owner_id:@postsType, user_id:current_user, owner_type:"Post")
+		render partial: "postsRender"
 	end
 
 	def messages
