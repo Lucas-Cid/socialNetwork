@@ -42,7 +42,7 @@ a:active {
 	position: relative;
 	width: 24%;
 	max-width: 770px;
-	min-width: 50px;
+	min-width: 200px;
 	margin-right: -70px;
 
 }
@@ -138,7 +138,8 @@ a:active {
 	position: relative;
 	margin-right: auto;
 	margin-left: auto;
-	min-width: 350px;
+	float: right;
+	min-width: 512px;
 	width: 40%;
 	font-size: 20px;
 
@@ -206,7 +207,7 @@ a:active {
 }
 
 .postContent {
-  	max-width: 350px;
+  	max-width: 512px;
   	padding: 3px;
 	font-size: 20px;
 	text-align: justify;
@@ -233,12 +234,13 @@ a:active {
 	height: 100%;
 	width: 20%;
 	max-height: 700px;
-	overflow: auto;
-	min-width: 150px;
+	overflow-y: auto;
+	overflow-x: hidden; 
 }
 
 #allUsers {
 	border: 1px solid black;
+	overflow-x: hidden; 
 
 }
 
