@@ -1,0 +1,19 @@
+<% @friends.each do |friend| %>
+<% if friend.present? %>
+	<div class="friend">
+
+			<div class="profileImage">
+				<div class="userProfile" id="iconProfile">
+					<div class="userIcon">
+						<i class="fas fa-user"></i>
+					</div>
+				</div>
+			</div>
+
+			<div class="userName">
+				<%= link_to friend.name, dashboards_userProfile_path(:id => friend.id), :style => "color:black;" %>
+			</div>
+
+		<% end %>
+	</div>
+<% end %>

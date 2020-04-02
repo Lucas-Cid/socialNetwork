@@ -45,7 +45,23 @@ class DashboardsController < ApplicationController
 		@reactionsTimeline = Reaction.where(owner_id:@postsType, user_id:current_user, owner_type:"Post")
 		@pageType = "userReactions"
 		@optionalId = @user.id
-		render :profile
+		render partial: "postsRender"
+	end
+
+	def userPosts 
+		@user = User.find(params.require(:id))
+		@postsType = @user.posts.order(:id).last(5).reverse
+		@lastPost_id = @postsType.last.id
+		@reactionsTimeline  = Reaction.where(owner_id:@postsType, user_id:current_user, owner_type:"Post")
+		@pageType = "userProfile"
+		@optionalId = @user.id
+		render partial: "postsRender"
+	end
+
+	def userFriends
+		@user = User.find(params.require(:id))
+		@friends = @user.confirmated_friends
+		render partial: "friends"
 	end
 
 	def showPost

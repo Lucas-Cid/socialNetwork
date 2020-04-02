@@ -13,3 +13,15 @@ function loadDoc(lastPost_id, button, pageType, optionalId, controllerPath) {
 
   button.style.display = 'none';
 }
+
+function showOnProfile(user_id, controllerPath) {
+	 var xhttp = new XMLHttpRequest();
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	      document.getElementById("postsRender").innerHTML= this.responseText;
+	    }
+	  };
+	  var urlRequest =  controllerPath + "?id=" + user_id
+	  xhttp.open("GET", urlRequest, true);
+	  xhttp.send();
+}

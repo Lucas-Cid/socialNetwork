@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get "dashboards/userProfile", to: "dashboards#userProfile"
   get "dashboards/messages", to: "dashboards#messages"
   get "dashboards/userReactions", to: "dashboards#userReactions"
+  get "dashboards/userPosts", to: "dashboards#userPosts"
+  get "dashboards/userFriends", to: "dashboards#userFriends"
   get "dashboards/showPost", to: "dashboards#showPost"
   get "dashboards/renderMore", to: "dashboards#renderMore"
   post "app/showPosts", to: "dashboards_app#showPosts"

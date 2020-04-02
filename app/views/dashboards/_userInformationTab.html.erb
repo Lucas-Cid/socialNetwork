@@ -22,19 +22,25 @@
 			<ul>
 
 			  <li>
-			  	<%= link_to dashboards_userProfile_path(:id => @user.id) do %>
-			  		Postagens
-			  	<% end %>
+			  	<div class="userPosts" onclick="showOnProfile(<%= @user.id %>, '<%= dashboards_userPosts_path %>')" style="cursor: pointer;">
+					<a>Postagens</a>
+				</div>
 			  </li>
 
 			  <li>
-			  	<%= link_to dashboards_userReactions_path(:id => @user.id) do %>
-			  		Curtidas
-			  	<% end %>
+			  	<div class="userLikes" onclick="showOnProfile(<%= @user.id %>, '<%= dashboards_userReactions_path %>')" style="cursor: pointer;">
+					<a>Curtidas</a>
+				</div>
 			  </li>
 
 			  <li><a>Fotos</a></li>
-			  <li><a>Amigos</a></li>
+
+			  <li>
+			  	<div class="userFriends" onclick="showOnProfile(<%= @user.id %>, '<%= dashboards_userFriends_path %>')" style="cursor: pointer;">
+					<a>Amigos</a>
+				</div>
+			  </li>
+
 			</ul>
 		</div>
 

@@ -29,8 +29,8 @@ a:active {
 .dashboard {
 	min-width: 700px;
 	margin: auto;
-	width: 84%;
-	max-width: 2150px;
+	width: 70%;
+	max-width: 1286px;
 	display: flex;
 	border: 0.5px solid #0000004d;
 	-webkit-box-shadow: 1px 4px 38px 0px rgba(122,122,122,1);
@@ -48,10 +48,10 @@ a:active {
 }
 
 .alignBar {
-	width: 84%;
+	width: 70%;
 	margin-right: auto;
 	margin-left: auto;
-	max-width: 2150px;
+	max-width: 1286px;
 	display: inline-flex;
 }
 
