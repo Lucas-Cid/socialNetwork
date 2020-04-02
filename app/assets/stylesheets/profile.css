@@ -51,7 +51,7 @@
 	width: calc(100% - 130px);
 	font-size: 40px;
 	word-wrap: break-word;
-	overflow: scroll;
+	overflow: auto;
 }
 
 .rightBotton {

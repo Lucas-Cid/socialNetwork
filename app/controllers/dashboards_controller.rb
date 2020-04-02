@@ -4,6 +4,11 @@ class DashboardsController < ApplicationController
 
 	def homepage
 		@postsType = Post.all.order(:id).last(5).reverse
+
+		@lastPost_id = 0;
+		if @postsType.present?
+			@lastPost_id = @postsType.last.id
+		end
 		@lastPost_id = @postsType.last.id
 		@reactionsTimeline = Reaction.where(owner_id:@postsType, user_id:current_user, owner_type:"Post")
 		@pageType = "homepage"
@@ -14,7 +19,10 @@ class DashboardsController < ApplicationController
 	def myProfile
 		@user = current_user
 		@postsType = current_user.posts.order(:id).last(5).reverse
-		@lastPost_id = @postsType.last.id
+		@lastPost_id = 0;
+		if @postsType.present?
+			@lastPost_id = @postsType.last.id
+		end
 		@reactionsTimeline = Reaction.where(owner_id:@postsType, user_id:current_user, owner_type:"Post")
 		@pageType = "myProfile"
 		@optionalId = current_user.id
@@ -24,7 +32,10 @@ class DashboardsController < ApplicationController
 	def userProfile
 		@user = User.find(params.require(:id))
 		@postsType = @user.posts.order(:id).last(5).reverse
-		@lastPost_id = @postsType.last.id
+		@lastPost_id = 0;
+		if @postsType.present?
+			@lastPost_id = @postsType.last.id
+		end
 		@reactionsTimeline  = Reaction.where(owner_id:@postsType, user_id:current_user, owner_type:"Post")
 		@pageType = "userProfile"
 		@optionalId = @user.id
@@ -51,7 +62,10 @@ class DashboardsController < ApplicationController
 	def userPosts 
 		@user = User.find(params.require(:id))
 		@postsType = @user.posts.order(:id).last(5).reverse
-		@lastPost_id = @postsType.last.id
+		@lastPost_id = 0;
+		if @postsType.present?
+			@lastPost_id = @postsType.last.id
+		end
 		@reactionsTimeline  = Reaction.where(owner_id:@postsType, user_id:current_user, owner_type:"Post")
 		@pageType = "userProfile"
 		@optionalId = @user.id
