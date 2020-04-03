@@ -114,6 +114,10 @@
 	box-shadow: 1px 4px 38px 0px rgba(122,122,122,1);
   }
 
-  .userName {
+  .linkFriendUserName {
+	color:black;
+}
+
+  .friendUserName {
   	margin: auto;
   }

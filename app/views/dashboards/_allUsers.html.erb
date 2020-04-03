@@ -2,7 +2,7 @@
 <table id="allUsers" class="table table-hover">
 
 	<thead>
-		<tr style="background-color:black;color:white">
+		<tr id="tableUsersStatus">
 			 <th scope="col">User</th>
 			 <th scope="col">Status</th>
 			</tr>
@@ -14,7 +14,7 @@
 			<% else %>
 
 			 		<th class="userName" >
-			 			<%= link_to user.name, dashboards_userProfile_path(:id => user.id), :style => "color:black;" %>
+			 			<%= link_to user.name, dashboards_userProfile_path(:id => user.id), :class => "linkUserName" %>
 			 		</th>
 				
 		 			<td class="friendAction"> 

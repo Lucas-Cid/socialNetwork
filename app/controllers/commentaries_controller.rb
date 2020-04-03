@@ -6,7 +6,14 @@ class CommentariesController < ApplicationController
 
 	def create
 		Commentary.create(giveCommentariesParamsPermission(params))
-		redirect_to :controller => 'dashboards', :action => 'homepage'
+		respond_to do |format|
+		  format.js { render :js => "resetCommentaryInput();" }
+		end
+	end
+
+	def makeCommentary
+		@content = params[:content]
+		render partial: "dashboards/simpleCommentary"
 	end
 
 end

@@ -1,0 +1,120 @@
+<div class="commentary">
+
+	<div class="card" id="cardModalCommentary">
+
+		<div class="card-header" id="cardHeaderModalCommentary">
+			<%= link_to  current_user.name, dashboards_userProfile_path(:id => current_user.id), :style => "color:white;position: relative;" %>
+	    </div>
+
+	    <div class="card-body" id="card-body">
+	        <%= @content %>
+	    </div>
+
+	 	<div class="card-footer"  id="cardFooterModalCommentary">
+
+	        <%= form_with url: "/reactions", authenticity_token: false do |f|%>
+				<div class="reaction" style="left:0;">
+			       	<ul>
+						<a>
+								<li class="reaction-menu">
+					        	<div class="actions">
+					        		<button  class="fas fa-thumbs-up">
+					        		</button>
+								</div>
+							</li>
+						</a>
+					</ul>
+					<ul>
+						<a>
+							<li class="reaction-menu">
+					   			0
+					   		</li>
+					 	</a>
+					 </ul>
+				</div>
+
+				<div class="reaction" style="margin-left: 20px;">
+			       	<ul>
+						<a>
+								<li class="reaction-menu">
+					        	<div class="actions">
+					        		<button  class="fas fa-surprise">
+					        			
+					        		</button>
+								</div>
+							</li>
+						</a>
+					</ul>
+					<ul>
+						<a>
+								<li class="reaction-menu">
+					   			0
+					   		</li>
+					 	</a>
+					 </ul>
+				</div>
+
+				<div class="reaction" style="margin-left: 50px;">
+			       	<ul>
+						<a>
+								<li class="reaction-menu">
+					        	<div class="actions">
+					        		<button  class="fas fa-angry"></button>
+								</div>
+							</li>
+						</a>
+					</ul>
+					<ul>
+						<a>
+								<li class="reaction-menu">
+					   			0
+					   		</li>
+					 	</a>
+					 </ul>
+				</div>
+
+				<div class="reaction" style="margin-left: 80px;">
+			       	<ul>
+						<a>
+								<li class="reaction-menu">
+					        	<div class="actions">
+					        		<button class="fas fa-sad-cry"></button>
+								</div>
+							</li>
+						</a>
+					</ul>
+					<ul>
+						<a>
+								<li class="reaction-menu">
+					   			0
+					   		</li>
+					 	</a>
+					 </ul>
+				</div>
+
+				 <div class="reaction" style="margin-left: 110px;">
+			       	<ul>
+						<a>
+								<li class="reaction-menu">
+					        	<div class="actions">
+					        		<button class="fas fa-thumbs-down"></button>
+								</div>
+							</li>
+						</a>
+					</ul>
+					<ul>
+						<a>
+								<li class="reaction-menu">
+					   			0
+					   		</li>
+					 	</a>
+					 </ul>
+				</div>
+
+		 	<% end %>
+		 	
+		 </div>
+
+	</div>
+
+</div>

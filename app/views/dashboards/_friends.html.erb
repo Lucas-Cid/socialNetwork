@@ -10,8 +10,8 @@
 				</div>
 			</div>
 
-			<div class="userName">
-				<%= link_to friend.name, dashboards_userProfile_path(:id => friend.id), :style => "color:black;" %>
+			<div class="friendUserName">
+				<%= link_to friend.name, dashboards_userProfile_path(:id => friend.id), :class => "linkFriendUserName" %>
 			</div>
 
 		<% end %>

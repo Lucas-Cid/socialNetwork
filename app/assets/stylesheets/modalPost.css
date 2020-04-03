@@ -1,0 +1,95 @@
+.modal-content {
+	overflow-y: auto;
+	overflow-x: hidden;
+	width: 720px;
+
+}
+
+.modal-header {
+	height: 30px;
+	padding: 0;
+}
+
+.close {
+	top:0;
+	right: 0;
+}
+
+.modal-body {
+	width: 720px;
+	height: 700px;
+	font-size: 20px;
+}
+
+.modalPost {
+	margin-bottom: 3px;
+}
+
+#cardModalPost {
+	border-radius: 0;
+}
+
+#cardHeaderModalPost {
+	background-color:black;
+	border: 0;
+	min-height: 53px;
+}
+
+#userNameModalPost {
+	color:white;
+	position: relative;
+}
+
+#cardBodyModalPost {
+	white-space: pre-line;
+	margin-top: -40px;
+	margin-left: 5px;
+	padding: 0;
+	font-size: 30px;
+}
+
+#cardFooterModalPost {
+	height: 40px;
+	width: 100%;
+	display: inline-block;
+}
+
+#commentaryCreation {
+	border-radius: 0;
+	height: 100px;
+}
+
+#cardBodyModalCommentaryCreation {
+	height: 100px;
+}
+
+
+#userCommentary {
+	min-height:80px;
+	max-height: 80px;
+}
+
+#commentaries {
+	margin-left: 20px;
+}
+
+.commentary {
+	margin-bottom: 3px;
+}
+
+#cardModalCommentary {
+	border-radius: 0;
+}
+
+#cardHeaderModalCommentary {
+	background-color:black;
+	border: 0;
+	min-height: 53px;
+}
+
+#cardFooterModalCommentary {
+	height: 40px;
+	width: 100%;
+	display: inline-block;
+}
+

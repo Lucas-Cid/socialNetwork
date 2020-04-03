@@ -25,3 +25,22 @@ function showOnProfile(user_id, controllerPath) {
 	  xhttp.open("GET", urlRequest, true);
 	  xhttp.send();
 }
+
+function postCommentary(controllerPath) {
+  var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        var lastContent = document.getElementById("commentaries").innerHTML;
+        document.getElementById("commentaries").innerHTML = this.responseText + lastContent;
+      }
+    };
+
+    var content = document.getElementById("userCommentary").value
+    var urlRequest =  controllerPath + "?content=" + content
+    xhttp.open("GET", urlRequest, true);
+    xhttp.send();
+}
+
+function resetCommentaryInput() {
+  var content = document.getElementById("userCommentary").value = ""
+}

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "dashboards/userFriends", to: "dashboards#userFriends"
   get "dashboards/showPost", to: "dashboards#showPost"
   get "dashboards/renderMore", to: "dashboards#renderMore"
+  get "commentaries/makeCommentary", to: "commentaries#makeCommentary"
   post "app/showPosts", to: "dashboards_app#showPosts"
   post "app/friendList", to: "dashboards_app#friendList"
   post "users_app/login", to: "users_app#login"

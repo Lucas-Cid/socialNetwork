@@ -1,12 +1,12 @@
-<div class="modal-header" style="height: 30px;padding: 0;">
+<div class="modal-header">
 
-  <button type="button" class="close" data-dismiss="modal" style="top:0;right: 0;">x</button>
+  <button type="button" class="close" data-dismiss="modal">x</button>
 
 </div>
 
-<div class="modal-body" style="width: 720px;height: 700px;font-size: 20px;">
+<div class="modal-body">
 
-  	<div class="post" style="margin-bottom: 3px;">
+  	<div class="modalPost">
   		<% buttonReactionId = 'reactionPostOpen'+@post.id.to_s+"_" %>
 		<% counterReactionId = 'counterPostOpen'+@post.id.to_s+"_" %>
 		<% user_id = current_user.id %>
@@ -14,17 +14,17 @@
 
   		<strong>Postagem</strong>
 
-		<div class="card" style="border-radius: 0;">
+		<div class="card" id="cardModalPost">
 
-			<div class="card-header" id="card-header" style="border-radius: 0;">
-				<%= link_to  @post.user.name, dashboards_userProfile_path(:id => @post.user_id), :style => "color:white;position: relative;" %>
+			<div class="card-header" id="cardHeaderModalPost">
+				<%= link_to  @post.user.name, dashboards_userProfile_path(:id => @post.user_id), :id => "userNameModalPost" %>
 		    </div>
 
-		    <div class="card-body" id="card-body" style="padding: 0;">
+		    <div class="card-body" id="cardBodyModalPost">
 		        <%= @post.content %>
 		    </div>
 
-		 	<div class="card-footer" id="card-footer" style="border-radius: 0;">
+		 	<div class="card-footer" id="cardFooterModalPost">
 		 		<% @reaction = current_user.reactions.where(owner_id:@post.id, owner_type:"Post").first %>
 				<% @colorBlue = "#3333cc;" %>
 				<% @colorBlack = "black;" %>
@@ -142,17 +142,19 @@
 
 	</div>
 
-	<div id="postCreation" class="card gedf-card" style="border-radius: 0;height: 100px;">
+	<div id="commentaryCreation" class="card gedf-card">
 		<%= form_with url: "/commentaries", authenticity_token: false do |f|%>
-			<div class="card-body" style="height: 100px;">
-				<textarea class="textArea" name="content" autofocus placeholder="Comente algo" style="min-height:80px;max-height: 80px;"></textarea>
+			<div class="cardBodyModalCommentaryCreation">
+				<textarea class="textArea"  id="userCommentary" name="content" placeholder="Comente algo"></textarea>
 
 				<input id="user_information" name="user_id" type="hidden", value="<%= current_user.id %>" />
 				<input id="user_information" name="post_id" type="hidden", value="<%= @post.id %>" />
 			</div>
 
 			<div class="actions">
-			    <%= f.submit "Enviar", :class => 'btn btn-primay', :id => "sendPostButton"%>
+				<button  onclick="postCommentary('<%= commentaries_makeCommentary_path %>')" class="btn btn-primay" id="sendPostButton">
+					Enviar
+				</button>
 			</div>
 
 		<% end %>
@@ -160,7 +162,7 @@
 
 	<strong>Comentarios</strong>
 
-	<div class="commentaries" style="margin-left: 20px;">
+	<div class="commentaries" id="commentaries">
 		<% user_id = current_user.id %>
 
 		<% @commentaries.each do |commentary| %>
@@ -170,19 +172,19 @@
 			<% buttonReactionId = 'reactionCommentary'+commentary.id.to_s+"_" %>
 			<% counterReactionId = 'counterCommentary'+commentary.id.to_s+"_" %>
 
-			<div class="post" style="margin-bottom: 3px;">
+			<div class="commentary">
 
-		    	<div class="card" style="border-radius: 0;">
+		    	<div class="card" id="cardModalCommentary">
 
-		    		<div class="card-header" id="card-header" style="border-radius: 0;">
-		    			<%= link_to  commentary.user.name, dashboards_userProfile_path(:id => commentary.user_id), :style => "color:white;position: relative;" %>
+		    		<div class="card-header" id="cardHeaderModalCommentary">
+		    			<%= link_to  commentary.user.name, dashboards_userProfile_path(:id => commentary.user_id), :id => "userNameModalPost" %>
 				    </div>
 
 				    <div class="card-body" id="card-body">
 				        <%= commentary.content %>
 				    </div>
 
-				 	<div class="card-footer" id="card-footer" style="border-radius: 0;">
+				 	<div class="card-footer" id="cardFooterModalCommentary">
 				 		<% @reaction = @reactionsTimeline.where(owner_id:commentary.id, owner_type:"Commentary").first %>
 						<% @colorBlue = "#3333cc;" %>
 						<% @colorBlack = "black;" %>
