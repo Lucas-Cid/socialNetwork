@@ -12,7 +12,7 @@ module SocialNetwork
     config.load_defaults 5.2
     config.assets.paths << Rails.root.join("app", "assets", "fonts", "javascripts")
 	config.assets.precompile += %w(.svg .eot .woff .ttf)
-
+  config.action_controller.allow_forgery_protection = false
 
 
     # Settings in config/environments/* take precedence over those specified here.

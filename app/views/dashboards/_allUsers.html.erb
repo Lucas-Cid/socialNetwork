@@ -26,13 +26,13 @@
 
 					 		<% if current_user.areWeFriends(user) %>
 					 			<div class="actions">
-						 			<%= button_tag( :class => "fas fa-user-friends") do %>
+						 			<%= button_tag( :class => "fas fa-user-friends", data: { disable: true }) do %>
 						 			<% end %>
 						 		</div>
 
 						 	<% elsif current_user.userRequestedFriendship(user) %>
 						 		<div class="actions">
-						 			<%= button_tag( :class => "fas fa-user-check") do %>
+						 			<%= button_tag( :class => "fas fa-user-check", data: { disable: true }) do %>
 						 			<% end %>
 						 		</div>
 
@@ -41,7 +41,7 @@
 						 	<% else %>
 
 						 		<div class="actions">
-						   		<%= button_tag( :class => "fas fa-user-plus") do %>
+						   		<%= button_tag( :class => "fas fa-user-plus", data: { disable: true }) do %>
 						   		<% end %>
 						 	  	</div>
 					 		<% end %>

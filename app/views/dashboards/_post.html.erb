@@ -44,7 +44,7 @@
 							<a>
 									<li class="reaction-menu">
 						        	<div class="actions">
-						        		<button  onclick="changeReaction(this, <%= @post.id %>, 'PostOpen',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-thumbs-up" value="type1" name="reactionType" style=<%= 'color:'+(@type == "type1" ? @colorBlue : @colorBlack) %> id=<%=buttonReactionId+"type1"%> ></button>
+						        		<button  onclick="changeReaction(this, <%= @post.id %>, 'PostOpen',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-thumbs-up" value="type1" name="reactionType" style=<%= 'color:'+(@type == "type1" ? @colorBlue : @colorBlack) %> id='<%=buttonReactionId+"type1"%>' data-disable="true" ></button>
 									</div>
 								</li>
 							</a>
@@ -63,7 +63,7 @@
 							<a>
 									<li class="reaction-menu">
 						        	<div class="actions">
-						        		<button  onclick="changeReaction(this, <%= @post.id %>, 'PostOpen',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-surprise" value="type2" name="reactionType" style=<%= 'color:'+(@type == "type2" ? @colorBlue : @colorBlack) %>  id=<%=(buttonReactionId+"type2")%> ></button>
+						        		<button  onclick="changeReaction(this, <%= @post.id %>, 'PostOpen',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-surprise" value="type2" name="reactionType" style=<%= 'color:'+(@type == "type2" ? @colorBlue : @colorBlack) %>  id='<%=(buttonReactionId+"type2")%>' data-disable="true" ></button>
 									</div>
 								</li>
 							</a>
@@ -82,7 +82,7 @@
 							<a>
 									<li class="reaction-menu">
 						        	<div class="actions">
-						        		<button  onclick="changeReaction(this, <%= @post.id %>, 'PostOpen',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-angry" value="type3" name="reactionType" style=<%= 'color:'+(@type == "type3" ? @colorBlue : @colorBlack) %> id=<%=buttonReactionId+"type3"%> ></button>
+						        		<button  onclick="changeReaction(this, <%= @post.id %>, 'PostOpen',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-angry" value="type3" name="reactionType" style=<%= 'color:'+(@type == "type3" ? @colorBlue : @colorBlack) %> id='<%=buttonReactionId+"type3"%>' data-disable="true" ></button>
 									</div>
 								</li>
 							</a>
@@ -101,7 +101,7 @@
 							<a>
 									<li class="reaction-menu">
 						        	<div class="actions">
-						        		<button  onclick="changeReaction(this, <%= @post.id %>, 'PostOpen',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-sad-cry" value="type4" name="reactionType" style=<%= 'color:'+(@type == "type4" ? @colorBlue : @colorBlack) %> id=<%=buttonReactionId+"type4"%> ></button>
+						        		<button  onclick="changeReaction(this, <%= @post.id %>, 'PostOpen',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-sad-cry" value="type4" name="reactionType" style=<%= 'color:'+(@type == "type4" ? @colorBlue : @colorBlack) %> id='<%=buttonReactionId+"type4"%>' data-disable="true" ></button>
 									</div>
 								</li>
 							</a>
@@ -120,7 +120,7 @@
 							<a>
 								<li class="reaction-menu">
 						        	<div class="actions">
-						        		<button  onclick="changeReaction(this, <%= @post.id %>, 'PostOpen',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-thumbs-down" value="dislike" name="reactionType" style=<%= 'color:'+(@type == "dislike" ? @colorBlue : @colorBlack) %> id=<%=buttonReactionId+"dislike"%> ></button>
+						        		<button  onclick="changeReaction(this, <%= @post.id %>, 'PostOpen',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-thumbs-down" value="dislike" name="reactionType" style=<%= 'color:'+(@type == "dislike" ? @colorBlue : @colorBlack) %> id='<%=buttonReactionId+"dislike"%>' data-disable="true" ></button>
 									</div>
 								</li>
 							</a>
@@ -152,7 +152,7 @@
 			</div>
 
 			<div class="actions">
-				<button  onclick="postCommentary('<%= commentaries_makeCommentary_path %>')" class="btn btn-primay" id="sendPostButton">
+				<button  onclick="postCommentary('<%= commentaries_makeCommentary_path %>')" class="btn btn-primay" id="sendPostButton" data-disable="true">
 					Enviar
 				</button>
 			</div>
@@ -205,7 +205,7 @@
     								<a>
 	       								<li class="reaction-menu">
 								        	<div class="actions">
-								        		<button  onclick="changeReaction(this, <%= commentary.id %>, 'Commentary',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-thumbs-up" value="type1" name="reactionType" style=<%= 'color:'+(@type == "type1" ? @colorBlue : @colorBlack) %> id=<%=buttonReactionId+"type1"%> >
+								        		<button  onclick="changeReaction(this, <%= commentary.id %>, 'Commentary',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-thumbs-up" value="type1" name="reactionType" style=<%= 'color:'+(@type == "type1" ? @colorBlue : @colorBlack) %> id='<%=buttonReactionId+"type1"%>' data-disable="true" >
 								        		</button>
 											</div>
 										</li>
@@ -225,7 +225,7 @@
     								<a>
 	       								<li class="reaction-menu">
 								        	<div class="actions">
-								        		<button  onclick="changeReaction(this, <%= commentary.id %>, 'Commentary',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-surprise" value="type2" name="reactionType" style=<%= 'color:'+(@type == "type2" ? @colorBlue : @colorBlack) %>  id=<%=(buttonReactionId+"type2")%> ></button>
+								        		<button  onclick="changeReaction(this, <%= commentary.id %>, 'Commentary',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-surprise" value="type2" name="reactionType" style=<%= 'color:'+(@type == "type2" ? @colorBlue : @colorBlack) %>  id='<%=(buttonReactionId+"type2")%>' data-disable="true" ></button>
 											</div>
 										</li>
 									</a>
@@ -244,7 +244,7 @@
     								<a>
 	       								<li class="reaction-menu">
 								        	<div class="actions">
-								        		<button  onclick="changeReaction(this, <%= commentary.id %>, 'Commentary',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-angry" value="type3" name="reactionType" style=<%= 'color:'+(@type == "type3" ? @colorBlue : @colorBlack) %> id=<%=buttonReactionId+"type3"%> ></button>
+								        		<button  onclick="changeReaction(this, <%= commentary.id %>, 'Commentary',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-angry" value="type3" name="reactionType" style=<%= 'color:'+(@type == "type3" ? @colorBlue : @colorBlack) %> id='<%=buttonReactionId+"type3"%>' data-disable="true" ></button>
 											</div>
 										</li>
 									</a>
@@ -263,7 +263,7 @@
     								<a>
 	       								<li class="reaction-menu">
 								        	<div class="actions">
-								        		<button  onclick="changeReaction(this, <%= commentary.id %>, 'Commentary',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-sad-cry" value="type4" name="reactionType" style=<%= 'color:'+(@type == "type4" ? @colorBlue : @colorBlack) %> id=<%=buttonReactionId+"type4"%> ></button>
+								        		<button  onclick="changeReaction(this, <%= commentary.id %>, 'Commentary',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-sad-cry" value="type4" name="reactionType" style=<%= 'color:'+(@type == "type4" ? @colorBlue : @colorBlack) %> id='<%=buttonReactionId+"type4"%>' data-disable="true" ></button>
 											</div>
 										</li>
 									</a>
@@ -282,7 +282,7 @@
     								<a>
 	       								<li class="reaction-menu">
 								        	<div class="actions">
-								        		<button  onclick="changeReaction(this, <%= commentary.id %>, 'Commentary',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-thumbs-down" value="dislike" name="reactionType" style=<%= 'color:'+(@type == "dislike" ? @colorBlue : @colorBlack) %> id=<%=buttonReactionId+"dislike"%> ></button>
+								        		<button  onclick="changeReaction(this, <%= commentary.id %>, 'Commentary',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-thumbs-down" value="dislike" name="reactionType" style=<%= 'color:'+(@type == "dislike" ? @colorBlue : @colorBlack) %> id='<%=buttonReactionId+"dislike"%>' data-disable="true" ></button>
 											</div>
 										</li>
 									</a>

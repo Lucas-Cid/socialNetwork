@@ -13,7 +13,9 @@ class CommentariesController < ApplicationController
 
 	def makeCommentary
 		@content = params[:content]
-		render partial: "dashboards/simpleCommentary"
+		if @content != ""
+			render partial: "dashboards/simpleCommentary"
+		end
 	end
 
 end
