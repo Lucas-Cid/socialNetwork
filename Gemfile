@@ -10,6 +10,10 @@ gem 'devise'
 
 gem 'pry'
 
+gem 'active_storage_validations'
+
+gem 'mini_magick', '>= 4.9.5'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use postgress as the database for Active Record

@@ -35,6 +35,10 @@
 
 		    <div class="card-body" id="cardBodyPost">
 		        <%= post.content %>
+		        <% if post.image.attached? %>
+		        	<%= image_tag post.image, :style => "position:relative;max-width:100%;", 
+		        	:onclick => "showImage(this)"%>
+		        <% end %>
 		    </div>
 
 		 	<div class="card-footer" id="cardFooterPost">

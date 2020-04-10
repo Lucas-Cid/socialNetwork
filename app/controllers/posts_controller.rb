@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
 	def givePostsParamsPermission (params)
-		params.permit(:user_id, :content)
+		params.permit(:user_id, :content, :image)
 	end
 
 	def create

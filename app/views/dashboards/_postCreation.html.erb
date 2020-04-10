@@ -8,6 +8,7 @@
 
 		<div class="actions">
 		    <%= f.submit "Enviar", :class => 'btn btn-primay', :id => "sendPostButton", data: { disable: true }%>
+		    <%= f.file_field :image %>
 		</div>
 
 	<% end %>

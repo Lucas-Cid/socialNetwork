@@ -1,2 +1,6 @@
 $("#postModal").find(".modal-content").html("<%= escape_javascript (render partial:'post') %>");
 $("#postModal").modal();
+
+$('#postModal').on('hide.bs.modal', function () {
+    $('#postModalContent').scrollTop(0);
+});

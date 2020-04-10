@@ -13,10 +13,12 @@
 		<script src="../javascripts/postLoad.js"></script>
 		<script src="../javascripts/ableDisableReaction.js"></script>
 		<script src="../javascripts/hidePost.js"></script>
+		<script src="../javascripts/showImageModal.js"></script>
 		<%= stylesheet_link_tag "dashboard" %>
 		<%= stylesheet_link_tag "side-bar" %>
 		<%= stylesheet_link_tag "reaction" %>
 		<%= stylesheet_link_tag "modalPost" %>
+		<%= stylesheet_link_tag "modalImage" %>
 
 		<meta charset="UTF-8">
 
@@ -26,20 +28,18 @@
 		
 		<div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-		    <div class="modal-content"></div>
+		    <div class="modal-content" id="postModalContent"></div>
 		  </div>
+		</div>
+
+		<div id="imgModal" class="modal" onclick="closeImgModal()">
+		  <span class="closeImage" onclick="closeImgModal()">&times;</span>
+		  <img class="modal-content" id="img">
 		</div>
 
 		<div class="dashboard">
 
 			<%= render partial: "topBar" %>
-
-			<div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-			    <div class="modal-content"></div>
-			  </div>
-			</div>
-
 
 		  	<div class="leftBar ">
 		    	<%= render partial:"sideBar" %>

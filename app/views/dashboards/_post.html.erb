@@ -22,6 +22,9 @@
 
 		    <div class="card-body" id="cardBodyModalPost">
 		        <%= @post.content %>
+		        <% if @post.image.attached? %>
+		        	<%= image_tag @post.image, :style => "position:relative;max-width:100%;",:onclick => "showImage(this)"%>
+		        <% end %>
 		    </div>
 
 		 	<div class="card-footer" id="cardFooterModalPost">
