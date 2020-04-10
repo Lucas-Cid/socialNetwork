@@ -35,9 +35,9 @@
         		<% end %>
 
 		        <%= form_with url: "/reactions", authenticity_token: false do |f|%>
-			       	<input id="user_id" name="user_id" type="hidden", value="<%= current_user.id %>" />
-			       	<input id="owner_id" name="owner_id" type="hidden", value="<%= @post.id %>" />
-			       	<input id="owner_type" name="owner_type" type="hidden", value="Post" />
+			       	<input name="user_id" type="hidden", value="<%= current_user.id %>" />
+			       	<input name="owner_id" type="hidden", value="<%= @post.id %>" />
+			       	<input name="owner_type" type="hidden", value="Post" />
 
 					<div class="reaction" style="left:0;">
 				       	<ul>
@@ -143,41 +143,54 @@
 	</div>
 
 	<div id="commentaryCreation" class="card gedf-card">
-		<%= form_with url: "/commentaries", authenticity_token: false do |f|%>
-			<div class="cardBodyModalCommentaryCreation">
-				<textarea class="textArea"  id="userCommentary" name="content" placeholder="Comente algo"></textarea>
+		<div class="cardBodyModalCommentaryCreation">
+			<textarea class="textArea"  id="userCommentary" name="content" placeholder="Comente algo"></textarea>
+		</div>
 
-				<input id="user_information" name="user_id" type="hidden", value="<%= current_user.id %>" />
-				<input id="user_information" name="post_id" type="hidden", value="<%= @post.id %>" />
-			</div>
-
-			<div class="actions">
-				<button  onclick="postCommentary('<%= commentaries_makeCommentary_path %>')" class="btn btn-primay" id="sendPostButton" data-disable="true">
-					Enviar
-				</button>
-			</div>
-
-		<% end %>
+		<div class="actions">
+			<button  onclick="postCommentary('<%= commentaries_path %>', '<%= current_user.id %>', '<%= @post.id %>' )" class="btn btn-primay" id="sendPostButton" data-disable="true">
+				Enviar
+			</button>
+		</div>
 	</div>
 
 	<strong>Comentarios</strong>
 
 	<div class="commentaries" id="commentaries">
 		<% user_id = current_user.id %>
-
 		<% @commentaries.each do |commentary| %>
+			<% commentaryId = 'commentary' + commentary.id.to_s %>
 
 			<% ownerPost_id = commentary.user_id %>
 
 			<% buttonReactionId = 'reactionCommentary'+commentary.id.to_s+"_" %>
 			<% counterReactionId = 'counterCommentary'+commentary.id.to_s+"_" %>
 
-			<div class="commentary">
+			<div class="commentary" id='<%= commentaryId %>'>
 
 		    	<div class="card" id="cardModalCommentary">
 
 		    		<div class="card-header" id="cardHeaderModalCommentary">
 		    			<%= link_to  commentary.user.name, dashboards_userProfile_path(:id => commentary.user_id), :id => "userNameModalPost" %>
+				    	
+				    	<li class="nav-item dropdown" style="position:absolute;right:0;top:0;color: transparent;">
+					        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="position: absolute;top:0;right: 0;color: white;">
+					        </a>
+
+					        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="position:relative;">
+
+					        	<a class="dropdown-item" onclick="hidePost('<%= commentaryId %>')" style="cursor:pointer;">Esconder
+					        	</a>
+					        	
+			          			<% if commentary.user_id == current_user.id %>
+
+				    				<%= link_to "Apagar", commentary_path(:id => commentary.id),:remote => true, :method => "delete", data: { confirm: "Tem certeza que deseja deletar o comentario?" }, :class => "dropdown-item" %>
+
+				    			<% end %>
+
+					        </div>
+					      </li>
+
 				    </div>
 
 				    <div class="card-body" id="card-body">
@@ -196,9 +209,9 @@
 
 
 				        <%= form_with url: "/reactions", authenticity_token: false do |f|%>
-					       	<input id="user_id" name="user_id" type="hidden", value="<%= current_user.id %>" />
-					       	<input id="owner_id" name="owner_id" type="hidden", value="<%= commentary.id %>" />
-					       	<input id="owner_type" name="owner_type" type="hidden", value="Commentary" />
+					       	<input name="user_id" type="hidden", value="<%= current_user.id %>" />
+					       	<input name="owner_id" type="hidden", value="<%= commentary.id %>" />
+					       	<input name="owner_type" type="hidden", value="Commentary" />
 
 							<div class="reaction" style="left:0;">
 						       	<ul>

@@ -16,7 +16,7 @@
 
 	</div>
 
-	<div class="bottonInformation">
+	<div class="bottonInformation" style="display: inline-flex;background-color: black;">
 
 		<div class="informationMenu">
 			<ul>
@@ -42,7 +42,29 @@
 			  </li>
 
 			</ul>
+
 		</div>
+
+		<%= form_with url: users_addFriend_path, method: :get, authenticity_token: false do |f|%>
+	 		<input name="user1_id" type="hidden", value="<%= current_user.id %>" />
+	 		<input name="user2_id" type="hidden", value="<%= @user.id %>" />
+
+	 		<% if @user.id == current_user.id %> 
+
+	 		<% elsif current_user.areWeFriends(@user) %>
+	 			<%= button_tag "Remover", :class => "friendButton", data: { disable: true }%>
+
+		 	<% elsif current_user.userRequestedFriendship(@user) %>
+	 			<%= button_tag "Aceitar", :class => "friendButton", data: { disable: true }%>
+
+		 	<% elsif current_user.alreadySentRequest(@user) %>
+	 			<span class="friendButton" style="cursor:pointer;background-color: lightgray;">Pedido Enviado</span>
+
+		 	<% else %>
+		   		<%= button_tag "Adicionar", :class => "friendButton", data: { disable: true }%>
+	 		<% end %>
+
+		<% end %>
 
 	</div>
 

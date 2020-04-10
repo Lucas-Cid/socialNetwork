@@ -5,16 +5,17 @@ class CommentariesController < ApplicationController
 	end
 
 	def create
-		Commentary.create(giveCommentariesParamsPermission(params))
-		respond_to do |format|
-		  format.js { render :js => "resetCommentaryInput();" }
+		@commentary = Commentary.new(giveCommentariesParamsPermission(params))
+		if @commentary.save
+			render partial: "dashboards/simpleCommentary"
 		end
 	end
 
-	def makeCommentary
-		@content = params[:content]
-		if @content != ""
-			render partial: "dashboards/simpleCommentary"
+	def destroy
+		Commentary.destroy(params[:id])
+		hideCommentaryId = 'commentary' + params[:id]
+		respond_to do |format|
+			format.js { render :js =>  "hidePost('#{hideCommentaryId}')" }
 		end
 	end
 

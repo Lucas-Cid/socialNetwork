@@ -26,7 +26,7 @@ function showOnProfile(user_id, controllerPath) {
 	  xhttp.send();
 }
 
-function postCommentary(controllerPath) {
+function postCommentary(controllerPath, user_id, post_id) {
   var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
@@ -36,9 +36,12 @@ function postCommentary(controllerPath) {
     };
 
     var content = document.getElementById("userCommentary").value
-    var urlRequest =  controllerPath + "?content=" + content
-    xhttp.open("GET", urlRequest, true);
-    xhttp.send();
+    resetCommentaryInput();
+    var urlRequest =  controllerPath
+    var params =  "content=" + content + "&user_id="+ user_id + "&post_id=" + post_id 
+    xhttp.open("POST", urlRequest, true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send(params);
 }
 
 function resetCommentaryInput() {

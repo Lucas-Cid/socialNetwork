@@ -9,7 +9,6 @@ class DashboardsController < ApplicationController
 		if @postsType.present?
 			@lastPost_id = @postsType.last.id
 		end
-		@lastPost_id = @postsType.last.id
 		@reactionsTimeline = Reaction.where(owner_id:@postsType, user_id:current_user, owner_type:"Post")
 		@pageType = "homepage"
 		@optionalId = 0

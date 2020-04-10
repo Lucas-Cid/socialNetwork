@@ -21,8 +21,8 @@
 
 				 		<%= form_with url: "users/addFriend", method: :get, 
 				 			authenticity_token: false do |f|%>
-					 		<input id="user1_id" name="user1_id" type="hidden", value="<%= current_user.id %>" />
-					 		<input id="user2_id" name="user2_id" type="hidden", value="<%= user.id %>" />
+					 		<input name="user1_id" type="hidden", value="<%= current_user.id %>" />
+					 		<input name="user2_id" type="hidden", value="<%= user.id %>" />
 
 					 		<% if current_user.areWeFriends(user) %>
 					 			<div class="actions">

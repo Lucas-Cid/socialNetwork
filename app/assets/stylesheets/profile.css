@@ -105,6 +105,14 @@
   	background: #373333;
   }
 
+.friendButton {
+	position: absolute;
+	right: 10px;
+	top: 13px;
+	font-size: 20px;
+
+}
+
   .friend {
   	display: flex;
 	border: 0.3px solid  #736d6d;

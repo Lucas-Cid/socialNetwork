@@ -1,13 +1,32 @@
-<div class="commentary">
+<% commentaryId = 'commentary' + @commentary.id.to_s %>
+<div class="commentary" id='<%= commentaryId %>'>
 
 	<div class="card" id="cardModalCommentary">
 
 		<div class="card-header" id="cardHeaderModalCommentary">
 			<%= link_to  current_user.name, dashboards_userProfile_path(:id => current_user.id), :style => "color:white;position: relative;" %>
+
+			<li class="nav-item dropdown" style="position:absolute;right:0;top:0;color: transparent;">
+		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="position: absolute;top:0;right: 0;color: white;">
+		        </a>
+
+		        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="position:relative;">
+
+		        	<a class="dropdown-item" onclick="hidePost('<%= commentaryId %>')" style="cursor:pointer;">Esconder
+		        	</a>
+		        	
+          			<% if @commentary.user_id == current_user.id %>
+
+	    				<%= link_to "Apagar", commentary_path(:id => @commentary.id),:remote => true, :method => "delete", data: { confirm: "Tem certeza que deseja deletar o comentario?" }, :class => "dropdown-item" %>
+
+	    			<% end %>
+
+		        </div>
+		      </li>
 	    </div>
 
 	    <div class="card-body" id="card-body">
-	        <%= @content %>
+	        <%= @commentary.content %>
 	    </div>
 
 	 	<div class="card-footer"  id="cardFooterModalCommentary">

@@ -1,7 +1,9 @@
 <% user_id = current_user.id %>
 <% @postsType.each do |post| %>
+		
+	<% postId = 'post' + post.id.to_s %>
 
-	<div class="post">
+	<div class="post" id="<%= postId %>">
 
 		<% buttonReactionId = 'reactionPost'+post.id.to_s+"_" %>
 		<% counterReactionId = 'counterPost'+post.id.to_s+"_" %>
@@ -13,6 +15,22 @@
 
     		<div class="card-header" id="cardHeaderPost">
     			<%= link_to  post.user.name, dashboards_userProfile_path(:id => post.user_id), :id => "cardHeaderPostLink" %>
+
+    			<li class="nav-item dropdown" style="position:absolute;right:0;color: transparent;">
+			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="position:absolute;top:0;right: 0;color: white;">
+			        </a>
+
+			        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="position:relative;z-index: 3;">
+
+			        	<a class="dropdown-item" onclick="hidePost('<%= postId %>')" style="cursor:pointer;">Esconder</a>
+
+	          			<% if post.user_id == current_user.id %>
+		    				<%= link_to "Deletar", post_path(:id => post.id),:remote => true, :method => "delete", data: { confirm: "Tem certeza que deseja deletar a postagem?" }, :class => "dropdown-item" %>
+		    			<% end %>
+
+			        </div>
+			      </li>
+
 		    </div>
 
 		    <div class="card-body" id="cardBodyPost">
@@ -32,9 +50,9 @@
 
 
 		        <%= form_with url: "/reactions", authenticity_token: false do |f|%>
-			       	<input id="user_id" name="user_id" type="hidden", value="<%= current_user.id %>" />
-			       	<input id="owner_id" name="owner_id" type="hidden", value="<%= post.id %>" />
-			       	<input id="owner_type" name="owner_type" type="hidden", value="Post" />
+			       	<input name="user_id" type="hidden", value="<%= current_user.id %>" />
+			       	<input name="owner_id" type="hidden", value="<%= post.id %>" />
+			       	<input name="owner_type" type="hidden", value="Post" />
 
 					<div class="reaction" style="left:0;">
 				       	<ul>
