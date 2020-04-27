@@ -15,4 +15,29 @@ class UsersController < ApplicationController
 			@user.friends << @friend
 		end
 	end
+
+	def changeProfilePictureModal
+		respond_to do |format|
+
+		    format.html
+
+		    format.js
+
+		end
+	end
+
+	def changeProfilePicture
+		if current_user.profilePicture.attached?
+			current_user.profilePicture.delete
+		end
+		current_user.profilePicture.attach(params[:profilePicture])
+		redirect_back(fallback_location: root_path)
+	end
+
+	def removeProfilePicture
+		if current_user.profilePicture.attached?
+			current_user.profilePicture.delete
+		end
+		redirect_back(fallback_location: root_path)
+	end
 end

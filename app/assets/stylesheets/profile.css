@@ -31,7 +31,7 @@
 }
 
 #iconProfile {
-	border: 2px solid black;
+	border: 4px solid black;
 	height: 130px;
 	width: 130px;
 	margin-left: 0;
@@ -111,6 +111,10 @@
 	top: 13px;
 	font-size: 20px;
 
+}
+
+.changeProfilePicture {
+	margin-top: 13px;
 }
 
   .friend {

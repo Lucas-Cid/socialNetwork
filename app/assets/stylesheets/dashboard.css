@@ -56,6 +56,7 @@ a:active {
 }
 
 .topBar {
+	top: 0;
 	left: 0;
 	color: white;
 	display: inline-flex;
@@ -85,7 +86,7 @@ a:active {
 .userProfile {
 	margin-left: auto;
 	margin-right: auto;
-	border: 2px solid white;
+	border: 0.7px solid white;
 	height: 75px;
 	width: 75px;
 	border-radius: 100%;
@@ -96,7 +97,7 @@ a:active {
 
 .userProfile i{
 	margin-top: 3px;
-	margin-left: 8.2px;
+	margin-left: 11.2px;
 	font-size: 60px;
 }
 
@@ -195,6 +196,15 @@ a:active {
 #cardHeaderPostLink {
 	color:white;
 	position: relative;
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: 10px;
+}
+
+#postUserPicture {
+	margin: 0;
+	height: 50px;
+	width: 50px;
 }
 
 #cardBodyPost {

@@ -1,14 +1,18 @@
 <% @friends.each do |friend| %>
 <% if friend.present? %>
 	<div class="friend">
-
-			<div class="profileImage">
-				<div class="userProfile" id="iconProfile">
+		<div class="profileImage">
+			<div class="userProfile" id="iconProfile">
+				<% if friend.profilePicture.attached? %>
+		        	<%= image_tag friend.profilePicture, :style => "position:relative;width:123px;height:123px;border-radius:100%;", 
+		        	:onclick => "showImage(this)"%>
+		        <% else %>
 					<div class="userIcon">
 						<i class="fas fa-user"></i>
 					</div>
-				</div>
+				<% end %>
 			</div>
+		</div>
 
 			<div class="friendUserName">
 				<%= link_to friend.name, dashboards_userProfile_path(:id => friend.id), :class => "linkFriendUserName" %>

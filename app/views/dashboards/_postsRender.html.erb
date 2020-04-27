@@ -1,6 +1,8 @@
 <% user_id = current_user.id %>
+<% postsCounter = 0 %>
+
 <% @postsType.each do |post| %>
-		
+	<% postsCounter += 1 %>
 	<% postId = 'post' + post.id.to_s %>
 
 	<div class="post" id="<%= postId %>">
@@ -14,6 +16,18 @@
     		<% end %></span>
 
     		<div class="card-header" id="cardHeaderPost">
+	    			<%= link_to dashboards_userProfile_path(:id => post.user_id) do %>
+						<% if post.user.profilePicture.attached? %>
+					        	<%= image_tag post.user.profilePicture, :style => "position:relative;width:48.5px;height:48.5px;border-radius:100%;"%>
+					    <% else %>
+						    <div class="userProfile" id="postUserPicture" style="z-index: 1;">
+								<div class="userIcon">
+									<i class="fas fa-user" style="color: white;font-size: 35px;margin-left: 9.5px;margin-top: 6px;"></i>
+								</div>
+							</div>
+						<% end %>
+					<% end %>
+
     			<%= link_to  post.user.name, dashboards_userProfile_path(:id => post.user_id), :id => "cardHeaderPostLink" %>
 
     			<li class="nav-item dropdown" style="position:absolute;right:0;color: transparent;">
@@ -34,9 +48,11 @@
 		    </div>
 
 		    <div class="card-body" id="cardBodyPost">
-		        <%= post.content %>
+		    	<% if post.content.present? %>
+		      	  <%= post.content %>
+		        <% end %>
 		        <% if post.image.attached? %>
-		        	<%= image_tag post.image, :style => "position:relative;max-width:100%;", 
+		        	<%= image_tag post.image, :style => "position:relative;max-width:100%;margin-left:auto;margin-right:auto;", 
 		        	:onclick => "showImage(this)"%>
 		        <% end %>
 		    </div>
@@ -164,6 +180,8 @@
 
 <% end %>
 
-<button onclick="loadDoc(<%= @lastPost_id %>, this, '<%= @pageType %>', <%= @optionalId %>, '<%= dashboards_renderMore_path %>')">
-	Carregar Mais
-</button>
+<% if postsCounter == 20 %>
+	<button onclick="loadDoc(<%= @lastPost_id %>, this, '<%= @pageType %>', <%= @optionalId %>, '<%= dashboards_renderMore_path %>')">
+		Carregar Mais
+	</button>
+<% end %>

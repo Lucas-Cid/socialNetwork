@@ -10,9 +10,13 @@
 
 		<div class="userProfile" >
 			<%= link_to dashboards_myProfile_path, :style => "color:black;" do %>
-				<div class="userIcon">
-					<i class="fas fa-user" style="color: white"></i>
-				</div>
+				<% if current_user.profilePicture.attached? %>
+			        	<%= image_tag current_user.profilePicture, :style => "position:relative;width:76px;height:76px;border-radius:100%;"%>
+			    <% else %>
+					<div class="userIcon">
+						<i class="fas fa-user" style="color: white"></i>
+					</div>
+				<% end %>
 			<% end %>
 		</div>
 

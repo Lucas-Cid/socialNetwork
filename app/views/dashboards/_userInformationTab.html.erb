@@ -3,11 +3,16 @@
 	<div class="topInformation">
 
 		<div class="iconInformation">
-			<div class="userProfile" id="iconProfile">
-				<div class="userIcon">
-					<i class="fas fa-user"></i>
-				</div>
-			</div>
+				<% if @user.profilePicture.attached? %>
+		        	<%= image_tag @user.profilePicture, :style => "position:relative;width:123px;height:123px;border-radius:100%;", 
+		        	:onclick => "showImage(this)"%>
+		        <% else %>
+			        <div class="userProfile" id="iconProfile">
+						<div class="userIcon">
+							<i class="fas fa-user"></i>
+						</div>
+					</div>
+				<% end %>
 		</div>
 
 		<div class="profileUserName">
@@ -33,7 +38,10 @@
 				</div>
 			  </li>
 
-			  <li><a>Fotos</a></li>
+			  <li>	<div class="userImages" onclick="showOnProfile(<%= @user.id %>, '<%= dashboards_userImages_path %>')" style="cursor: pointer;">
+					<a>Fotos</a>
+				</div>
+			</li>
 
 			  <li>
 			  	<div class="userFriends" onclick="showOnProfile(<%= @user.id %>, '<%= dashboards_userFriends_path %>')" style="cursor: pointer;">
@@ -50,6 +58,9 @@
 	 		<input name="user2_id" type="hidden", value="<%= @user.id %>" />
 
 	 		<% if @user.id == current_user.id %> 
+	 			<div class="changeProfilePicture">
+	 				<%= link_to "Mudar foto", users_changeProfilePictureModal_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target'=>'#postModal', :class => "openPostLink", :style => "openPostLinkion:relative;color:white;font-size:20px;width:100px;"} %>
+	 			</div>
 
 	 		<% elsif current_user.areWeFriends(@user) %>
 	 			<%= button_tag "Remover", :class => "friendButton", data: { disable: true }%>

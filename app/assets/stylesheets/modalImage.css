@@ -15,7 +15,7 @@
 #img {
   margin: auto;
   display: block;
-  width: 80%;
+  min-width: 800px;
   max-width: 1450px;
 }
 

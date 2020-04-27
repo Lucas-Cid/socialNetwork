@@ -1,0 +1,5 @@
+<%= button_to "Remover Foto", users_removeProfilePicture_path, :method => "get"%>
+<%= form_with url: users_changeProfilePicture_path, :method => "post", authenticity_token: false do |f|%>
+	<%= f.file_field :profilePicture %>
+	<%= f.submit "Trocar foto", :class => 'btn btn-primay', data: { disable: true }%>
+<% end %>

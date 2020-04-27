@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   validates :name, presence: true, format: { with: /\A[a-zA-Z\s]+\z/, message: "only allows letters" }
 
+  validates :profilePicture, content_type: ['image/png', 'image/jpg', 'image/jpeg']
+
   has_many :posts, dependent: :destroy
   has_many :commentaries, dependent: :destroy
   has_many :reactions, dependent: :destroy
@@ -15,6 +17,8 @@ class User < ApplicationRecord
 
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id", dependent: :destroy
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user, dependent: :destroy
+
+  has_one_attached :profilePicture, dependent: :destroy
 
   def all_friends
   	self.friends + self.inverse_friends

@@ -1,0 +1,5 @@
+$("#postModal").find(".modal-content").html("<%= escape_javascript (render partial:'changeProfilePicture') %>");
+$("#postModal").modal();
+$('#postModal').on('hide.bs.modal', function () {
+    $('#postModalContent').scrollTop(0);
+});

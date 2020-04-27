@@ -10,6 +10,9 @@ class PostsController < ApplicationController
 	end
 
 	def destroy
+		if Post.find(params[:id]).image.attached?
+			Post.find(params[:id]).image.purge
+		end
 		Post.destroy(params[:id])
 		hidePostId = 'post' + params[:id]
 		respond_to do |format|
