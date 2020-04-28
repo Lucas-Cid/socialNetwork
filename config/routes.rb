@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "dashboards/userImages", to: "dashboards#userImages"
   get "dashboards/userFriends", to: "dashboards#userFriends"
   get "dashboards/showPost", to: "dashboards#showPost"
+  get "dashboards/sharePost", to: "dashboards#sharePost"
   get "dashboards/renderMore", to: "dashboards#renderMore"
   get "commentaries/makeCommentary", to: "commentaries#makeCommentary"
   post "app/showPosts", to: "dashboards_app#showPosts"

@@ -1,12 +1,14 @@
 class PostsController < ApplicationController
 
 	def givePostsParamsPermission (params)
-		params.permit(:user_id, :content, :image)
+		params.permit(:user_id, :content, :image, :post_id)
 	end
 
 	def create
 		Post.create(givePostsParamsPermission(params))
-		redirect_to :controller => 'dashboards', :action => 'homepage'
+		if !params[:share]
+			redirect_to :controller => 'dashboards', :action => 'homepage'
+		end
 	end
 
 	def destroy

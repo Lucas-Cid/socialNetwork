@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
 	validates :user_id, presence: true
 	validates :image, content_type: ['image/png', 'image/jpg', 'image/jpeg']
-	validates :content, presence: true, if: :imageNotPresent?
+	validates :content, presence: true, if: :contentPresent?
 
 	belongs_to :user
 	has_many   :commentaries, dependent: :destroy
@@ -10,7 +10,7 @@ class Post < ApplicationRecord
 	has_many :posts
 	has_one_attached :image, dependent: :destroy
 
-	def imageNotPresent?
-		image.attached? ? false : true
+	def contentPresent?
+		image.attached? || post_id.present? ? false : true
 	end
 end

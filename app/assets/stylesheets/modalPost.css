@@ -35,21 +35,25 @@
 }
 
 #cardHeaderModalPost {
+	position: relative;
+	height: 60px;
 	background-color:black;
 	border: 0;
-	min-height: 53px;
+	font-size: 20px;
 }
 
 #userNameModalPost {
 	color:white;
-	position: relative;
+	position: absolute;
+	top: 0;
+	margin-top: 15px;
+	margin-left: 10px;
 }
 
 #cardBodyModalPost {
 	white-space: pre-line;
 	margin-top: -40px;
 	margin-left: 5px;
-	padding: 0;
 	font-size: 30px;
 }
 
@@ -87,9 +91,9 @@
 }
 
 #cardHeaderModalCommentary {
+	height: 60px;
 	background-color:black;
 	border: 0;
-	min-height: 53px;
 }
 
 #cardFooterModalCommentary {

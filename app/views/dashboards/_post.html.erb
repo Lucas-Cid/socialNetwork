@@ -17,13 +17,70 @@
 		<div class="card" id="cardModalPost">
 
 			<div class="card-header" id="cardHeaderModalPost">
-				<%= link_to  @post.user.name, dashboards_userProfile_path(:id => @post.user_id), :id => "userNameModalPost" %>
+				<%= link_to dashboards_userProfile_path(:id => @post.user_id) do %>
+					<% if @post.user.profilePicture.attached? %>
+				        	<%= image_tag @post.user.profilePicture, :style => "position:absolute;width:48.5px;height:48.5px;border-radius:100%;"%>
+				    <% else %>
+					    <div class="userProfile" id="postUserPicture" style="z-index: 1;position: relative;">
+							<div class="userIcon">
+								<i class="fas fa-user" style="color: white;font-size: 35px;margin-left: 9.5px;margin-top: 6px;"></i>
+							</div>
+						</div>
+					<% end %>
+				<% end %>
+				<%= link_to  @post.user.name, dashboards_userProfile_path(:id => @post.user_id), :id => "userNameModalPost", :style => "margin-left:60px;"%>
 		    </div>
 
 		    <div class="card-body" id="cardBodyModalPost">
 		        <%= @post.content %>
 		        <% if @post.image.attached? %>
-		        	<%= image_tag @post.image, :style => "position:relative;max-width:100%;",:onclick => "showImage(this)"%>
+		        	<%= image_tag @post.image, :style => "absolute;max-width:100%;",:onclick => "showImage(this)"%>
+		        <% end %>
+		        <% if @post.post_id.present? %>
+		        	<% if Post.where(id:@post.post_id).present? %>
+			        	<% sharedPost = Post.find(@post.post_id) %>
+			        	<div class="card" id="cardModalPost">
+			        		<span class="openPost" style="z-index: 1;top: 0;">
+			        			<%= link_to dashboards_showPost_path(:post_id => sharedPost.id), {:remote => true, 'data-toggle' =>  "modal", 'data-target'=>'#postModal', :class => "openPostLink", :style=>"z-index: 1;top: 0;"} do %>
+	    						<% end %>
+	    					</span>
+
+							<div class="card-header" id="cardHeaderModalPost">
+								<%= link_to dashboards_userProfile_path(:id => sharedPost.user_id) do %>
+									<% if sharedPost.user.profilePicture.attached? %>
+								        	<%= image_tag sharedPost.user.profilePicture, :style => "z-index:2;position:relative;width:48.5px;height:48.5px;border-radius:100%;margin-top:-90px"%>
+								    <% else %>
+									    <div class="userProfile" id="postUserPicture" style="z-index:2;margin-top:-58px;position: relative;">
+											<div class="userIcon" style="margin-top:-56px">
+												<i class="fas fa-user" style="color: white;font-size: 35px;margin-left: 9.5px;margin-top: 6px;"></i>
+											</div>
+										</div>
+									<% end %>
+								<% end %>
+								<%= link_to  sharedPost.user.name, dashboards_userProfile_path(:id => sharedPost.user_id), :id => "userNameModalPost", :style => "margin-left:60px;z-index:2;"%>
+						    </div>
+
+						    <div class="card-body" id="cardBodyModalPost">
+						        <%= sharedPost.content %>
+						        <% if sharedPost.image.attached? %>
+						        	<%= image_tag sharedPost.image, :style => "position:relative;max-width:100%;",:onclick => "showImage(this)"%>
+						        <% end %>
+						        <% if sharedPost.post_id.present? %>
+						        	<div class="card" style="margin-bottom: -40px;">
+										<div class="card-body">
+											...
+										</div>
+									</div>
+						        <% end %>
+						    </div>
+						</div>
+					<% else %>
+						<div class="card" style="margin-bottom: -40px;">
+							<div class="card-body">
+								Esta Postagem foi deletada
+							</div>
+						</div>
+					<% end %>
 		        <% end %>
 		    </div>
 
@@ -174,8 +231,19 @@
 		    	<div class="card" id="cardModalCommentary">
 
 		    		<div class="card-header" id="cardHeaderModalCommentary">
-		    			<%= link_to  commentary.user.name, dashboards_userProfile_path(:id => commentary.user_id), :id => "userNameModalPost" %>
-				    	
+		    			<%= link_to dashboards_userProfile_path(:id => commentary.user_id) do %>
+							<% if commentary.user.profilePicture.attached? %>
+						        	<%= image_tag commentary.user.profilePicture, :style => "position:absolute;width:48.5px;height:48.5px;border-radius:100%;"%>
+						    <% else %>
+							    <div class="userProfile" id="postUserPicture" style="z-index: 1;position: relative;">
+									<div class="userIcon">
+										<i class="fas fa-user" style="color: white;font-size: 35px;margin-left: 9.5px;margin-top: 6px;"></i>
+									</div>
+								</div>
+							<% end %>
+						<% end %>
+						<%= link_to  commentary.user.name, dashboards_userProfile_path(:id => commentary.user_id), :id => "userNameModalPost", :style => "margin-left:60px;"%>
+						    	
 				    	<li class="nav-item dropdown" style="position:absolute;right:0;top:0;color: transparent;">
 					        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="position: absolute;top:0;right: 0;color: white;">
 					        </a>

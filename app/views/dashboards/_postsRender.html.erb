@@ -20,7 +20,7 @@
 						<% if post.user.profilePicture.attached? %>
 					        	<%= image_tag post.user.profilePicture, :style => "position:relative;width:48.5px;height:48.5px;border-radius:100%;"%>
 					    <% else %>
-						    <div class="userProfile" id="postUserPicture" style="z-index: 1;">
+						    <div class="userProfile" id="postUserPicture" style="z-index: 1;position: relative;">
 								<div class="userIcon">
 									<i class="fas fa-user" style="color: white;font-size: 35px;margin-left: 9.5px;margin-top: 6px;"></i>
 								</div>
@@ -54,6 +54,56 @@
 		        <% if post.image.attached? %>
 		        	<%= image_tag post.image, :style => "position:relative;max-width:100%;margin-left:auto;margin-right:auto;", 
 		        	:onclick => "showImage(this)"%>
+		        <% end %>
+		        <% if post.post_id.present? %>
+		        	<% if Post.where(id:post.post_id).present? %>
+			        	<% sharedPost = Post.find(post.post_id) %>
+			        	<div class="card" style="margin-bottom: -40px;">
+				    		<span class="openPost"><%= link_to dashboards_showPost_path(:post_id => sharedPost.id), {:remote => true, 'data-toggle' =>  "modal", 'data-target'=>'#postModal', :class => "openPostLink"} do %>
+				    		<% end %></span>
+
+				    		<div class="card-header" id="cardHeaderPost">
+					    			<%= link_to dashboards_userProfile_path(:id => sharedPost.user_id) do %>
+										<% if sharedPost.user.profilePicture.attached? %>
+									        	<%= image_tag sharedPost.user.profilePicture, :style => "position:relative;width:48.5px;height:48.5px;border-radius:100%;margin-top:-80px"%>
+									    <% else %>
+										    <div class="userProfile" id="postUserPicture" style="z-index: 1;margin-top:-42px;position: relative;">
+												<div class="userIcon" style="margin-top:-83px">
+													<i class="fas fa-user" style="color: white;font-size: 35px;margin-left: 9.5px;margin-top: 6px;"></i>
+												</div>
+											</div>
+										<% end %>
+									<% end %>
+
+				    			<%= link_to  sharedPost.user.name, dashboards_userProfile_path(:id => sharedPost.user_id), :id => "cardHeaderPostLink" %>
+
+						    </div>
+
+						    <div class="card-body" id="cardBodyPost">
+						    	<% if sharedPost.content.present? %>
+						      	  <%= sharedPost.content %>
+						        <% end %>
+						        <% if sharedPost.image.attached? %>
+						        	<%= image_tag sharedPost.image, :style => "position:relative;max-width:100%;margin-left:auto;margin-right:auto;", 
+						        	:onclick => "showImage(this)"%>
+						        <% end %>
+						        <% if sharedPost.post_id.present? %>
+						        	<div class="card" style="margin-bottom: -40px;">
+										<div class="card-body">
+											...
+										</div>
+									</div>
+						        <% end %>
+						    </div>
+
+						</div>
+					<% else %>
+						<div class="card" style="margin-bottom: -40px;">
+							<div class="card-body">
+								Esta Postagem foi deletada
+							</div>
+						</div>
+					<% end %>
 		        <% end %>
 		    </div>
 
@@ -171,6 +221,8 @@
 					</div>
 
 			 	<% end %>
+
+			 	<%= link_to "Compartilhar", dashboards_sharePost_path(post_id:post.id), :remote => true, 'data-toggle' =>  "modal", 'data-target'=>'#postModal', :style => "margin-left:150px;position:relative;" %>
 			 	
 			 </div>
 

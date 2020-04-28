@@ -1,3 +1,6 @@
+html {
+    overflow-y: scroll;
+}
 td{
   border-collapse: collapse;
   padding: 3px;
@@ -27,6 +30,7 @@ a:active {
 }
 
 .dashboard {
+	position: relative;
 	min-width: 700px;
 	margin: auto;
 	width: 70%;
@@ -185,6 +189,7 @@ a:active {
 }
 
 #cardHeaderPost {
+	height: 60px;
 	background-color:black;
 	border: 0;
 	min-height: 53px;
@@ -194,6 +199,7 @@ a:active {
 }
 
 #cardHeaderPostLink {
+	font-size: 20px;
 	color:white;
 	position: relative;
 	margin-top: auto;
@@ -211,7 +217,7 @@ a:active {
 	white-space: pre-line;
 	margin-top: -40px;
 	margin-left: 5px;
-	padding: 0px;
+	padding: 10px;
 	font-size: 30px;
 }
 

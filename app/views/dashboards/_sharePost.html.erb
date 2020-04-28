@@ -1,0 +1,70 @@
+<div class="modal-header">
+
+  <button type="button" class="close" data-dismiss="modal">x</button>
+
+</div>
+
+<div class="modal-body">
+
+	<div id="commentaryCreation" class="card gedf-card">
+		<%= form_with url: posts_path, authenticity_token: false do |f|%>
+
+			<input type="hidden" name="post_id" value="<%= @post.id %>">
+			<input type="hidden" name="user_id" value="<%= current_user.id %>">
+			<input type="hidden" name="share" value="1">
+
+			<div class="cardBodyModalCommentaryCreation">
+				<textarea class="textArea" name="content" autofocus placeholder="Comente algo"></textarea>
+			</div>
+
+			<div class="card" style="position: relative;">
+
+				<% sharedPost = @post%>
+	    		<span class="openPost"><%= link_to dashboards_showPost_path(:post_id => sharedPost.id), {:remote => true, 'data-toggle' =>  "modal", 'data-target'=>'#postModal', :class => "openPostLink"} do %>
+	    		<% end %></span>
+
+	    		<div class="card-header" id="cardHeaderPost">
+		    			<%= link_to dashboards_userProfile_path(:id => sharedPost.user_id) do %>
+							<% if sharedPost.user.profilePicture.attached? %>
+						        	<%= image_tag sharedPost.user.profilePicture, :style => "position:relative;width:48.5px;height:48.5px;border-radius:100%;"%>
+						    <% else %>
+							    <div class="userProfile" id="postUserPicture" style="z-index: 1;margin-top:-42px;position: relative;">
+									<div class="userIcon" style="margin-top:-83px">
+										<i class="fas fa-user" style="color: white;font-size: 35px;margin-left: 9.5px;margin-top: 6px;"></i>
+									</div>
+								</div>
+							<% end %>
+						<% end %>
+
+	    			<%= link_to  sharedPost.user.name, dashboards_userProfile_path(:id => sharedPost.user_id), :id => "cardHeaderPostLink" %>
+
+			    </div>
+
+			    <div class="card-body" id="cardBodyPost">
+			    	<% if sharedPost.content.present? %>
+			      	  <%= sharedPost.content %>
+			        <% end %>
+			        <% if sharedPost.image.attached? %>
+			        	<%= image_tag sharedPost.image, :style => "position:relative;max-width:100%;margin-left:auto;margin-right:auto;", 
+			        	:onclick => "showImage(this)"%>
+			        <% end %>
+			        <% if sharedPost.post_id.present? %>
+			        	<div class="card" style="margin-bottom: -40px;">
+							<div class="card-body">
+								...
+							</div>
+						</div>
+			        <% end %>
+			    </div>
+
+			</div>
+
+			<div class="actions" style="margin-top: 15px;">
+				<%= button_to "Enviar", posts_path,:remote => true, :method => "POST", data: { confirm: "Tem certeza que deseja compartilhar a postagem?"}, data: { disable: true }, :onclick => "closePostModal()" %>
+			</div>
+
+		<% end %>
+
+	</div>
+	
+</div>

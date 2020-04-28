@@ -106,6 +106,17 @@ class DashboardsController < ApplicationController
 
 	end
 
+	def sharePost
+		@post = Post.find(params[:post_id])
+		respond_to do |format|
+
+		    format.html
+
+		    format.js
+
+		end
+	end
+
 	def renderMore 
 		if params[:pageType] == "homepage"
 
