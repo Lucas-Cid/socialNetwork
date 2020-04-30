@@ -1,7 +1,7 @@
 class Reaction < ApplicationRecord
 	validates :reactionType, presence: true
 
-	enum reactionType: [:type1, :type2, :type3, :type4, :dislike]
+	enum reactionType: [:type1, :type2, :type3, :type4]
 
 	belongs_to :user
 	belongs_to :owner, polymorphic: true
@@ -34,8 +34,6 @@ class Reaction < ApplicationRecord
 				toBeReacted.update(reactionType3:toBeReacted[:reactionType3]+1)
 			when "type4"
 				toBeReacted.update(reactionType4:toBeReacted[:reactionType4]+1)
-			when "dislike"
-				toBeReacted.update(dislikes:toBeReacted[:dislikes]+1)
 		end
 	end
 
@@ -69,9 +67,6 @@ class Reaction < ApplicationRecord
 				toLostReaction.update(reactionType3:toLostReaction[:reactionType3]-1)
 			when "type4"
 				toLostReaction.update(reactionType4:toLostReaction[:reactionType4]-1)
-			when "dislike"
-				toLostReaction.update(dislikes:toLostReaction[:dislikes]-1)
-
 		end
 	end
 

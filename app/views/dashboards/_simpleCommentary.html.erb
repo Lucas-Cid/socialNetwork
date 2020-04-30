@@ -4,7 +4,20 @@
 	<div class="card" id="cardModalCommentary">
 
 		<div class="card-header" id="cardHeaderModalCommentary">
-			<%= link_to  current_user.name, dashboards_userProfile_path(:id => current_user.id), :style => "color:white;position: relative;" %>
+			<%= link_to dashboards_userProfile_path(:id => @commentary.user_id) do %>
+				<% if @commentary.user.profilePicture.attached? %>
+			        	<%= image_tag @commentary.user.profilePicture, :style => "position:relative;width:48.5px;height:48.5px;border-radius:100%;"%>
+			    <% else %>
+				    <div class="userProfile" id="postUserPicture" style="z-index: 1;position: relative;">
+						<div class="userIcon">
+							<i class="fas fa-user" style="color: white;font-size: 35px;margin-left: 9.5px;margin-top: 6px;"></i>
+						</div>
+					</div>
+				<% end %>
+			<% end %>
+			<%= link_to  @commentary.user.name, dashboards_userProfile_path(:id => @commentary.user_id), :id => "userNameModalPost", style: "margin-left:10px;"%>
+
+			<%= link_to  @commentary.user.username, dashboards_userProfile_path(:id => @commentary.user_id), :id => "userNameModalPost", style: "margin-left:10px;"%>
 
 			<li class="nav-item dropdown" style="position:absolute;right:0;top:0;color: transparent;">
 		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="position: absolute;top:0;right: 0;color: white;">
@@ -37,7 +50,8 @@
 						<a>
 								<li class="reaction-menu">
 					        	<div class="actions">
-					        		<button  class="fas fa-thumbs-up">
+					        		<button  class="mdc-icon-button material-icons">
+					        			favorite_border
 					        		</button>
 								</div>
 							</li>
@@ -57,8 +71,8 @@
 						<a>
 								<li class="reaction-menu">
 					        	<div class="actions">
-					        		<button  class="fas fa-surprise">
-					        			
+					        		<button  class="mdc-icon-button material-icons">
+					        			whatshot
 					        		</button>
 								</div>
 							</li>
@@ -78,7 +92,9 @@
 						<a>
 								<li class="reaction-menu">
 					        	<div class="actions">
-					        		<button  class="fas fa-angry"></button>
+					        		<button  class="mdc-icon-button material-icons">
+					        			tag_faces
+					        		</button>
 								</div>
 							</li>
 						</a>
@@ -97,26 +113,9 @@
 						<a>
 								<li class="reaction-menu">
 					        	<div class="actions">
-					        		<button class="fas fa-sad-cry"></button>
-								</div>
-							</li>
-						</a>
-					</ul>
-					<ul>
-						<a>
-								<li class="reaction-menu">
-					   			0
-					   		</li>
-					 	</a>
-					 </ul>
-				</div>
-
-				 <div class="reaction" style="margin-left: 110px;">
-			       	<ul>
-						<a>
-								<li class="reaction-menu">
-					        	<div class="actions">
-					        		<button class="fas fa-thumbs-down"></button>
+					        		<button class="mdc-icon-button material-icons">
+					        			mood_bad
+					        		</button>
 								</div>
 							</li>
 						</a>

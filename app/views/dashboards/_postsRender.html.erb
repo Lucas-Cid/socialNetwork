@@ -28,7 +28,9 @@
 						<% end %>
 					<% end %>
 
-    			<%= link_to  post.user.name, dashboards_userProfile_path(:id => post.user_id), :id => "cardHeaderPostLink" %>
+    			<%= link_to  post.user.name, dashboards_userProfile_path(:id => post.user_id), :id => "cardHeaderPostLink", style: "margin-left:10px;" %>
+    			<%= link_to  post.user.username, dashboards_userProfile_path(:id => post.user_id), :id => "cardHeaderPostLink", style: "color:lightgray;margin-left:10px;" %>
+    			<a style="color:lightgray;margin-top: 12px;margin-left: 5px;font-size: 16px;"> -  <%= Post.getTime(post.created_at.localtime) %></a>
 
     			<li class="nav-item dropdown" style="position:absolute;right:0;color: transparent;">
 			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="position:absolute;top:0;right: 0;color: white;">
@@ -47,13 +49,15 @@
 
 		    </div>
 
-		    <div class="card-body" id="cardBodyPost">
+		    <div class="card-body" id="cardBodyPost" >
 		    	<% if post.content.present? %>
 		      	  <%= post.content %>
 		        <% end %>
 		        <% if post.image.attached? %>
-		        	<%= image_tag post.image, :style => "position:relative;max-width:100%;margin-left:auto;margin-right:auto;", 
-		        	:onclick => "showImage(this)"%>
+		        	<div class="postImage">
+		        		<%= image_tag post.image, :style => "position:relative;max-width:100%;margin-left:auto;margin-right:auto;", 
+		        		:onclick => "showImage(this)"%>
+		        	</div>
 		        <% end %>
 		        <% if post.post_id.present? %>
 		        	<% if Post.where(id:post.post_id).present? %>
@@ -76,6 +80,8 @@
 									<% end %>
 
 				    			<%= link_to  sharedPost.user.name, dashboards_userProfile_path(:id => sharedPost.user_id), :id => "cardHeaderPostLink" %>
+				    			<%= link_to  sharedPost.user.username, dashboards_userProfile_path(:id => post.user_id), :id => "cardHeaderPostLink", style: "color:lightgray;" %>
+				    			<a style="color:lightgray;margin-top: 12px;margin-left: 5px;font-size: 16px;"> -  <%= Post.getTime(post.created_at.localtime) %></a>
 
 						    </div>
 
@@ -84,8 +90,10 @@
 						      	  <%= sharedPost.content %>
 						        <% end %>
 						        <% if sharedPost.image.attached? %>
-						        	<%= image_tag sharedPost.image, :style => "position:relative;max-width:100%;margin-left:auto;margin-right:auto;", 
-						        	:onclick => "showImage(this)"%>
+						        	<div class="postImage">
+						        		<%= image_tag sharedPost.image, :style => "position:relative;max-width:100%;margin-left:auto;margin-right:auto;", 
+						        		:onclick => "showImage(this)"%>
+						        	</div>
 						        <% end %>
 						        <% if sharedPost.post_id.present? %>
 						        	<div class="card" style="margin-bottom: -40px;">
@@ -110,7 +118,6 @@
 		 	<div class="card-footer" id="cardFooterPost">
 		 		
 		 		<% @reaction = @reactionsTimeline.where(owner_id:post.id, owner_type:"Post").first %>
-				<% @colorBlue = "#3333cc;" %>
 				<% @colorBlack = "black;" %>
 				<% if  @reaction %>
 					<% @type = @reaction.reactionType %>
@@ -130,7 +137,9 @@
    								<li class="reaction-menu">
    									
 						        	<div class="actions">
-						        		<button  onclick="changeReaction(this, <%= post.id %>, 'Post',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-thumbs-up" value="type1" name="reactionType" style=<%= 'color:'+(@type == "type1" ? @colorBlue : @colorBlack) %> id='<%=buttonReactionId+"type1"%>' data-disable="true"></button>
+						        		<button  onclick="changeReaction(this, <%= post.id %>, 'Post',<%= user_id %>, <%= ownerPost_id %>)" class="mdc-icon-button material-icons" value="type1" name="reactionType" style='<%= 'color:'+(@type == "type1" ? "#E91E63;" : @colorBlack) %>' id='<%=buttonReactionId+"type1"%>' data-disable="true">
+						        			favorite_border
+						        		</button>
 									</div>
 								</li>
 							</a>
@@ -149,7 +158,9 @@
 							<a>
    								<li class="reaction-menu">
 						        	<div class="actions">
-						        		<button  onclick="changeReaction(this, <%= post.id %>, 'Post',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-surprise" value="type2" name="reactionType" style=<%= 'color:'+(@type == "type2" ? @colorBlue : @colorBlack) %>  id='<%=(buttonReactionId+"type2")%>' data-disable="true" ></button>
+						        		<button  onclick="changeReaction(this, <%= post.id %>, 'Post',<%= user_id %>, <%= ownerPost_id %>)"  class="mdc-icon-button material-icons" value="type2" name="reactionType" style='<%= 'color:'+(@type == "type2" ? "red;" : @colorBlack)%>'  id='<%=(buttonReactionId+"type2")%>' data-disable="true" >
+						        			whatshot
+						        		</button>
 									</div>
 								</li>
 							</a>
@@ -168,7 +179,9 @@
 							<a>
    								<li class="reaction-menu">
 						        	<div class="actions">
-						        		<button  onclick="changeReaction(this, <%= post.id %>, 'Post',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-angry" value="type3" name="reactionType" style=<%= 'color:'+(@type == "type3" ? @colorBlue : @colorBlack) %> id='<%=buttonReactionId+"type3"%>' data-disable="true" ></button>
+						        		<button  onclick="changeReaction(this, <%= post.id %>, 'Post',<%= user_id %>, <%= ownerPost_id %>)" class="mdc-icon-button material-icons" value="type3" name="reactionType" style='<%= 'color:'+(@type == "type3" ? "#FFEB3B;" : @colorBlack)%>' id='<%=buttonReactionId+"type3"%>' data-disable="true" >
+						        			tag_faces
+						        		</button>
 									</div>
 								</li>
 							</a>
@@ -187,7 +200,9 @@
 							<a>
    								<li class="reaction-menu">
 						        	<div class="actions">
-						        		<button  onclick="changeReaction(this, <%= post.id %>, 'Post',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-sad-cry" value="type4" name="reactionType" style=<%= 'color:'+(@type == "type4" ? @colorBlue : @colorBlack) %> id='<%=buttonReactionId+"type4"%>' data-disable="true" ></button>
+						        		<button  onclick="changeReaction(this, <%= post.id %>, 'Post',<%= user_id %>, <%= ownerPost_id %>)" class="mdc-icon-button material-icons" value="type4" name="reactionType" style='<%= 'color:'+(@type == "type4" ? "#2196F3;": @colorBlack)%>' id='<%=buttonReactionId+"type4"%>' data-disable="true" >
+						        			mood_bad
+						        		</button>
 									</div>
 								</li>
 							</a>
@@ -200,26 +215,7 @@
 						 	</a>
 						 </ul>
 					</div>
-
-					 <div class="reaction" style="margin-left: 110px;">
-				       	<ul>
-							<a>
-   								<li class="reaction-menu">
-						        	<div class="actions">
-						        		<button  onclick="changeReaction(this, <%= post.id %>, 'Post',<%= user_id %>, <%= ownerPost_id %>)" class="fas fa-thumbs-down" value="dislike" name="reactionType" style=<%= 'color:'+(@type == "dislike" ? @colorBlue : @colorBlack) %> id='<%=buttonReactionId+"dislike"%>' data-disable="true" ></button>
-									</div>
-								</li>
-							</a>
-						</ul>
-						<ul>
-							<a>
-									<li class="reaction-menu" id=<%= counterReactionId+"dislike" %>>
-						   			<%= post.dislikes %>
-						   		</li>
-						 	</a>
-						 </ul>
-					</div>
-
+					
 			 	<% end %>
 
 			 	<%= link_to "Compartilhar", dashboards_sharePost_path(post_id:post.id), :remote => true, 'data-toggle' =>  "modal", 'data-target'=>'#postModal', :style => "margin-left:150px;position:relative;" %>

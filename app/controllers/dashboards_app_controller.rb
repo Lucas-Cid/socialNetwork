@@ -26,7 +26,6 @@ class DashboardsAppController < ApplicationController
 							:reactionType2 => post.reactionType2,
 							:reactionType3 => post.reactionType3,
 							:reactionType4 => post.reactionType4,
-							:dislikes      => post.dislikes
 					   }
 			posts.push(postHash)
 		end

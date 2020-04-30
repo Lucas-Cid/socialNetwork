@@ -8,6 +8,9 @@ class User < ApplicationRecord
 
   validates :profilePicture, content_type: ['image/png', 'image/jpg', 'image/jpeg']
 
+  validates :username, presence: true, uniqueness: true, length: { minimum: 3, maximum: 15 }, format: { with: /\A@(([a-zA-Z0-9])*(\-)*(\_)*(\.)*)*\z/,
+                                       message: "only allows leters, numbers, '-', '_', '.' and spaces"}
+
   has_many :posts, dependent: :destroy
   has_many :commentaries, dependent: :destroy
   has_many :reactions, dependent: :destroy

@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(version: 2020_04_10_183621) do
     t.integer "reactionType2", default: 0
     t.integer "reactionType3", default: 0
     t.integer "reactionType4", default: 0
-    t.integer "dislikes", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -72,7 +71,7 @@ ActiveRecord::Schema.define(version: 2020_04_10_183621) do
     t.integer "reactionType2", default: 0
     t.integer "reactionType3", default: 0
     t.integer "reactionType4", default: 0
-    t.integer "dislikes", default: 0
+    t.integer "shareCount", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -89,6 +88,7 @@ ActiveRecord::Schema.define(version: 2020_04_10_183621) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
+    t.string "username"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

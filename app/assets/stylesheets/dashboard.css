@@ -170,6 +170,7 @@ a:active {
 }
 
 #sendPostButton {
+	margin-top: 15px;
 	background-color:black;
 	color: white;
 }
@@ -219,6 +220,13 @@ a:active {
 	margin-left: 5px;
 	padding: 10px;
 	font-size: 30px;
+}
+
+.postImage {
+	max-height: 700px;
+	overflow: hidden;
+	margin-top: -40px;
+	display: inline-block;
 }
 
 #cardFooterPost {

@@ -28,8 +28,8 @@
 							<% if sharedPost.user.profilePicture.attached? %>
 						        	<%= image_tag sharedPost.user.profilePicture, :style => "position:relative;width:48.5px;height:48.5px;border-radius:100%;"%>
 						    <% else %>
-							    <div class="userProfile" id="postUserPicture" style="z-index: 1;margin-top:-42px;position: relative;">
-									<div class="userIcon" style="margin-top:-83px">
+							    <div class="userProfile" id="postUserPicture" style="z-index: 1;position: relative;">
+									<div class="userIcon">
 										<i class="fas fa-user" style="color: white;font-size: 35px;margin-left: 9.5px;margin-top: 6px;"></i>
 									</div>
 								</div>
@@ -37,6 +37,7 @@
 						<% end %>
 
 	    			<%= link_to  sharedPost.user.name, dashboards_userProfile_path(:id => sharedPost.user_id), :id => "cardHeaderPostLink" %>
+	    			<%= link_to  sharedPost.user.username, dashboards_userProfile_path(:id => sharedPost.user_id), :id => "cardHeaderPostLink", style: "color:lightgray" %>
 
 			    </div>
 
@@ -58,7 +59,7 @@
 			    </div>
 
 			</div>
-
+			<%= f.file_field :image %>
 			<div class="actions" style="margin-top: 15px;">
 				<%= button_to "Enviar", posts_path,:remote => true, :method => "POST", data: { confirm: "Tem certeza que deseja compartilhar a postagem?"}, data: { disable: true }, :onclick => "closePostModal()" %>
 			</div>

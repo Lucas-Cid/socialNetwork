@@ -49,6 +49,14 @@
 				</div>
 			  </li>
 
+			  <% if @user.id == current_user.id %> 
+			  	<li>
+		 			<div>
+		 				<%= link_to "Mudar foto", users_changeProfilePictureModal_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target'=>'#postModal', :class => "openPostLink", style: "position:relative"} %>
+		 			</div>
+		 		</li>
+	 		<% end %>
+
 			</ul>
 
 		</div>
@@ -57,10 +65,7 @@
 	 		<input name="user1_id" type="hidden", value="<%= current_user.id %>" />
 	 		<input name="user2_id" type="hidden", value="<%= @user.id %>" />
 
-	 		<% if @user.id == current_user.id %> 
-	 			<div class="changeProfilePicture">
-	 				<%= link_to "Mudar foto", users_changeProfilePictureModal_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target'=>'#postModal', :class => "openPostLink", :style => "openPostLinkion:relative;color:white;font-size:20px;width:100px;"} %>
-	 			</div>
+ 			<% if @user.id == current_user.id %> 
 
 	 		<% elsif current_user.areWeFriends(@user) %>
 	 			<%= button_tag "Remover", :class => "friendButton", data: { disable: true }%>

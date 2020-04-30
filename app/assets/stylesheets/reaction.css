@@ -1,3 +1,8 @@
+.mdc-icon-button{
+    background-color: transparent;
+    border: 0px;
+}
+
 .reaction{
     position: absolute;
 	width: 37px;

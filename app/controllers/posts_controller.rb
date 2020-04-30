@@ -6,6 +6,14 @@ class PostsController < ApplicationController
 
 	def create
 		Post.create(givePostsParamsPermission(params))
+		if params[:post_id].present?
+			sharedPost = Post.where(id:params[:post_id])
+			if sharedPost.present?
+				shareCount = sharedPost.first.shareCount
+				shareCount += 1
+				sharedPost.first.update(shareCount:shareCount)
+			end
+		end
 		if !params[:share]
 			redirect_to :controller => 'dashboards', :action => 'homepage'
 		end
