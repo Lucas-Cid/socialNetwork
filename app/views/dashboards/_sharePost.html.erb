@@ -46,8 +46,10 @@
 			      	  <%= sharedPost.content %>
 			        <% end %>
 			        <% if sharedPost.image.attached? %>
-			        	<%= image_tag sharedPost.image, :style => "position:relative;max-width:100%;margin-left:auto;margin-right:auto;", 
-			        	:onclick => "showImage(this)"%>
+			        	<div class="postImage">
+			        		<%= image_tag sharedPost.image, :style => "position:relative;max-width:100%;margin-left:auto;margin-right:auto;", 
+			        		:onclick => "showImage(this)"%>
+			        	</div>
 			        <% end %>
 			        <% if sharedPost.post_id.present? %>
 			        	<div class="card" style="margin-bottom: -40px;">

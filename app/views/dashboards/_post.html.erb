@@ -36,8 +36,8 @@
 		    <div class="card-body" id="cardBodyModalPost">
 		        <%= @post.content %>
 		        <% if @post.image.attached? %>
-		        	<div class="postImage">
-		        		<%= image_tag @post.image, :style => "absolute;max-width:100%;margin-top:-50px;",:onclick => "showImage(this)"%>
+		        	<div class="postImage" style="margin-top:-100px">
+		        		<%= image_tag @post.image, :style => "absolute;max-width:100%;margin-left:auto;margin-right:auto;",:onclick => "showImage(this)"%>
 		        	</div>
 		        <% end %>
 		        <% if @post.post_id.present? %>
