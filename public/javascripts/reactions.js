@@ -6,9 +6,9 @@ function changeReaction(button, owner_id, owner_type, user_id, ownerPost_id) {
 	else
 	{
 
-		if (button.style.color != 'black') {
+		if (button.style.color != 'white') {
 			var counter_id = 'counter'+owner_type+owner_id+'_'+button.value;
-			button.style.color = 'black';
+			button.style.color = 'white';
 			var counter = document.getElementById(counter_id).innerHTML;
 			document.getElementById(counter_id).innerHTML = counter-1;
 		}
@@ -18,9 +18,9 @@ function changeReaction(button, owner_id, owner_type, user_id, ownerPost_id) {
 			for (let type of types) {
 				otherReactionsId = 'reaction'+owner_type+owner_id+'_'+type;
 				var element = document.getElementById(otherReactionsId)
-				if (element.style.color != 'black')
+				if (element.style.color != 'white')
 				{
-					element.style.color = 'black';
+					element.style.color = 'white';
 
 					var counter_id = 'counter'+owner_type+owner_id+'_'+element.value;
 					var counter = document.getElementById(counter_id).innerHTML;
@@ -49,7 +49,7 @@ function changeReaction(button, owner_id, owner_type, user_id, ownerPost_id) {
 			  	button.style.color = '#2196F3';
 			    break;
 			  default:
-			  	button.style.color = 'black';
+			  	button.style.color = 'white';
 			}
 			var counter = document.getElementById(counter_id).innerHTML;
 			document.getElementById(counter_id).innerHTML = parseInt(counter)+1;

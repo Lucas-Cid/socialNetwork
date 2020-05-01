@@ -37,7 +37,7 @@
 		        <%= @post.content %>
 		        <% if @post.image.attached? %>
 		        	<div class="postImage">
-		        		<%= image_tag @post.image, :style => "absolute;max-width:100%;",:onclick => "showImage(this)"%>
+		        		<%= image_tag @post.image, :style => "absolute;max-width:100%;margin-top:-50px;",:onclick => "showImage(this)"%>
 		        	</div>
 		        <% end %>
 		        <% if @post.post_id.present? %>
@@ -94,7 +94,7 @@
 
 		 	<div class="card-footer" id="cardFooterModalPost">
 		 		<% @reaction = current_user.reactions.where(owner_id:@post.id, owner_type:"Post").first %>
-				<% @colorBlack = "black;" %>
+				<% @colorWhite = "white;" %>
 				<% if  @reaction %>
 					<% @type = @reaction.reactionType %>
         		<% else %>
@@ -111,7 +111,7 @@
 							<a>
 									<li class="reaction-menu">
 						        	<div class="actions">
-						        		<button  onclick="changeReaction(this, <%= @post.id %>, 'PostOpen',<%= user_id %>, <%= ownerPost_id %>)" class="mdc-icon-button material-icons" value="type1" name="reactionType" style='<%= 'color:'+(@type == "type1" ? '#E91E63;' : @colorBlack)%>' id='<%=buttonReactionId+"type1"%>' data-disable="true" >
+						        		<button  onclick="changeReaction(this, <%= @post.id %>, 'PostOpen',<%= user_id %>, <%= ownerPost_id %>)" class="mdc-icon-button material-icons" value="type1" name="reactionType" style='<%= 'color:'+(@type == "type1" ? '#E91E63;' : @colorWhite)%>' id='<%=buttonReactionId+"type1"%>' data-disable="true" >
 						        			favorite_border
 						        		</button>
 									</div>
@@ -132,7 +132,7 @@
 							<a>
 									<li class="reaction-menu">
 						        	<div class="actions">
-						        		<button  onclick="changeReaction(this, <%= @post.id %>, 'PostOpen',<%= user_id %>, <%= ownerPost_id %>)" class="mdc-icon-button material-icons" value="type2" name="reactionType" style='<%= 'color:'+(@type == "type2" ? 'red;' : @colorBlack)%>'  id='<%=(buttonReactionId+"type2")%>' data-disable="true" >
+						        		<button  onclick="changeReaction(this, <%= @post.id %>, 'PostOpen',<%= user_id %>, <%= ownerPost_id %>)" class="mdc-icon-button material-icons" value="type2" name="reactionType" style='<%= 'color:'+(@type == "type2" ? 'red;' : @colorWhite)%>'  id='<%=(buttonReactionId+"type2")%>' data-disable="true" >
 						        			whatshot
 						        		</button>
 									</div>
@@ -153,7 +153,7 @@
 							<a>
 									<li class="reaction-menu">
 						        	<div class="actions">
-						        		<button  onclick="changeReaction(this, <%= @post.id %>, 'PostOpen',<%= user_id %>, <%= ownerPost_id %>)" class="mdc-icon-button material-icons" value="type3" name="reactionType" style='<%= 'color:'+(@type == "type3" ? '#FFEB3B;': @colorBlack)%>' id='<%=buttonReactionId+"type3"%>' data-disable="true" >
+						        		<button  onclick="changeReaction(this, <%= @post.id %>, 'PostOpen',<%= user_id %>, <%= ownerPost_id %>)" class="mdc-icon-button material-icons" value="type3" name="reactionType" style='<%= 'color:'+(@type == "type3" ? '#FFEB3B;': @colorWhite)%>' id='<%=buttonReactionId+"type3"%>' data-disable="true" >
 						        			tag_faces
 						        		</button>
 									</div>
@@ -174,7 +174,7 @@
 							<a>
 									<li class="reaction-menu">
 						        	<div class="actions">
-						        		<button  onclick="changeReaction(this, <%= @post.id %>, 'PostOpen',<%= user_id %>, <%= ownerPost_id %>)" class="mdc-icon-button material-icons" value="type4" name="reactionType" style='<%= 'color:'+(@type == "type4" ? '#2196F3;' : @colorBlack)%>' id='<%=buttonReactionId+"type4"%>' data-disable="true" >
+						        		<button  onclick="changeReaction(this, <%= @post.id %>, 'PostOpen',<%= user_id %>, <%= ownerPost_id %>)" class="mdc-icon-button material-icons" value="type4" name="reactionType" style='<%= 'color:'+(@type == "type4" ? '#2196F3;' : @colorWhite)%>' id='<%=buttonReactionId+"type4"%>' data-disable="true" >
 						        			mood_bad
 						        		</button>
 									</div>
@@ -271,7 +271,7 @@
 
 				 	<div class="card-footer" id="cardFooterModalCommentary">
 				 		<% @reaction = @reactionsTimeline.where(owner_id:commentary.id, owner_type:"Commentary").first %>
-						<% @colorBlack = "black;" %>
+						<% @colorWhite = "white;" %>
 						<% if  @reaction %>
 							<% @type = @reaction.reactionType %>
 		        		<% else %>
@@ -289,7 +289,7 @@
     								<a>
 	       								<li class="reaction-menu">
 								        	<div class="actions">
-								        		<button  onclick="changeReaction(this, <%= commentary.id %>, 'Commentary',<%= user_id %>, <%= ownerPost_id %>)" class="mdc-icon-button material-icons" value="type1" name="reactionType" style='<%= 'color:'+(@type == "type1" ? '#E91E63;': @colorBlack) %>' id='<%=buttonReactionId+"type1"%>' data-disable="true" >
+								        		<button  onclick="changeReaction(this, <%= commentary.id %>, 'Commentary',<%= user_id %>, <%= ownerPost_id %>)" class="mdc-icon-button material-icons" value="type1" name="reactionType" style='<%= 'color:'+(@type == "type1" ? '#E91E63;': @colorWhite) %>' id='<%=buttonReactionId+"type1"%>' data-disable="true" >
 								        			favorite_border
 								        		</button>
 											</div>
@@ -310,7 +310,7 @@
     								<a>
 	       								<li class="reaction-menu">
 								        	<div class="actions">
-								        		<button  onclick="changeReaction(this, <%= commentary.id %>, 'Commentary',<%= user_id %>, <%= ownerPost_id %>)" class="mdc-icon-button material-icons" value="type2" name="reactionType" style='<%= 'color:'+(@type == "type2" ? 'red;' : @colorBlack)%>'  id='<%=(buttonReactionId+"type2")%>' data-disable="true" >
+								        		<button  onclick="changeReaction(this, <%= commentary.id %>, 'Commentary',<%= user_id %>, <%= ownerPost_id %>)" class="mdc-icon-button material-icons" value="type2" name="reactionType" style='<%= 'color:'+(@type == "type2" ? 'red;' : @colorWhite)%>'  id='<%=(buttonReactionId+"type2")%>' data-disable="true" >
 								        			whatshot
 								        		</button>
 											</div>
@@ -331,7 +331,7 @@
     								<a>
 	       								<li class="reaction-menu">
 								        	<div class="actions">
-								        		<button  onclick="changeReaction(this, <%= commentary.id %>, 'Commentary',<%= user_id %>, <%= ownerPost_id %>)" class="mdc-icon-button material-icons" value="type3" name="reactionType" style='<%= 'color:'+(@type == "type3" ? '#FFEB3B;' : @colorBlack)%>' id='<%=buttonReactionId+"type3"%>' data-disable="true" >
+								        		<button  onclick="changeReaction(this, <%= commentary.id %>, 'Commentary',<%= user_id %>, <%= ownerPost_id %>)" class="mdc-icon-button material-icons" value="type3" name="reactionType" style='<%= 'color:'+(@type == "type3" ? '#FFEB3B;' : @colorWhite)%>' id='<%=buttonReactionId+"type3"%>' data-disable="true" >
 								        			tag_faces
 								        		</button>
 											</div>
@@ -352,7 +352,7 @@
     								<a>
 	       								<li class="reaction-menu">
 								        	<div class="actions">
-								        		<button  onclick="changeReaction(this, <%= commentary.id %>, 'Commentary',<%= user_id %>, <%= ownerPost_id %>)" class="mdc-icon-button material-icons" value="type4" name="reactionType" style='<%= 'color:'+(@type == "type4" ? '#2196F3;' : @colorBlack) %>' id='<%=buttonReactionId+"type4"%>' data-disable="true" >
+								        		<button  onclick="changeReaction(this, <%= commentary.id %>, 'Commentary',<%= user_id %>, <%= ownerPost_id %>)" class="mdc-icon-button material-icons" value="type4" name="reactionType" style='<%= 'color:'+(@type == "type4" ? '#2196F3;' : @colorWhite) %>' id='<%=buttonReactionId+"type4"%>' data-disable="true" >
 								        			mood_bad
 								        		</button>
 											</div>

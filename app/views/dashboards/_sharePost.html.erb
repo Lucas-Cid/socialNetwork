@@ -61,7 +61,7 @@
 			</div>
 			<%= f.file_field :image %>
 			<div class="actions" style="margin-top: 15px;">
-				<%= button_to "Enviar", posts_path,:remote => true, :method => "POST", data: { confirm: "Tem certeza que deseja compartilhar a postagem?"}, data: { disable: true }, :onclick => "closePostModal()" %>
+				<%= button_to "Enviar", posts_path,:remote => true, :method => "POST", data: { confirm: "Tem certeza que deseja compartilhar a postagem?"}, data: { disable: true }, :onclick => "closePostModal()", id: "sendPostButton" %>
 			</div>
 
 		<% end %>

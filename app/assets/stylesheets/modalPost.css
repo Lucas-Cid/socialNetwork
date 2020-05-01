@@ -6,17 +6,21 @@
 	overflow-y: auto;
 	overflow-x: hidden;
 	width: 720px;
+	background-color: #151617;
+	color: white;
 
 }
 
 .modal-header {
 	height: 30px;
 	padding: 0;
+	border:0.5px solid black;
 }
 
 .close {
 	top:0;
 	right: 0;
+	color: white;
 }
 
 .modal-body {
@@ -37,7 +41,7 @@
 #cardHeaderModalPost {
 	position: relative;
 	height: 60px;
-	background-color:black;
+	background-color: RGBA(30, 30, 30, 1);
 	border: 0;
 	font-size: 20px;
 	display: inline-flex;
@@ -92,7 +96,7 @@
 #cardHeaderModalCommentary {
 	display: inline-flex;
 	height: 60px;
-	background-color:black;
+	background-color: RGBA(30, 30, 30, 1);
 	border: 0;
 }
 

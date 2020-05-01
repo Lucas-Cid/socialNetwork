@@ -19,9 +19,8 @@
 	padding-left: 90px;
 	margin-right: auto;
 	margin-left: auto;
-	-webkit-box-shadow: 1px 4px 38px 0px rgba(122,122,122,1);
-	-moz-box-shadow: 1px 4px 38px 0px rgba(122,122,122,1);
-	box-shadow: 1px 4px 38px 0px rgba(122,122,122,1);
+	background-color: #090a0a;
+	color: white;
 	border-radius: 20px;
 	word-wrap: break-word;
 }
@@ -69,7 +68,7 @@
 	height: auto;
 	width: calc(100% - 20px);
 	margin-left: 10px;
-	border: 0.3px solid  #736d6d;
+
 	margin-top: -10px;
 }
 
