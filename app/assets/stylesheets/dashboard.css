@@ -37,7 +37,7 @@ a:active {
 	position: relative;
 	min-width: 700px;
 	margin: auto;
-	width: 70%;
+	width: 80%;
 	max-width: 1286px;
 	display: flex;
 	border: 0.5px solid #0000004d;
@@ -54,7 +54,7 @@ a:active {
 }
 
 .alignBar {
-	width: 70%;
+	width: 80%;
 	margin-right: auto;
 	margin-left: auto;
 	max-width: 1286px;
@@ -146,7 +146,7 @@ a:active {
 	margin-right: auto;
 	margin-left: auto;
 	float: right;
-	min-width: 570px;
+	min-width: 700px;
 	width: 40%;
 	font-size: 20px;
 
