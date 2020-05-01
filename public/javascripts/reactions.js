@@ -25,6 +25,10 @@ function changeReaction(button, owner_id, owner_type, user_id, ownerPost_id) {
 					var counter_id = 'counter'+owner_type+owner_id+'_'+element.value;
 					var counter = document.getElementById(counter_id).innerHTML;
 					document.getElementById(counter_id).innerHTML = counter-1;
+					if (type == 'type1')
+					{
+						element.innerHTML = 'favorite_border';
+					}
 				}
 			}
 
@@ -33,6 +37,7 @@ function changeReaction(button, owner_id, owner_type, user_id, ownerPost_id) {
 			switch(button.value) {
 			  case 'type1':
 			  	button.style.color = '#E91E63';
+			  	button.innerHTML = 'favorite';
 			    break;
 			  case 'type2':
 			  	button.style.color = 'red';

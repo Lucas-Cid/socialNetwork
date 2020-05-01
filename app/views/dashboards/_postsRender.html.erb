@@ -138,7 +138,11 @@
    									
 						        	<div class="actions">
 						        		<button  onclick="changeReaction(this, <%= post.id %>, 'Post',<%= user_id %>, <%= ownerPost_id %>)" class="mdc-icon-button material-icons" value="type1" name="reactionType" style='<%= 'color:'+(@type == "type1" ? "#E91E63;" : @colorBlack) %>' id='<%=buttonReactionId+"type1"%>' data-disable="true">
-						        			favorite_border
+						        			<% if @type == 'type1' %> 
+						        				favorite
+						        			<% else %>
+						        				favorite_border
+						        			<% end %>
 						        		</button>
 									</div>
 								</li>
