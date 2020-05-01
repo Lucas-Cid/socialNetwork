@@ -43,7 +43,7 @@
 		        <% if @post.post_id.present? %>
 		        	<% if Post.where(id:@post.post_id).present? %>
 			        	<% sharedPost = Post.find(@post.post_id) %>
-			        	<div class="card" id="cardModalPost">
+			        	<div class="card" id="cardModalPost" style="border: 1px solid #656565;margin-bottom: -30px;">
 			        		<span class="openPost" style="z-index: 1;top: 0;">
 			        			<%= link_to dashboards_showPost_path(:post_id => sharedPost.id), {:remote => true, 'data-toggle' =>  "modal", 'data-target'=>'#postModal', :class => "openPostLink", :style=>"z-index: 1;top: 0;"} do %>
 	    						<% end %>
@@ -69,8 +69,8 @@
 						    <div class="card-body" id="cardBodyModalPost">
 						        <%= sharedPost.content %>
 						        <% if sharedPost.image.attached? %>
-						        	<div class="postImage">
-						        	<%= image_tag sharedPost.image, :style => "position:relative;max-width:100%;",:onclick => "showImage(this)"%>
+						        	<div class="postImage" style="margin-top:-50px;">
+						        	<%= image_tag sharedPost.image, :style => "position:relative;max-width:100%;margin-left:auto;margin-right:auto;",:onclick => "showImage(this)"%>
 						        	</div>
 						        <% end %>
 						        <% if sharedPost.post_id.present? %>

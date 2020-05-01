@@ -236,11 +236,10 @@ a:active {
 .postImage {
 	max-height: 700px;
 	overflow: hidden;
-	display: inline-block;
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: -40px;
-	display: flex;
+	display: grid;
 }
 
 #cardFooterPost {
