@@ -190,7 +190,7 @@
 						 </ul>
 					</div>
 
-					<%= link_to "Compartilhar", dashboards_sharePost_path(post_id:@post.id), :remote => true, 'data-toggle' =>  "modal", 'data-target'=>'#postModal', :style => "margin-left:150px;position:relative;" %>
+					<%= link_to "Compartilhar", dashboards_sharePost_path(post_id:@post.id), :remote => true, 'data-toggle' =>  "modal", 'data-target'=>'#postModal', class: "shareLink" %>
 
 			 	<% end %>
 			 	

@@ -11,6 +11,10 @@ function changeReaction(button, owner_id, owner_type, user_id, ownerPost_id) {
 			button.style.color = 'white';
 			var counter = document.getElementById(counter_id).innerHTML;
 			document.getElementById(counter_id).innerHTML = counter-1;
+			if (button.value == 'type1')
+			{
+				button.innerHTML = 'favorite_border';
+			}
 		}
 		else {
 			let types = ['type1', 'type2', 'type3', 'type4']

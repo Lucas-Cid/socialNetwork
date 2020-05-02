@@ -70,7 +70,7 @@ a:active {
 	height: 80px;
 	width: 100%;
 	text-align: left;
-	background-color: #090a0a;
+	background-color: black;
 	border-bottom: 1px solid black;
 	z-index: 5; 
 }
@@ -281,6 +281,11 @@ a:active {
 	background-color: white;
 }
 
+.shareLink {
+	margin-left:150px;
+	position:relative;
+}
+
 #loadMoreButton {
 	display: none;
 }
@@ -304,12 +309,13 @@ a:active {
 }
 
 #allUsers {
-	border: 1px solid black; 
+	border: 1px solid black;
+	margin-bottom: 0; 
 
 }
 
 #tableUsersStatus {
-	background-color:#090a0a;
+	background-color:black;
 	color:white;
 }
 

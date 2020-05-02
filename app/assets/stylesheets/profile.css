@@ -30,7 +30,7 @@
 }
 
 #iconProfile {
-	border: 4px solid black;
+	border: 4px solid white;
 	height: 130px;
 	width: 130px;
 	margin-left: 0;
@@ -41,7 +41,7 @@
 	margin-top: 5px;
 	margin-left: 17px;
 	font-size: 100px;
-	color: black;
+	color: white;
 }
 
 .profileUserName {
@@ -118,15 +118,14 @@
 
   .friend {
   	display: flex;
-	border: 0.3px solid  #736d6d;
+  	border-radius: 20px;
+  	border: 0.5px solid #656565;
 	margin-bottom: 20px;
-	-webkit-box-shadow: 1px 4px 38px 0px rgba(122,122,122,1);
-	-moz-box-shadow: 1px 4px 38px 0px rgba(122,122,122,1);
-	box-shadow: 1px 4px 38px 0px rgba(122,122,122,1);
+	background-color: RGBA(30, 30, 30, 1);
   }
 
   .linkFriendUserName {
-	color:black;
+	color:white;
 }
 
   .friendUserName {
