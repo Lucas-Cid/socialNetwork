@@ -11,7 +11,8 @@ function loadDoc(lastPost_id, button, pageType, optionalId, controllerPath) {
   xhttp.open("GET", urlRequest, true);
   xhttp.send();
 
-  button.style.display = 'none';
+  var element = document.getElementById(button.id);
+  element.parentNode.removeChild(element);
 }
 
 function showOnProfile(user_id, controllerPath) {

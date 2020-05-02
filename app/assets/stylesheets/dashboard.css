@@ -281,6 +281,10 @@ a:active {
 	background-color: white;
 }
 
+#loadMoreButton {
+	display: none;
+}
+
 .spaceButton {
 	position: relative;
 	width: 20px;

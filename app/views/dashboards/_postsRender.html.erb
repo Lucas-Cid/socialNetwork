@@ -233,7 +233,7 @@
 <% end %>
 
 <% if postsCounter == 20 %>
-	<button onclick="loadDoc(<%= @lastPost_id %>, this, '<%= @pageType %>', <%= @optionalId %>, '<%= dashboards_renderMore_path %>')">
+	<button  id="loadMoreButton" onclick="loadDoc(<%= @lastPost_id %>, this, '<%= @pageType %>', <%= @optionalId %>, '<%= dashboards_renderMore_path %>')">
 		Carregar Mais
 	</button>
 <% end %>
