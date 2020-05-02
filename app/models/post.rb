@@ -15,7 +15,7 @@ class Post < ApplicationRecord
 	end
 
 	def self.getTime(time)
-		if Time.now.to_date == time.to_date
+		if Time.now - time < 86400
 
 			secondsDiference = Time.now - time
 			if secondsDiference < 3540
