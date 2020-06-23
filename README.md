@@ -1,24 +1,12 @@
-# README
+# Instruções de instalação do projeto
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Você precisará do [Docker](https://www.docker.com/) e do [Docker Compose](https://docs.docker.com/compose/install/). Certifique-se de que não há nada de errado com a instalação destas ferramentas executando no terminal `docker -v` e `docker-compose -v`.
 
-Things you may want to cover:
+1. Abra o arquivo `Gemfile.lock` e exclua o seu conteúdo. Mantenha apenas um arquivo vazio,
+1. Execute o script `initial_setup.sh`. Isso irá configurar o projeto pela primeira vez (e repopular o `Gemfile.lock`).
 
-* Ruby version
+**Note que esta etapa pode demorar um pouco.**
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Como iniciar o servidor
+Na pasta do projeto, execute `sudo docker-compose up`. Feito isso, acesse a porta 3000 do seu [localhost](localhost:3000).

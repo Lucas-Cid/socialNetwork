@@ -8,10 +8,10 @@ default: &default
   adapter: postgresql
   encoding: unicode
   database: socialNetwork
-  host: localhost
+  host: db
   pool: 5
   username: postgres
-  password: postgres
+  password: password
 
 development:
   <<: *default
