@@ -1,9 +1,5 @@
 class ApiDashboardController < ApiController
 
-  def yes
-    true
-  end
-
   def react_to_post
     reaction = Reaction.new(
         :owner_type => params[:owner_type],
@@ -32,12 +28,22 @@ class ApiDashboardController < ApiController
     end
   end
 
+  # return [JSON]
+  # Return the necessary data (Posts, Reactions and Users) to render a Post card
   def show_posts
-    data = verify_token params[:token]
-    if not data.nil? and data.key?('data')
+    user_data = verify_token params[:token]
+    if not user_data.nil? and user_data.key?('data')
       @posts = Post.where('id < ?', params[:lastId].nil? ? Post.last.id + 1 : params[:lastId]).order(:id).last(20).reverse
-      @reactions = Reaction.where(owner_id: @posts, user_id: data['data']['id'])
-      render json: [@posts, @reactions], status: :ok
+      @reactions = Reaction.where(owner_id: @posts, user_id: user_data['data']['id'])
+
+      # Get the [id] of all users related to the previous posts
+      user_ids = []
+      @posts.each do |p|
+        user_ids.append(p.user_id)
+      end
+
+      @users = User.where(id: user_ids)
+      render json: [@posts, @reactions, @users], status: :ok
     end
   end
 
