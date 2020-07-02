@@ -18,6 +18,15 @@ Rails.application.routes.draw do
   post "app/showPosts", to: "dashboards_app#showPosts"
   post "app/friendList", to: "dashboards_app#friendList"
   post "users_app/login", to: "users_app#login"
+
+
+  get 'api.all_users', to: 'api#index'
+  get 'api.profile/:id', to: 'api#profile'
+  post 'api.register', to: 'api_user#register'
+  post 'api.login', to: 'api_user#login'
+  get 'api.showposts', to: 'api_dashboard#show_posts'
+  get 'api.react_to_post', to: 'api_dashboard#react_to_post'
+
   devise_for :users
   resources :posts, :reactions, :commentaries, :users_app
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

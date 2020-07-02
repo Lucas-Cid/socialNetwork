@@ -125,6 +125,9 @@ class DashboardsController < ApplicationController
 			if @postsType.present?
 				@lastPost_id = @postsType.last.id
 			end
+
+			puts current_user
+
 			@reactionsTimeline = Reaction.where(owner_id:@postsType, user_id:current_user, owner_type:"Post")
 			@pageType = "homepage"
 			@optionalId = 0

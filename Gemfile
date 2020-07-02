@@ -10,6 +10,8 @@ gem 'bootstrap-sass'
 
 gem 'devise'
 
+gem 'jwt'
+
 gem 'pry'
 
 gem 'active_storage_validations'
@@ -52,6 +54,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  # Gem usada para gerar dados falsos
+  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 end
 
 group :development do

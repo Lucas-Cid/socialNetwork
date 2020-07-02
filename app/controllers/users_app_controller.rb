@@ -31,6 +31,7 @@ class UsersAppController < ApplicationController
 		userReturn = {
 					:user => { :logged_in => false }
 			   }
+		# Linha mágica
 		if user && user.valid_password?(params[:user][:password])
 			userReturn = {
 						:user => { 
